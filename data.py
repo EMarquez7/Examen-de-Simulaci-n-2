@@ -4,7 +4,7 @@
 # -- script: data.py : Python script with data functionality for the project                                                  -- #                 
 # -- author: EstebanMqz                                                                                                       -- #  
 # -- license: CC BY 3.0                                                                                                       -- #
-# -- repository: https://github.com/EstebanMqz/SP500-Risk-Optimized-Portfolios/blob/main/data.py                              -- #           
+# -- repository: https://github.com/EstebanMqz/SP500-Risk-Optimized-Portfolios-ML-Models/blob/main/data.py                    -- #           
 # -- ------------------------------------------------------------------------------------------------------------------------ -- #  
 """
 

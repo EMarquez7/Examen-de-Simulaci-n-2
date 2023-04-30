@@ -8,11 +8,10 @@
 <img src="diagram.svg" width="280" height="280">
 
 ### **Objective:**
-<br><br><br><br>
+[![Azure-Badge](https://img.shields.io/badge/Azure-0089D6?style=flat-square&logo=microsoft-azure&logoColor=white)](https://mango-dune-07a8b7110.1.azurestaticapps.net/?repo=EstebanMqz%2FSP500-Risk-Optimized-Portfolios-ML-Models)<br>
 
-Check out the Portfolios ML models output here: [SP500-Risk-Optimized-Portfolios](https://github.com/EstebanMqz/SP500-Risk-Optimized-Portfolios)
 
-[![Azure-Badge](https://img.shields.io/badge/Azure-0089D6?style=flat-square&logo=microsoft-azure&logoColor=white)](https://mango-dune-07a8b7110.1.azurestaticapps.net/?repo=EstebanMqz%2FSP500-Risk-Optimized-Portfolios)
+Results Output here: [SP500-Risk-Optimized-Portfolios](https://github.com/EstebanMqz/SP500-Risk-Optimized-Portfolios-ML-Models)
 
 ---
 ### **Tools:**
