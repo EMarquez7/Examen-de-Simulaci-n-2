@@ -37,9 +37,6 @@ import warnings
 warnings.filterwarnings("ignore")
 warnings.filterwarnings("ignore", category=UserWarning)
 
-import warnings
-warnings.filterwarnings("ignore", category=UserWarning)
-
 
 def MC_plot(simulations, E_V, xlabel , ylabel, i_capital, f_capital):
     """Plots a line plot of events for n Monte Carlo simulations.
