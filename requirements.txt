@@ -1,0 +1,19 @@
+
+# -- --------------------------------------------------------------------------------------------------  -- # 
+# -- project: S&P500-Risk-Optimized-Portfolios-PostCovid-ML                                              -- # 
+# -- script: requirements.txt: txt file to download Python modules for execution                         -- # 
+# -- author: EstebanMqz                                                                                  -- # 
+# -- license: CC BY 3.0                                                                                  -- # 
+# -- repository: SP500-Risk-Optimized-Portfolios-PostCovid-MLblob/main/requirements.txt                  -- #
+# -- --------------------------------------------------------------------------------------------------  -- # 
+
+
+numpy >= 1.23.5 
+pandas >= 1.4.4 
+matplotlib >= 3.5.3 
+scipy >= 1.7.3 
+sklearn >= 1.0.2 
+jupyter >= 1.0.0 
+yahoofinanicals >= 1.14 
+tabulate >= 0.8.9 
+IPython >= 8.12.0 
