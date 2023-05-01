@@ -62,15 +62,17 @@ def get_historical_price_data(ticker, years):
     years : int
         Number of years for data download from today's date backwards.
     """
-    start = (datetime.datetime.now() - datetime.timedelta(days = 365 * years)).strftime("%Y-%m-%d") 
-    end = (datetime.datetime.now()).strftime("%Y-%m-%d") 
+    #Create an empty dataframe named data non locally
+    start = (datetime.datetime.now() - datetime.timedelta(days = 365 * years)).strftime("%Y-%m-%d") #3 years ago from today's date
+    end = (datetime.datetime.now()).strftime("%Y-%m-%d") #Today
+
     try:
                 data = pd.DataFrame(YahooFinancials(ticker).get_historical_price_data(start_date = start,
                                                                         end_date = end, time_interval="daily")[ticker]["prices"])
                 data["formatted_date"] = pd.to_datetime(data["formatted_date"])
                 data = data.set_index("formatted_date")
-                data = data.drop(["date", "high", "low", "open", "close", "volume"], axis = 1)  #OHLCV               
-                data = data.rename(columns = {"adjclose" : ticker}) 
+                data = data.drop(["date", "high", "low", "open", "close", "volume"], axis = 1)               
+                data = data.rename(columns = {"adjclose" : ticker})
 
     except KeyError:
         pass
@@ -80,6 +82,7 @@ def get_historical_price_data(ticker, years):
         pass
 
     return data
+
 
 
 

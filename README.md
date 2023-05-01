@@ -15,11 +15,10 @@ Results Output here: [SP500-Risk-Optimized-Portfolios](https://github.com/Esteba
 
 ---
 ### **Tools:**
-##### Github Action:&nbsp;![Repo-Visualizer-Badge](https://img.shields.io/badge/Repo%20Visualizer-2B7489?style=flat-square&logo=github&logoColor=white)<br>
-##### Distribution:&nbsp;![Anaconda-Badge](https://img.shields.io/badge/Anaconda-44A833?style=flat-square&logo=anaconda&logoColor=white)<br> 
-##### Main Text-Editor:&nbsp;![Jupyter-Badge](https://img.shields.io/badge/Jupyter-Notebook-orange.svg?style=flat-square&logo=Jupyter&logoColor=white)
-##### Language:&nbsp;![Matplotlib-Badge](https://img.shields.io/badge/Matplotlib-000000?style=flat-square&logo=Matplotlib&logoColor=white)&nbsp;![Numpy-Badge](https://img.shields.io/badge/Numpy-013243?style=flat-square&logo=numpy&logoColor=white)&nbsp;![Pandas-Badge](https://img.shields.io/badge/Pandas-150458?style=flat-square&logo=pandas&logoColor=white)&nbsp;![Scipy-Badge](https://img.shields.io/badge/Scipy-000000?style=flat-square&logo=scipy&logoColor=white)&nbsp;![Sklearn-Badge](https://img.shields.io/badge/Sklearn-F7931E?style=flat-square&logo=scikit-learn&logoColor=white)<br>
-
+##### Github Action:&nbsp;[![Repo-Visualization-Badge](https://img.shields.io/badge/Action-Visualization-020521?style=flat-square&logo=github&logoColor=white)](https://githubnext.com/projects/repo-visualization)<br>
+##### Main Text-Editor:&nbsp;[![VSCode-Badge](https://img.shields.io/badge/VSCode-007ACC?style=flat-square&logo=visual-studio-code&logoColor=white)](https://code.visualstudio.com/)&nbsp;[![Jupyter-Badge](https://img.shields.io/badge/Jupyter-F37626?style=flat-square&logo=Jupyter&logoColor=white)](https://jupyter.org/try)
+##### Language:&nbsp;[![Python-Badge](https://img.shields.io/badge/Python-2b6dd6.svg?style=flat-square&logo=Python&logoColor=green)](https://www.python.org)[![LaTeX-Badge](https://img.shields.io/badge/LaTeX-white.svg?style=flat-square&logo=LaTeX&logoColor=008080)](https://www.latex-project.org)[![Markdown-Badge](https://img.shields.io/badge/Markdown-000000.svg?style=flat-square&logo=Markdown&logoColor=white)](https://www.markdownguide.org)[![yaml-Badge](https://img.shields.io/badge/YAML-000000?style=flat-square&logo=yaml&logoColor=red)](https://yaml.org)<br>
+##### Libraries:&nbsp;[![Numpy-Badge](https://img.shields.io/badge/Numpy-013243?style=flat-square&logo=numpy&logoColor=white)](https://numpy.org)&nbsp;[![Pandas-Badge](https://img.shields.io/badge/Pandas-150458?style=flat-square&logo=pandas&logoColor=white)](https://pandas.pydata.org)&nbsp;[![Scipy-Badge](https://img.shields.io/badge/Scipy-darkblue?style=flat-square&logo=scipy&logoColor=white)](https://www.scipy.org)&nbsp;[![Matplotlib-Badge](https://img.shields.io/badge/Matplotlib-000000?style=flat-square&logo=Matplotlib&logoColor=white)](https://matplotlib.org)&nbsp;[![Sklearn-Badge](https://img.shields.io/badge/Sklearn-F7931E?style=flat-square&logo=scikit-learn&logoColor=white)](https://scikit-learn.org/stable/)<br>
 ##### Web-Interface:&nbsp;[![React-Badge](https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&logoColor=black)](https://create-react-app.dev)&nbsp;<br>
 ##### Version Control:&nbsp;[![GitHub-Badge](https://img.shields.io/badge/GitHub-100000?style=flat-square&logo=github&logoColor=white)](https://github.com)&nbsp;[![Git-Badge](https://img.shields.io/badge/Git-F05032.svg?style=flat-square&logo=Git&logoColor=white)](https://git-scm.com)<br>
 [![Git-Commads](https://img.shields.io/badge/Git%20Commands-gray?style=flat-square&logo=git&logoColor=white)](https://github.com/EstebanMqz/Git-Commands)<br><br>
@@ -35,12 +34,9 @@ If you have any questions or comments, please feel free to send me a message her
 
 ##### References:
 [S&P 500 companies](https://en.wikipedia.org/wiki/List_of_S%26P_500_companies)<br>
-
 [scipy.stats](https://docs.scipy.org/doc/scipy/reference/stats.html)<br>
-
 [sklearn.model_selection.GridSearchCV](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html)<br>
 [Hyper-parameters Exhaustive GridSearchCV](https://scikit-learn.org/stable/modules/grid_search.html)<br>
-
 [sklearn.neighbors.KernelDensity](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KernelDensity.html)<br>
 [sklearn.neighbors.KernelDensity.fit](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KernelDensity.html#sklearn.neighbors.KernelDensity.fit)<br>
 [sklearn.neighbors.KernelDensity.score_samples](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KernelDensity.html#sklearn.neighbors.KernelDensity.score_samples)<br>

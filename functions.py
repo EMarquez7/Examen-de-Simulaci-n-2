@@ -104,3 +104,21 @@ def get_requirements(docstring):
     print("requirements.txt file created in local path:", path.abspath("requirements.txt"))
     
 
+def SP500_tickers(batches):
+    """
+    Function to retrieve tickers from S&P500 companies as a list.
+    Parameters:
+    ----------
+    batches : int
+        Number of n tickers contained in a list from the S&P 500 tickers.
+    Returns:
+    -------
+    list
+        List of n tickers list in the S&P 500.    
+    """
+
+    list = pd.read_html("https://en.wikipedia.org/wiki/List_of_S%26P_500_companies")[0]["Symbol"].values.tolist()
+    data = [list[x:x+batches] for x in range(0, len(list), batches)]
+    
+    return data
+
