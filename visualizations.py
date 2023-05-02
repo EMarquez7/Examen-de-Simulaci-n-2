@@ -40,5 +40,25 @@ warnings.filterwarnings("ignore", category=UserWarning)
 
 # -- --------------------------------------------------------------------------------------- visualizations ------------------------------------------------------------------------------- -- #
 
+def summary(adjcloses,rf):
+    """
+    Function to get summary statistics of a dataframe of adjcloses, risk-free rates on a yearly basis are used from the end of the period.
+    Parameters:
+    ----------
+    adjcloses : dataframe
+        Dataframe of adjcloses.
+    Returns:
+    -------
+    dataframe
+        Dataframe with summary statistics with sharpe/sortino ratios of adjcloses.
+    """
+    returns = adjcloses.pct_change()
+    mean_ret = returns.mean() * 252 
+    sharpe = (mean_ret - rf) / ( returns.std() * np.sqrt(252) )
+    sortino = (mean_ret - rf) / ( returns[returns < 0].std() * np.sqrt(252) )
+    #Summary table
+    summary = pd.DataFrame({"Annualized Return" : mean_ret, "Volatility" : returns.std()*np.sqrt(252), "Sharpe Ratio" : sharpe, "Sortino Ratio" : sortino})
+    summary.index.name = "Financial Data"
+    summary.head()
 
-
+    return returns, summary

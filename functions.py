@@ -118,7 +118,6 @@ def SP500_tickers(batches):
     """
 
     list = pd.read_html("https://en.wikipedia.org/wiki/List_of_S%26P_500_companies")[0]["Symbol"].values.tolist()
-    data = [list[x:x+batches] for x in range(0, len(list), batches)]
+    data = [[x.replace(".", "-") for x in list[x:x+batches]] for x in range(0, len(list), batches)]
     
     return data
-

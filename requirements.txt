@@ -4,7 +4,7 @@
 # -- script: requirements.txt: txt file to download Python modules for execution                         -- # 
 # -- author: EstebanMqz                                                                                  -- # 
 # -- license: CC BY 3.0                                                                                  -- # 
-# -- repository: SP500-Risk-Optimized-Portfolios-PostCovid-MLblob/main/requirements.txt                  -- #
+# -- repository: SP500-Risk-Optimized-Portfolios-PostCovid-ML/blob/main/requirements.txt                 -- #                                  
 # -- --------------------------------------------------------------------------------------------------  -- # 
 
 
