@@ -40,25 +40,28 @@ warnings.filterwarnings("ignore", category=UserWarning)
 
 # -- --------------------------------------------------------------------------------------- visualizations ------------------------------------------------------------------------------- -- #
 
-def summary(adjcloses,rf):
+def selection_data(data, rf, title):
     """
-    Function to get summary statistics of a dataframe of adjcloses, risk-free rates on a yearly basis are used from the end of the period.
+    Function to get selection summary and data with given metrics.
     Parameters:
     ----------
-    adjcloses : dataframe
-        Dataframe of adjcloses.
+    data : dataframe
+        Prices to model.
+    rf : float
+        Daily Treasury Par Yield Curve Rates for sharpe/sortino selection from the end of the period on a yearly basis. 
     Returns:
     -------
     dataframe
-        Dataframe with summary statistics with sharpe/sortino ratios of adjcloses.
+        Summary statistics of data selection with sharpe/sortino ratios with given data.
     """
-    returns = adjcloses.pct_change()
+    returns = data.pct_change()
     mean_ret = returns.mean() * 252 
     sharpe = (mean_ret - rf) / ( returns.std() * np.sqrt(252) )
     sortino = (mean_ret - rf) / ( returns[returns < 0].std() * np.sqrt(252) )
-    #Summary table
-    summary = pd.DataFrame({"Annualized Return" : mean_ret, "Volatility" : returns.std()*np.sqrt(252), "Sharpe Ratio" : sharpe, "Sortino Ratio" : sortino})
-    summary.index.name = "Financial Data"
-    summary.head()
+    summary = pd.DataFrame({"Annualized Return" : mean_ret, "Volatility" : returns.std() * np.sqrt(252),
+                            "Sharpe Ratio" : sharpe, "Sortino Ratio" : sortino})
+    summary = summary.nlargest(30, "Sharpe Ratio").nlargest(30, "Sortino Ratio")
+    bars = summary.plot.bar(figsize=(20, 10), rot=90, title=title, fontsize=15, grid=True, edgecolor="black", linewidth=1) 
 
-    return returns, summary
+    return summary, bars
+
