@@ -33,6 +33,7 @@ If you have any questions or comments, please feel free to send me a message her
 ----
 
 ##### References:
+[Convolution-of-Distributions](https://en.wikipedia.org/wiki/Convolution_of_probability_distributions)<br>
 [S&P 500 companies](https://en.wikipedia.org/wiki/List_of_S%26P_500_companies)<br>
 [scipy.stats](https://docs.scipy.org/doc/scipy/reference/stats.html)<br>
 [sklearn.model_selection.GridSearchCV](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html)<br>

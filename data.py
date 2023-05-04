@@ -16,7 +16,7 @@ import visualizations as vs
 #Libraries in data.py
 import numpy as np
 import pandas as pd
-import matplotlib as plt
+import matplotlib.pyplot as plt
 
 import scipy
 import scipy.stats as st
