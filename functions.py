@@ -49,7 +49,6 @@ def get_requirements(docstring):
     import pandas as pd
     import matplotlib.pyplot as plt
 
-
     import scipy
     import scipy.stats as st
     from scipy import optimize

@@ -31,15 +31,15 @@ If you have any questions or comments, please feel free to send me a message her
 <br><br>
 
 ----
-
-##### References:
+#### References:
+[Daily Treasury Par Yield Curve Rates](https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value_month=202304)<br>
 [Convolution-of-Distributions](https://en.wikipedia.org/wiki/Convolution_of_probability_distributions)<br>
 [S&P 500 companies](https://en.wikipedia.org/wiki/List_of_S%26P_500_companies)<br>
-[scipy.stats](https://docs.scipy.org/doc/scipy/reference/stats.html)<br>
-[sklearn.model_selection.GridSearchCV](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html)<br>
-[Hyper-parameters Exhaustive GridSearchCV](https://scikit-learn.org/stable/modules/grid_search.html)<br>
-[sklearn.neighbors.KernelDensity](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KernelDensity.html)<br>
-[sklearn.neighbors.KernelDensity.fit](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KernelDensity.html#sklearn.neighbors.KernelDensity.fit)<br>
-[sklearn.neighbors.KernelDensity.score_samples](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KernelDensity.html#sklearn.neighbors.KernelDensity.score_samples)<br>
+
+---
+Libraries:<br>
+[np.dot](https://numpy.org/doc/stable/reference/generated/numpy.dot.html), [np.divide](https://numpy.org/doc/stable/reference/generated/numpy.divide.html)<br>
+[scipy.stats](https://docs.scipy.org/doc/scipy/reference/stats.html), &nbsp; [scipy.optimize.minimize](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html) <br>
+[sklearn.model_selection.GridSearchCV](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html), &nbsp; [Hyper-parameters Exhaustive GridSearchCV](https://scikit-learn.org/stable/modules/grid_search.html)<br>
+[sklearn.neighbors.KernelDensity](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KernelDensity.html), &nbsp; [sklearn.neighbors.KernelDensity.fit](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KernelDensity.html#sklearn.neighbors.KernelDensity.fit), &nbsp; [sklearn.neighbors.KernelDensity.score_samples](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KernelDensity.html#sklearn.neighbors.KernelDensity.score_samples), &nbsp; <br>
 [sklearn.metrics](https://scikit-learn.org/stable/modules/model_evaluation.html)<br>
-[Daily Treasury Par Yield Curve Rates](https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value_month=202304)
