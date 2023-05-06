@@ -38,8 +38,11 @@ If you have any questions or comments, please feel free to send me a message her
 
 ---
 Libraries:<br>
-[np.dot](https://numpy.org/doc/stable/reference/generated/numpy.dot.html), [np.divide](https://numpy.org/doc/stable/reference/generated/numpy.divide.html)<br>
+###### Numpy: <br>
+[np.add](https://numpy.org/doc/stable/reference/generated/numpy.add.html), &nbsp; [np.subtract](https://numpy.org/doc/stable/reference/generated/numpy.subtract.html), &nbsp; [np.dot](https://numpy.org/doc/stable/reference/generated/numpy.dot.html), &nbsp; [np.divide](https://numpy.org/doc/stable/reference/generated/numpy.divide.html), &nbsp; [np.cov](https://numpy.org/doc/stable/reference/generated/numpy.cov.html)<br>
+###### Stats: <br>
 [scipy.stats](https://docs.scipy.org/doc/scipy/reference/stats.html), &nbsp; [scipy.optimize.minimize](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html) <br>
+###### Sklearn: <br>
 [sklearn.model_selection.GridSearchCV](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html), &nbsp; [Hyper-parameters Exhaustive GridSearchCV](https://scikit-learn.org/stable/modules/grid_search.html)<br>
 [sklearn.neighbors.KernelDensity](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KernelDensity.html), &nbsp; [sklearn.neighbors.KernelDensity.fit](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KernelDensity.html#sklearn.neighbors.KernelDensity.fit), &nbsp; [sklearn.neighbors.KernelDensity.score_samples](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KernelDensity.html#sklearn.neighbors.KernelDensity.score_samples), &nbsp; <br>
 [sklearn.metrics](https://scikit-learn.org/stable/modules/model_evaluation.html)<br>

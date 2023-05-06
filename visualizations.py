@@ -64,13 +64,6 @@ def selection_data(data, rf, title):
     summary = pd.DataFrame({"Annualized Return" : mean_ret, "Volatility" : returns.std() * np.sqrt(252),
                             "Sharpe Ratio" : sharpe, "Sortino Ratio" : sortino})
     
-    #For Indivual Assets:
-    # 1. Add rf daily data on a yearly basis.
-    # 2. Obtain beta (lambda data, rf: np.cov(data, rf)[0][1] / np.var(rf)) with np.dot & np.divide 
-    # 3. Add Traynor (np.divide((mean_ret - rf), beta(data, rf))) & Jensen (mean_ret - np.dot((rf + beta(data, rf)), (mean_ret - rf))) Ratios.
-    # 4. Modify Sharpe and Sortino to do calculations with rf daily data on a yearly basis.
-    # 5. Display summary with all ratios in markdown df.
-
     summary = summary.nlargest(30, "Sharpe Ratio").nlargest(30, "Sortino Ratio")
     
     bars = summary.plot.bar(figsize=(20, 10), rot=90, title=title, fontsize=15, grid=True, edgecolor="black", linewidth=1)
@@ -78,7 +71,8 @@ def selection_data(data, rf, title):
 
     return summary, bars
 
-def Optimizer(SP, rf):
+
+def Optimizer(SP, rf, title):
     returns = (SP.pct_change()).iloc[1:, :].dropna(axis = 1)
     mean_ret = returns.mean() * 252
     cov = returns.cov() * 252
@@ -98,10 +92,12 @@ def Optimizer(SP, rf):
     
     Wopt_MinVar = optimize.minimize(Min_Var, np.ones(N) / N, (cov,), 'SLSQP', bounds = bnds,
                     constraints = cons, options={"tol": 1e-10})
+                    
     Ropt_MinVar = np.dot(Wopt_MinVar.x.T, mean_ret)
     Vopt_MinVar = np.sqrt(np.dot(Wopt_MinVar.x.T, np.dot(cov, Wopt_MinVar.x)))
     Popt_MinVar = pd.DataFrame({"$\mu$" : Ropt_MinVar, "$\sigma$" : Vopt_MinVar, "$Sharpe-R_{max}$" :
                                                 (Ropt_MinVar - rf) / Vopt_MinVar}, index = ["$Min_{Var{Arg_{max}}}$"])
+    Popt_MinVar.index.name = title
                                                     
     Wopt_EMV = optimize.minimize(Max_Sharpe, np.ones(N) / N, (mean_ret, rf, cov), 'SLSQP', bounds = bnds,
                                  constraints = cons, options={"tol": 1e-10})   
@@ -109,15 +105,9 @@ def Optimizer(SP, rf):
     Vopt_EMV = np.sqrt(np.dot(Wopt_EMV.x.T, np.dot(cov, Wopt_EMV.x)))
     Popt_EMV = pd.DataFrame({"$\mu$" : Ropt_EMV, "$\sigma$" : Vopt_EMV, "$Sharpe-R_{max}$" : 
                                                  (Ropt_EMV - rf) / Vopt_EMV}, index = ["$Sharpe_{Arg_{max}}$"])
+    Popt_EMV.index.name = title
     
-    #For Optimized Portfolios:
-    # 1. Add rf daily data on a yearly basis.
-    # 2. Obtain beta (lambda data, rf: np.cov(data, rf)[0][1] / np.var(rf)) with np.dot & np.divide 
-    # 3. Add Traynor (np.divide((mean_ret - rf), beta(data, rf))) & Jensen (mean_ret - np.dot((rf + beta(data, rf)), (mean_ret - rf))) Ratios.
-    # 4. Modify Sharpe and Sortino to do calculations with rf daily data on a yearly basis.
-    # 5. Display summary with all ratios in markdown df.
-    # 6. Plot with legends with style.
-    
-    Argmax = d.Markdown(tabulate(pd.concat([Popt_EMV, Popt_MinVar], axis = 0), headers = "keys", tablefmt = "pipe"))
+    Ratios = pd.concat([Popt_EMV, Popt_MinVar], axis = 0)    
+    Argmax = d.Markdown(tabulate(Ratios, headers = "keys", tablefmt = "pipe"))
     
     return Argmax
