@@ -111,3 +111,29 @@ def Optimizer(SP, rf, title):
     Argmax = d.Markdown(tabulate(Ratios, headers = "keys", tablefmt = "pipe"))
     
     return Argmax
+
+def Accum_ts(accum):
+    """
+    Accum_ts is a function that plots time-series in a dataframe with 3 strategies as cols with matplot.
+    Given dates in X-axis labels are formatted on a monthly / yearly basis for visualization purposes.
+    Parameters:
+    ----------
+    accum : dataframe
+        Dataframe with time-series to plot.
+    Returns:
+    -------
+    Plot
+        Plot of time-series in dataframe.
+    """
+    fig, ax = plt.subplots(figsize = (15, 7))
+    ax.plot(accum.index, accum.iloc[:, 0], color = "red", label = accum.columns[0])
+    ax.plot(accum.index, accum.iloc[:, 1], color = "green", label = accum.columns[1])
+    ax.plot(accum.index, accum.iloc[:, 2], color = "blue", label = accum.columns[2])
+    ax.set_title("Cumulative Returns", fontsize = 20)
+    ax.set_xlabel("Date", fontsize = 15)
+    ax.set_ylabel("Cumulative Returns", fontsize = 15)
+    ax.legend(loc = "upper left", fontsize = 15)
+    ax.grid(True)
+    ax.grid(which='major', color='gray', linestyle='--', linewidth=0.5)
+    plt.xticks(rotation=90)
+    plt.show()
