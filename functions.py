@@ -47,6 +47,8 @@ def get_requirements(docstring):
     #MODIFY libraries:
     import numpy as np
     import pandas as pd
+    
+    import matplotlib
     import matplotlib.pyplot as plt
 
     import scipy
@@ -81,11 +83,11 @@ def get_requirements(docstring):
 
     #modif.: libs version used in proj. accordingly.
     requirements = {
-        "numpy >=": np.__version__,
-        "pandas >=": pd.__version__,
-        "matplotlib >=": plt.__version__,
-        "scipy >=": scipy.version.version,
-        "sklearn >=": sklearn.__version__,
+        "numpy >=": np.__version__  ,
+        "pandas >=": pd.__version__ ,
+        "matplotlib >=": matplotlib.__version__ , 
+        "scipy >=": scipy.version.version   , 
+        "sklearn >=": sklearn.__version__   ,
 
     }
 
@@ -102,6 +104,7 @@ def get_requirements(docstring):
         f.write("IPython >= 8.12.0 \n")
 
     print("requirements.txt file created in local path:", path.abspath("requirements.txt"))
+    return path.abspath("requirements.txt")
     
 
 def SP500_tickers(batches):

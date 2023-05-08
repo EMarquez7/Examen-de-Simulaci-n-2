@@ -16,6 +16,8 @@ import visualizations as vs
 #Libraries in data.py
 import numpy as np
 import pandas as pd
+
+import matplotlib
 import matplotlib.pyplot as plt
 
 import scipy
@@ -61,9 +63,13 @@ def get_historical_price_data(ticker, years):
         Ticker of the stock(s) to be downloaded as a string or str list, e.g: ["ticker_1", "ticker_2", ... , "ticker_n"]
     years : int
         Number of years for data download from today's date backwards.
+
+    Returns:
+    -------
+    data : pandas.DataFrame
+        Adj. Close(s) of ticker(s) with datetime as index, modify function to obtain        
     """
-    #Create an empty dataframe named data non locally
-    start = (datetime.datetime.now() - datetime.timedelta(days = 365 * years)).strftime("%Y-%m-%d") #3 years ago from today's date
+    start = (datetime.datetime.now() - datetime.timedelta(days = 365 * years)).strftime("%Y-%m-%d") 
     end = (datetime.datetime.now()).strftime("%Y-%m-%d") #Today
 
     try:
