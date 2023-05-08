@@ -1,17 +1,16 @@
 # **SP500-Risk-Optimized-Portfolios-PostCovid-ML**
 
-## **Description:**
+#### Repository: &nbsp;[![S&P500-PostCovid_ML](https://img.shields.io/badge/Repository-S&P500--PostCovid--ML-020521?style=flat-square&logo=github&logoColor=white)](https://mango-dune-07a8b7110.1.azurestaticapps.net/?repo=EstebanMqz%2FSP500-Risk-Optimized-Portfolios-PostCovid-ML)<br>
 
-### **Results:**
+---
 
 ### **Diagram:**
 <img src="diagram.svg" width="280" height="280">
 
-### **Objective:**
-[![Azure-Badge](https://img.shields.io/badge/Azure-0089D6?style=flat-square&logo=microsoft-azure&logoColor=white)](https://mango-dune-07a8b7110.1.azurestaticapps.net/?repo=EstebanMqz%2FSP500-Risk-Optimized-Portfolios-PostCovid-ML)<br>
+<br>
 
+#### Results: &nbsp;[![S&P500-PostCovid_ML](https://img.shields.io/badge/Notebook-S&P500--PostCovid--ML-020521?style=flat-square&logo=github&logoColor=white)](https://github.com/EstebanMqz/SP500-Risk-Optimized-Portfolios-PostCovid-ML/blob/main/Optimization.ipynb)<br>
 
-Results Output here: [SP500-Risk-Optimized-Portfolios](https://github.com/EstebanMqz/SP500-Risk-Optimized-Portfolios-PostCovid-ML)
 
 ---
 ### **Tools:**
