@@ -65,9 +65,9 @@ def selection_data(data, rf, title):
     sortino = (mean_ret - rf) / ( returns[returns < 0].std() * np.sqrt(252) )
       
     summary = pd.DataFrame({"$\mu_{i{yr}}$" : mean_ret, "$\sigma_{yr}$" : returns.std() * np.sqrt(252),
-                            "$Sharpe_{Ratio}$" : sharpe, "$Sortino_{Ratio}$" : sortino})
+                            "$R_{Sharpe}$" : sharpe, "$R_{Sortino}$" : sortino})
     
-    summary = summary.nlargest(30, "$Sharpe_{Ratio}$").nlargest(30, "$Sortino_{Ratio}$")
+    summary = summary.nlargest(30, "$R_{Sharpe}$").nlargest(30, "$R_{Sortino}$")
     
     bars = summary.plot.bar(figsize=(20, 10), rot=90, title=title, fontsize=15, grid=True, edgecolor="black", linewidth=1)
     plt.grid(color='gray', linestyle='--')
