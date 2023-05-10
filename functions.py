@@ -1,11 +1,11 @@
 """
-# -- ------------------------------------------------------------------------------------------------------------------------ -- #   
-# -- project: S&P500-Risk-Optimized-Portfolios-PostCovid-ML.                                                                  -- #           
-# -- script: data.py : Python script with general functions for the proj.                                                     -- #                 
-# -- author: EstebanMqz                                                                                                       -- #  
-# -- license: CC BY 3.0                                                                                                       -- #
-# -- repository: https://github.com/EstebanMqz/SP500-Risk-Optimized-Portfolios-PostCovid-ML/blob/main/functions.py            -- #           
-# -- ------------------------------------------------------------------------------------------------------------------------ -- #  
+# -- -------------------------------------------------------------------------------------------------------------- -- #   
+# -- project: S&P500-Risk-Optimized-Portfolios-PostCovid-ML.                                                        -- #           
+# -- script: data.py : Python script with general functions for the proj.                                           -- #                 
+# -- author: EstebanMqz                                                                                             -- #  
+# -- license: CC BY 3.0                                                                                             -- #
+# -- repository: https://github.com/EstebanMqz/SP500-Risk-Optimized-Portfolios-PostCovid-ML/blob/main/functions.py  -- #           
+# -- ----------------------------------------------------------------------------------------------------------------- #  
 """
 
 from os import path

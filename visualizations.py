@@ -1,11 +1,11 @@
 """
-# -- ------------------------------------------------------------------------------------------------------------------------ -- #   
-# -- project: S&P500-Risk-Optimized-Portfolios-PostCovid-ML.                                                                  -- #           
-# -- script: data.py : Python script with visualizations functionalities for the proj.                                        -- #                 
-# -- author: EstebanMqz                                                                                                       -- #  
-# -- license: CC BY 3.0                                                                                                       -- #
-# -- repository: https://github.com/EstebanMqz/SP500-Risk-Optimized-Portfolios-PostCovid-ML/blob/main/visualizations.py       -- #           
-# -- ------------------------------------------------------------------------------------------------------------------------ -- #  
+# -- ------------------------------------------------------------------------------------------------------------------- -- #   
+# -- project: S&P500-Risk-Optimized-Portfolios-PostCovid-ML.                                                             -- #           
+# -- script: data.py : Python script with visualizations functionalities for the proj.                                   -- #                 
+# -- author: EstebanMqz                                                                                                  -- #  
+# -- license: CC BY 3.0                                                                                                  -- #
+# -- repository: https://github.com/EstebanMqz/SP500-Risk-Optimized-Portfolios-PostCovid-ML/blob/main/visualizations.py  -- #           
+# -- ------------------------------------------------------------------------------------------------------------------- -- #  
 """
 
 from os import path
@@ -47,7 +47,7 @@ warnings.filterwarnings("ignore", category=UserWarning)
 
 def selection_data(data, rf, title):
     """
-    Function to get selection summary and data with given metrics.
+    Function to returns and standard deviation for X_i on a yearly basis and sharpe/sortino ratios for selection.
     Parameters:
     ----------
     data : dataframe
@@ -59,19 +59,22 @@ def selection_data(data, rf, title):
     dataframe
         Summary statistics of data selection with sharpe/sortino ratios with given data.
     """
-    returns = data.pct_change()
+    returns = (data.pct_change()).iloc[1:, :].dropna(axis = 1)
     mean_ret = returns.mean() * 252 
     sharpe = (mean_ret - rf) / ( returns.std() * np.sqrt(252) )
     sortino = (mean_ret - rf) / ( returns[returns < 0].std() * np.sqrt(252) )
-    summary = pd.DataFrame({"Annualized Return" : mean_ret, "Volatility" : returns.std() * np.sqrt(252),
-                            "Sharpe Ratio" : sharpe, "Sortino Ratio" : sortino})
+      
+    summary = pd.DataFrame({"$\mu_{i{yr}}$" : mean_ret, "$\sigma_{yr}$" : returns.std() * np.sqrt(252),
+                            "$Sharpe_{Ratio}$" : sharpe, "$Sortino_{Ratio}$" : sortino})
     
-    summary = summary.nlargest(30, "Sharpe Ratio").nlargest(30, "Sortino Ratio")
+    summary = summary.nlargest(30, "$Sharpe_{Ratio}$").nlargest(30, "$Sortino_{Ratio}$")
     
     bars = summary.plot.bar(figsize=(20, 10), rot=90, title=title, fontsize=15, grid=True, edgecolor="black", linewidth=1)
     plt.grid(color='gray', linestyle='--')
 
-    return summary, bars
+    summary = d.Markdown(tabulate(summary, headers = "keys", tablefmt = "pipe"))
+
+    return display(summary), bars
 
 
 def Optimizer(SP, rf, title):
