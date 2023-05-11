@@ -77,7 +77,7 @@ def selection_data(data, rf, title):
     return display(markdown), bars, summary
 
 
-def Mo_stats(dataframe, Selection, P,  title, start, end, percentiles, color):
+def Stats(dataframe, Selection, P,  title, start, end, percentiles, color):
     """
     Mo_stats is a function that makes boxplots of a Monthly resample over a Selection within a dataframe (Q1, mean, Q3, min, max).
     It also returns a dataframe of statistics containing No° of resamples, mean, std, min, max, percentiles, skewness and kurtosis of resampled data.
@@ -122,7 +122,7 @@ def Mo_stats(dataframe, Selection, P,  title, start, end, percentiles, color):
     describe["skewness"] = st.skew(Selection_Mo_r)
     describe["kurtosis"] = st.kurtosis(Selection_Mo_r)
     
-    plt.title(title + str(start) + " to " + str(end), fontsize = 14)
+    plt.title(title + str(start) + " to " + str(end), fontsize = 25)
     plt.axhline(0, color = "red", lw = .5, linestyle = "--")
     plt.xticks(rotation = 90)
     plt.yticks(np.arange(round(Selection_Mo_r.min().min(), 1), round(Selection_Mo_r.max().max(), 1), 0.05))
