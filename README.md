@@ -30,18 +30,33 @@ If you have any questions or comments, please feel free to send me a message her
 <br><br>
 
 ----
-#### References:
+### **References:**<br>
+
 [Daily Treasury Par Yield Curve Rates](https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value_month=202304)<br>
 [Convolution-of-Distributions](https://en.wikipedia.org/wiki/Convolution_of_probability_distributions)<br>
 [S&P 500 companies](https://en.wikipedia.org/wiki/List_of_S%26P_500_companies)<br>
 
----
-Libraries:<br>
-###### Numpy: <br>
-[np.add](https://numpy.org/doc/stable/reference/generated/numpy.add.html), &nbsp; [np.subtract](https://numpy.org/doc/stable/reference/generated/numpy.subtract.html), &nbsp; [np.dot](https://numpy.org/doc/stable/reference/generated/numpy.dot.html), &nbsp; [np.divide](https://numpy.org/doc/stable/reference/generated/numpy.divide.html), &nbsp; [np.cov](https://numpy.org/doc/stable/reference/generated/numpy.cov.html)<br>
-###### Stats: <br>
-[scipy.stats](https://docs.scipy.org/doc/scipy/reference/stats.html), &nbsp; [scipy.optimize.minimize](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html) <br>
-###### Sklearn: <br>
-[sklearn.model_selection.GridSearchCV](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html), &nbsp; [Hyper-parameters Exhaustive GridSearchCV](https://scikit-learn.org/stable/modules/grid_search.html)<br>
-[sklearn.neighbors.KernelDensity](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KernelDensity.html), &nbsp; [sklearn.neighbors.KernelDensity.fit](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KernelDensity.html#sklearn.neighbors.KernelDensity.fit), &nbsp; [sklearn.neighbors.KernelDensity.score_samples](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KernelDensity.html#sklearn.neighbors.KernelDensity.score_samples), &nbsp; <br>
-[sklearn.metrics](https://scikit-learn.org/stable/modules/model_evaluation.html)<br>
+#### *Docs:*<br>
+##### <u> Numpy: </u> <br>
+
++ [np.add](https://numpy.org/doc/stable/reference/generated/numpy.add.html)
++ [np.subtract](https://numpy.org/doc/stable/reference/generated/numpy.subtract.html)
++ [np.dot](https://numpy.org/doc/stable/reference/generated/numpy.dot.html)
++ [np.divide](https://numpy.org/doc/stable/reference/generated/numpy.divide.html)
++ [np.cov](https://numpy.org/doc/stable/reference/generated/numpy.cov.html)<br>
+
+##### <u> Stats: </u> <br>
+
++ [scipy.stats](https://docs.scipy.org/doc/scipy/reference/stats.html)
++ [scipy.optimize.minimize](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html)
++ [scipy.stats.genextreme]
+
+[fitter](https://fitter.readthedocs.io/en/latest/index.html)<br>
+
+##### <u> Sklearn: </u> <br>
++ [sklearn.model_selection.GridSearchCV](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html)
++ [Hyper-parameters Exhaustive GridSearchCV](https://scikit-learn.org/stable/modules/grid_search.html)
++ [sklearn.neighbors.KernelDensity](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KernelDensity.html)
++ [sklearn.neighbors.KernelDensity.fit](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KernelDensity.html#sklearn.neighbors.KernelDensity.fit)
++ [sklearn.neighbors.KernelDensity.score_samples](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KernelDensity.html#sklearn.neighbors.KernelDensity.score_samples)
++ [sklearn.metrics](https://scikit-learn.org/stable/modules/model_evaluation.html)

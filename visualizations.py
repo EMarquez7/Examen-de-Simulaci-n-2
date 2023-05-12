@@ -45,21 +45,27 @@ warnings.filterwarnings("ignore", category=UserWarning)
 
 # -- --------------------------------------------------------------------------------------- visualizations ------------------------------------------------------------------------------- -- #
 
-def selection_data(data, rf, title):
+def selection_data(dataframe, rf, title, best):
     """
-    Function to returns and standard deviation for X_i on a yearly basis and sharpe/sortino ratios for selection.
+    Function that calculates Annualized Returns and Std. Deviation for a given dataframe in order to obtain 
+    n_best Sharpe & Sortino Ratios with a risk-free rate.
     Parameters:
     ----------
-    data : dataframe
-        Prices to model.
+    dataframe : dataframe
+        Dataframe for the model.
     rf : float
-        Daily Treasury Par Yield Curve Rates for sharpe/sortino selection from the end of the period on a yearly basis. 
+        Yield Curve Rates (see Refs.) from model's end date on a Yearly basis for n_best Sharpe & Sortino Ratios. 
+    best: int
+        No° of best Sharpe & Sortino Ratios to integrate in selection (if dataframe cols. <= best, then all cols. are selected). 
+        
     Returns:
     -------
     dataframe
-        Summary statistics of data selection with sharpe/sortino ratios with given data.
+        Annualized Returns and Std. deviations of best Sharpe & Sortino displayed in a table and a plot bar for each column in dataframe.
+            Note: Markdown's pandas dataframe located in pos. [2] of return.
     """
-    returns = (data.pct_change()).iloc[1:, :].dropna(axis = 1)
+    
+    returns = (dataframe.pct_change()).iloc[1:, :].dropna(axis = 1)
     mean_ret = returns.mean() * 252 
     sharpe = (mean_ret - rf) / ( returns.std() * np.sqrt(252) )
     sortino = (mean_ret - rf) / ( returns[returns < 0].std() * np.sqrt(252) )
@@ -67,11 +73,17 @@ def selection_data(data, rf, title):
     summary = pd.DataFrame({"$\mu_{i{yr}}$" : mean_ret, "$\sigma_{yr}$" : returns.std() * np.sqrt(252),
                             "$R_{Sharpe}$" : sharpe, "$R_{Sortino}$" : sortino})
     
-    summary = summary.nlargest(30, "$R_{Sharpe}$").nlargest(30, "$R_{Sortino}$")
+    summary = summary.nlargest(best, "$R_{Sharpe}$").nlargest(best, "$R_{Sortino}$")
+    bars = summary.plot.bar(figsize=(22, 10), rot=45, fontsize=15, grid=True, linewidth=1)
     
-    bars = summary.plot.bar(figsize=(20, 10), rot=90, title=title, fontsize=15, grid=True, edgecolor="black", linewidth=1)
+    plt.title(title, fontsize=20)
+    plt.yticks(fontsize=10)
     plt.grid(color='gray', linestyle='--')
-
+    for i, t in enumerate(bars.get_xticklabels()):
+        if i % 2 == 0:
+            t.set_color('lightgreen')
+        else:
+            t.set_color('white')
     markdown = d.Markdown(tabulate(summary, headers = "keys", tablefmt = "pipe"))
 
     return display(markdown), bars, summary
@@ -79,20 +91,19 @@ def selection_data(data, rf, title):
 
 def Stats(dataframe, Selection, P,  title, start, end, percentiles, color):
     """
-    Mo_stats is a function that makes boxplots of a Monthly resample over a Selection within a dataframe (Q1, mean, Q3, min, max).
-    It also returns a dataframe of statistics containing No° of resamples, mean, std, min, max, percentiles, skewness and kurtosis of resampled data.
+    Stats is a function that resamples data from a Selection performed over a dataframe.
     Parameters:
     ----------
     dataframe : dataframe
-        Dataframe from which a Selection is performed.
+        Dataframe from which the Selection is made, in order to acess Selection's original data.
     Selection : list
-        Selection to resample on a W, M, Q or Y basis whose period is longer than dataframe.
+        Selection to resample on a W, M, Q or Y basis whose period is longer than original data.
     P : str
         Period of resample (e.g. "W" for Weekly, "M" for monthly, "Q" for quarterly, "Y" for yearly).
     title : str
         Title of the boxplot
     start : str
-        Start date of the dataframe for the boxplot title.
+        Start date for box
     end : str
         End date of the dataframe for the boxplot title.
     percentiles : list
@@ -102,15 +113,17 @@ def Stats(dataframe, Selection, P,  title, start, end, percentiles, color):
     Returns:
     -------
     describe : dataframe
-        Summary statistics of data selection with sharpe/sortino ratios with given data with specified resample period and percentiles.
+        Stats returns summary statistics (mean, std, min, max, percentiles, skewness and kurtosis) in a 
+        markdown object callable as a dataframe by assigning a variable to the function in pos. [2].  
     """
     
     Selection = (dataframe[Selection.index].pct_change()).iloc[1:, :].dropna(axis = 1)
     Selection.index = pd.to_datetime(Selection.index)
+    
     Selection_Mo_r = Selection.resample(P).sum()
 
 
-    Selection_Mo_r.plot(kind = "box", figsize = (30, 18),
+    Selection_Mo_r.plot(kind = "box", figsize = (22, 13),
                       title = title + str(start) + " to " + str(end), color = color, fontsize = 13)
     
     for i in range(0, len(Selection_Mo_r.columns)):
@@ -119,20 +132,20 @@ def Stats(dataframe, Selection, P,  title, start, end, percentiles, color):
         plt.text(x = i+1 , y = Selection_Mo_r.iloc[:, i].min() -.02, s = str(round(Selection_Mo_r.iloc[:, i].min(), 3)), fontsize = 7.5, color = "orange")
 
     describe = Selection_Mo_r.describe(percentiles).T
+    describe["mode"] = Selection_Mo_r.mode().iloc[0, :]
     describe["skewness"] = st.skew(Selection_Mo_r)
     describe["kurtosis"] = st.kurtosis(Selection_Mo_r)
+    display(describe)
+    #Give a title to display 
     
-    plt.title(title + str(start) + " to " + str(end), fontsize = 25)
+    plt.title(title + str(start) + " to " + str(end), fontsize = 20)
     plt.axhline(0, color = "red", lw = .5, linestyle = "--")
     plt.xticks(rotation = 90)
     plt.yticks(np.arange(round(Selection_Mo_r.min().min(), 1), round(Selection_Mo_r.max().max(), 1), 0.05))
     plt.grid(alpha = 0.5, linestyle = "--", color = "grey")
     plt.show()
-    
+
     return describe
-
-
-
 
 def Optimizer(SP, rf, title):
     returns = (SP.pct_change()).iloc[1:, :].dropna(axis = 1)
