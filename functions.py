@@ -13,34 +13,46 @@ from os import path
 import visualizations as vs
 import data as dt
 
-#Libraries in functions.py
+# Libraries in functions.py
 import numpy as np
 import pandas as pd
-import matplotlib as plt
+pd.set_option("display.max_rows", None, "display.max_columns", None
+              ,"display.max_colwidth", None, "display.width", None)
+
+import matplotlib
+import matplotlib.pyplot as plt
+plt.style.use("dark_background")
 
 import scipy
 import scipy.stats as st
 from scipy import optimize
+from scipy.optimize import minimize
 
 import sklearn
 from sklearn.neighbors import KernelDensity
 from sklearn.model_selection import GridSearchCV
 from sklearn import metrics
+import ast
 
 from yahoofinancials import YahooFinancials 
 from tabulate import tabulate
 import IPython.display as d
 
+from io import StringIO
+from fitter import Fitter, get_common_distributions, get_distributions 
+import logging
+logging.getLogger().setLevel(logging.ERROR)
+
 import datetime 
 import time
-
 import warnings
 warnings.filterwarnings("ignore")
 warnings.filterwarnings("ignore", category=UserWarning)
 
-# -- ----------------------------------------------------------------------------------------------- functions ------------------------------------------------------------------------------- -- #
+# -- ------------------------------------------------------------------------------------------------------------------------------ Functions ----------------------------------------------------------------------------------------------------------------------------- -- #
 
-#Define empty docstring
+##############################################################################################################################################################################################################################################################################
+
 docstring = ""
 
 def get_requirements(docstring):
@@ -59,17 +71,27 @@ def get_requirements(docstring):
     from sklearn.neighbors import KernelDensity
     from sklearn.model_selection import GridSearchCV
     from sklearn import metrics
+    import ast
 
     from yahoofinancials import YahooFinancials
     from tabulate import tabulate
+    import IPython.display as d
+
+    from io import StringIO
+    from fitter import Fitter, get_common_distributions, get_distributions 
+    import logging
+    logging.getLogger().setLevel(logging.ERROR)
 
     import datetime
     import time
-
+    import warnings
+    warnings.filterwarnings("ignore")
+    warnings.filterwarnings("ignore", category=UserWarning)
     """
-    Get versions of imported libraries and create "requirements.txt" file for a project environment setup.
-    Note: Libraries and requirements dictionary must be imported WITHIN the function and modified accordingly 
-    where (MODIFY)  
+    Function to create requirements.txt file in order to setup environment. Libraries and requirements dictionary
+    must be imported within the function: 1° section libraries with versions attributes, 2° section libraries without
+    versions attribute. Note: Prebuilt libraries should not be included. Include `jupyter` if there are .ipynb's in proj.
+
 
     Parameters
     ----------
@@ -81,14 +103,14 @@ def get_requirements(docstring):
         File with libraries and their respective versions for a project environment setup.
     """
 
-    #modif.: libs version used in proj. accordingly.
+    #1° SECTION: Libs. with version attributes used in project.
     requirements = {
         "numpy >=": np.__version__  ,
         "pandas >=": pd.__version__ ,
         "matplotlib >=": matplotlib.__version__ , 
         "scipy >=": scipy.version.version   , 
         "sklearn >=": sklearn.__version__   ,
-
+        "logging >=": logging.__version__   ,
     }
 
     with open("requirements.txt", "w") as f:
@@ -96,31 +118,70 @@ def get_requirements(docstring):
         for key, value in requirements.items():
             f.write(f"{key} {value} \n")
 
-        #modif.: libs without version attributes and jupyter if used in proj.
+        #2° SECTION: Libs. without version attributes in project.
         f.write("jupyter >= 1.0.0 \n") 
-        
+
         f.write("yahoofinanicals >= 1.14 \n")
         f.write("tabulate >= 0.8.9 \n")
         f.write("IPython >= 8.12.0 \n")
+        f.write("fitter >= 1.5.2 \n")
 
     print("requirements.txt file created in local path:", path.abspath("requirements.txt"))
     return path.abspath("requirements.txt")
-    
+
+##############################################################################################################################################################################################################################################################################
+
+def library_install(requirements_txt):
+    """Install requirements.txt file in project created with fn.get_requirements. """
+    import os
+    import warnings
+    warnings.filterwarnings("ignore")
+    os.system(f"pip install -r {requirements_txt}")
+    print("Requirements installed.")
+    with open("requirements.txt", "r") as f:
+        print(f.read())
+
+##############################################################################################################################################################################################################################################################################
 
 def SP500_tickers(batches):
     """
-    Function to retrieve tickers from S&P500 companies as a list.
+    Function to fetch tickers from S&P500 .html by batches or (N) lists of lists. Undivisible n batches sizes slice list[-1] 
     Parameters:
     ----------
     batches : int
-        Number of n tickers contained in a list from the S&P 500 tickers.
+        N tickers in lists of lists in function S&P 500 tickers.
     Returns:
     -------
     list
-        List of n tickers list in the S&P 500.    
+        Lists of lists for all quotes listed in the S&P 500 acc0rding to refs. 
     """
 
     list = pd.read_html("https://en.wikipedia.org/wiki/List_of_S%26P_500_companies")[0]["Symbol"].values.tolist()
     data = [[x.replace(".", "-") for x in list[x:x+batches]] for x in range(0, len(list), batches)]
     
     return data
+
+##############################################################################################################################################################################################################################################################################
+
+def format_table(describe):
+    """
+    format_table is a function to format the output of vs.Stats function in order to show a dataframe with the best fit distribution params, AIC and BIC for Xi datasets.
+    Parameters:
+    ----------
+    describe : list
+        List of lists with the output of vs.Stats function.
+    Returns:
+    -------
+    df : dataframe
+        Dataframe with the best fit distribution params, AIC and BIC for Xi datasets.
+    """
+
+    df = pd.DataFrame([ast.literal_eval(describe[i][-1][j]) for i in range(len(describe)) for j in range(len(describe[i][-1]))][0:])
+    df = df.apply(lambda row: pd.Series(row).drop_duplicates(keep='first'),axis='columns')
+    df.apply(lambda x : pd.Series(x[x.notnull()].values.tolist()+x[x.isnull()].values.tolist()),axis='columns')
+    df.columns = ["params", "AIC", "BIC"]
+    df.index = pd.DataFrame(np.array([describe[0][0].index.values + str(" Wk"), describe[1][0].index.values + str(" Mo"), describe[2][0].index.values + str(" Qt")]).reshape(len(describe[0][0]) * 3, 1))
+    
+    return df
+
+##############################################################################################################################################################################################################################################################################

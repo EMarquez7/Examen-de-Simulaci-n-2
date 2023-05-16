@@ -16,6 +16,13 @@ import data as dt
 #Libraries in visualizations.py
 import numpy as np
 import pandas as pd
+pd.set_option("display.max_rows", None, "display.max_columns", None
+              ,"display.max_colwidth", None, "display.width", None)
+
+from io import StringIO
+import ast
+from fitter import Fitter, get_common_distributions, get_distributions 
+import logging
 
 import matplotlib
 import matplotlib.pyplot as plt
@@ -26,7 +33,6 @@ import scipy.stats as st
 from scipy import optimize
 from scipy.optimize import minimize
 
-
 import sklearn
 from sklearn.neighbors import KernelDensity
 from sklearn.model_selection import GridSearchCV
@@ -36,14 +42,18 @@ from yahoofinancials import YahooFinancials
 from tabulate import tabulate
 import IPython.display as d
 
+from io import StringIO
+from fitter import Fitter, get_common_distributions, get_distributions 
+import logging
+logging.getLogger().setLevel(logging.ERROR)
+
 import datetime 
 import time
-
 import warnings
 warnings.filterwarnings("ignore")
 warnings.filterwarnings("ignore", category=UserWarning)
 
-# -- --------------------------------------------------------------------------------------- visualizations ------------------------------------------------------------------------------- -- #
+# -- ---------------------------------------------------------------------------------------------------------------------------------- Visualizations --------------------------------------------------------------------------------------------------------- -- #
 
 def selection_data(dataframe, rf, title, best):
     """
@@ -89,7 +99,10 @@ def selection_data(dataframe, rf, title, best):
     return display(markdown), bars, summary
 
 
-def Stats(dataframe, Selection, P,  title, start, end, percentiles, color):
+##############################################################################################################################################################################################################################################################################
+
+
+def Stats(dataframe, Selection, P,  title, start, end, percentiles, dist, color):
     """
     Stats is a function that resamples data from a Selection performed over a dataframe.
     Parameters:
@@ -103,11 +116,13 @@ def Stats(dataframe, Selection, P,  title, start, end, percentiles, color):
     title : str
         Title of the boxplot
     start : str
-        Start date for box
+        Start date for box plot title.
     end : str
         End date of the dataframe for the boxplot title.
     percentiles : list
         List of percentiles to return in statistics dataframe (e.g. [.05, .25, .5, .75, .95]).
+    dist : list
+        Continous Distributions to fit on datasets Xi
     color : str
         Color of the boxplot.
     Returns:
@@ -127,25 +142,45 @@ def Stats(dataframe, Selection, P,  title, start, end, percentiles, color):
                       title = title + str(start) + " to " + str(end), color = color, fontsize = 13)
     
     for i in range(0, len(Selection_Mo_r.columns)):
-        plt.text(x = i+1 , y = Selection_Mo_r.iloc[:, i].mean(), s = str(round(Selection_Mo_r.iloc[:, i].mean(), 4)), fontsize = 8, color = "lightyellow")
-        plt.text(x = i+1 , y = Selection_Mo_r.iloc[:, i].max() +.02, s = str(round(Selection_Mo_r.iloc[:, i].max(), 3)), fontsize = 7.5, color = "lightgreen")
-        plt.text(x = i+1 , y = Selection_Mo_r.iloc[:, i].min() -.02, s = str(round(Selection_Mo_r.iloc[:, i].min(), 3)), fontsize = 7.5, color = "orange")
+        plt.text(x = i + 0.96 , y = Selection_Mo_r.iloc[:, i].mean() + .0075, s = str("$\mu$ = +") + str(round(Selection_Mo_r.iloc[:, i].mean(), 4)), fontsize = 7, fontweight = "bold", color = "lightgreen")
+        plt.text(x = i + 0.98 , y = Selection_Mo_r.iloc[:, i].max() + .010, s = str("+") + str(round(Selection_Mo_r.iloc[:, i].max(), 3)), fontsize = 9, color = "green")
+        plt.text(x = i + 0.98 , y = Selection_Mo_r.iloc[:, i].min() - .015, s = str(round(Selection_Mo_r.iloc[:, i].min(), 3)), fontsize = 9, color = "red")
 
     describe = Selection_Mo_r.describe(percentiles).T
     describe["mode"] = Selection_Mo_r.mode().iloc[0, :]
     describe["skewness"] = st.skew(Selection_Mo_r)
     describe["kurtosis"] = st.kurtosis(Selection_Mo_r)
+
+    logging.getLogger().setLevel(logging.ERROR)
+    dist_fit = np.empty(len(Selection_Mo_r.columns), dtype=object)
+    
+    for i in range(0, len(Selection.columns)):
+        f = Fitter(pd.DataFrame(Selection_Mo_r.iloc[:, i]), distributions = dist, timeout=5)
+        f.fit()
+        params, AIC, BIC = [StringIO() for i in range(3)]
+        (print(f.get_best(), file=params)), (print(f.get_best(method="aic"), file=AIC)), (print(f.get_best(method="bic"), file=BIC))
+        params, AIC, BIC = [i.getvalue() for i in [params, AIC, BIC]]
+        dist_fit[i] = (params + AIC + BIC).replace("\n", ", ")
+    
     display(describe)
-    #Give a title to display 
     
     plt.title(title + str(start) + " to " + str(end), fontsize = 20)
     plt.axhline(0, color = "red", lw = .5, linestyle = "--")
-    plt.xticks(rotation = 90)
+    plt.axhspan(0, Selection_Mo_r.min().min(), facecolor = "red", alpha = 0.2) 
+    plt.axhspan(0, Selection_Mo_r.max().max(), facecolor = "green", alpha = 0.2)
+    plt.xticks(rotation = 45)
+    for i, t in enumerate(plt.gca().xaxis.get_ticklabels()):
+        if (i % 2) != 0:
+            t.set_color("lightgreen")
+        else:
+            t.set_color("white")
     plt.yticks(np.arange(round(Selection_Mo_r.min().min(), 1), round(Selection_Mo_r.max().max(), 1), 0.05))
     plt.grid(alpha = 0.5, linestyle = "--", color = "grey")
     plt.show()
 
-    return describe
+    return describe, dist_fit
+
+##############################################################################################################################################################################################################################################################################`
 
 def Optimizer(SP, rf, title):
     returns = (SP.pct_change()).iloc[1:, :].dropna(axis = 1)
@@ -187,6 +222,8 @@ def Optimizer(SP, rf, title):
     
     return Argmax
 
+##############################################################################################################################################################################################################################################################################
+
 def Accum_ts(accum):
     """
     Accum_ts is a function that plots time-series in a dataframe with 3 strategies as cols with matplot.
@@ -212,3 +249,6 @@ def Accum_ts(accum):
     ax.grid(which='major', color='gray', linestyle='--', linewidth=0.5)
     plt.xticks(rotation=90)
     plt.show()
+
+
+##############################################################################################################################################################################################################################################################################

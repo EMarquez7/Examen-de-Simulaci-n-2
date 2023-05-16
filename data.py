@@ -16,41 +16,40 @@ import visualizations as vs
 #Libraries in data.py
 import numpy as np
 import pandas as pd
+pd.set_option("display.max_rows", None, "display.max_columns", None
+              ,"display.max_colwidth", None, "display.width", None)
 
 import matplotlib
 import matplotlib.pyplot as plt
+plt.style.use("dark_background")
 
 import scipy
 import scipy.stats as st
 from scipy import optimize
+from scipy.optimize import minimize
 
 import sklearn
 from sklearn.neighbors import KernelDensity
 from sklearn.model_selection import GridSearchCV
 from sklearn import metrics
+import ast
 
 from yahoofinancials import YahooFinancials 
 from tabulate import tabulate
 import IPython.display as d
 
+from io import StringIO
+from fitter import Fitter, get_common_distributions, get_distributions 
+import logging
+logging.getLogger().setLevel(logging.ERROR)
+
 import datetime 
 import time
-
 import warnings
 warnings.filterwarnings("ignore")
 warnings.filterwarnings("ignore", category=UserWarning)
 
-# -- ----------------------------------------------------------------------------------------------- data ------------------------------------------------------------------------------- -- #
-
-def library_install(requirements_txt):
-    """Install requirements.txt file."""
-    import os
-    import warnings
-    warnings.filterwarnings("ignore")
-    os.system(f"pip install -r {requirements_txt}")
-    print("Requirements installed.")
-    with open("requirements.txt", "r") as f:
-        print(f.read())
+# -- ----------------------------------------------------------------------------------------------- Data ------------------------------------------------------------------------------- -- #
 
 
 def get_historical_price_data(ticker, years):
