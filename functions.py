@@ -165,15 +165,15 @@ def SP500_tickers(batches):
 
 def format_table(describe):
     """
-    format_table is a function to format the output of vs.Stats function in order to show a dataframe with the best fit distribution params, AIC and BIC for Xi datasets.
+    format_table is a function to format the output of vs.Stats function in order to show dist_fit in vs.Stats[1] containing Xi params, AIC and BIC.
     Parameters:
     ----------
     describe : list
-        List of lists with the output of vs.Stats function.
+        List of lists with output of vs.Stats[1] in .ipynb.
     Returns:
     -------
     df : dataframe
-        Dataframe with the best fit distribution params, AIC and BIC for Xi datasets.
+        Formatted Dataframe with Xi dictionaries with rows & cols. [Params., AIC & BIC].
     """
 
     df = pd.DataFrame([ast.literal_eval(describe[i][-1][j]) for i in range(len(describe)) for j in range(len(describe[i][-1]))][0:])
