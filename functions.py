@@ -162,7 +162,7 @@ def SP500_tickers(batches):
     return data
 
 ##############################################################################################################################################################################################################################################################################
-def format_table(dist_fit, Xi):
+def format_table(dist_fit_T, Xi):
     """
     format_table is a function to format the output of vs.Stats[2] in order to show dist_fit: {params, AIC and BIC} for Xi resampling periods: Wk, Mo & Qt.
     Parameters:
@@ -177,12 +177,12 @@ def format_table(dist_fit, Xi):
         Formatted Dataframe with Xi values for resampling periods with rows Xi and cols. for periods.
     """
     pd.set_option('display.max_colwidth', 400)
-    dist_fit.apply(lambda row: pd.Series(row).drop_duplicates(keep='first'),axis='columns')
-    dist_fit.columns = ["Wk", "Mo", "Qt"]
-    dist_fit.index = Xi.index.values
-    dist_fit.index.name = "{Params., AIC, BIC}"
-    dist_fit.apply(lambda x : pd.Series(x[x.notnull()].values.tolist()+x[x.isnull()].values.tolist()),axis='columns')
+    dist_fit_T = dist_fit.T
+    dist_fit_T.apply(lambda row: pd.Series(row).drop_duplicates(keep='first'),axis='columns')
+    dist_fit_T.columns = ["Wk", "Mo", "Qt"]
+    dist_fit_T.index = Xi.index.values
+    dist_fit_T.index.name = "{Params., AIC, BIC}"
 
-    return dist_fit
+    return dist_fit_T
 
 ##############################################################################################################################################################################################################################################################################
