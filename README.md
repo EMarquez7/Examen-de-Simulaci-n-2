@@ -37,6 +37,8 @@ If you have any questions or comments, please feel free to send me a message her
 [S&P 500 companies](https://en.wikipedia.org/wiki/List_of_S%26P_500_companies)<br>
 
 #### *Docs:*<br>
+##### <u> Pandas: </u> <br>
++ [df.resample](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.resample.html)
 ##### <u> Numpy: </u> <br>
 
 + [np.add](https://numpy.org/doc/stable/reference/generated/numpy.add.html)
