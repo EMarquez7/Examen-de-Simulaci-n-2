@@ -162,26 +162,27 @@ def SP500_tickers(batches):
     return data
 
 ##############################################################################################################################################################################################################################################################################
-
-def format_table(describe):
+def format_table(dist_fit, Xi):
     """
-    format_table is a function to format the output of vs.Stats function in order to show dist_fit in vs.Stats[1] containing Xi params, AIC and BIC.
+    format_table is a function to format the output of vs.Stats[2] in order to show dist_fit: {params, AIC and BIC} for Xi resampling periods: Wk, Mo & Qt.
     Parameters:
     ----------
-    describe : list
-        List of lists with output of vs.Stats[1] in .ipynb.
+    dist_fit : list
+        List of lists with output of vs.Stats[2].
+    Xi : list
+        Xi Selection from vs.Selection_data[3].index.values
     Returns:
     -------
     df : dataframe
-        Formatted Dataframe with Xi dictionaries with rows & cols. [Params., AIC & BIC].
+        Formatted Dataframe with Xi values for resampling periods with rows Xi and cols. for periods.
     """
+    pd.set_option('display.max_colwidth', 400)
+    dist_fit.apply(lambda row: pd.Series(row).drop_duplicates(keep='first'),axis='columns')
+    dist_fit.columns = ["Wk", "Mo", "Qt"]
+    dist_fit.index = Xi.index.values
+    dist_fit.index.name = "{Params., AIC, BIC}"
+    dist_fit.apply(lambda x : pd.Series(x[x.notnull()].values.tolist()+x[x.isnull()].values.tolist()),axis='columns')
 
-    df = pd.DataFrame([ast.literal_eval(describe[i][-1][j]) for i in range(len(describe)) for j in range(len(describe[i][-1]))][0:])
-    df = df.apply(lambda row: pd.Series(row).drop_duplicates(keep='first'),axis='columns')
-    df.apply(lambda x : pd.Series(x[x.notnull()].values.tolist()+x[x.isnull()].values.tolist()),axis='columns')
-    df.columns = ["params", "AIC", "BIC"]
-    df.index = pd.DataFrame(np.array([describe[0][0].index.values + str(" Wk"), describe[1][0].index.values + str(" Mo"), describe[2][0].index.values + str(" Qt")]).reshape(len(describe[0][0]) * 3, 1))
-    
-    return df
+    return dist_fit
 
 ##############################################################################################################################################################################################################################################################################

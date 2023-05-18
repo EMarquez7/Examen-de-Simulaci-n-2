@@ -41,6 +41,7 @@ from sklearn import metrics
 from yahoofinancials import YahooFinancials 
 from tabulate import tabulate
 import IPython.display as d
+import IPython.core.display
 
 from io import StringIO
 from fitter import Fitter, get_common_distributions, get_distributions 
@@ -150,8 +151,8 @@ def Stats(dataframe, Selection, P,  title, start, end, percentiles, dist, color)
     describe["mode"] = Selection_Mo_r.mode().iloc[0, :]
     describe["skewness"] = st.skew(Selection_Mo_r)
     describe["kurtosis"] = st.kurtosis(Selection_Mo_r)
+    describe.replace("\n", "")
 
-    logging.getLogger().setLevel(logging.ERROR)
     dist_fit = np.empty(len(Selection_Mo_r.columns), dtype=object)
     
     for i in range(0, len(Selection.columns)):
@@ -161,8 +162,6 @@ def Stats(dataframe, Selection, P,  title, start, end, percentiles, dist, color)
         (print(f.get_best(), file=params)), (print(f.get_best(method="aic"), file=AIC)), (print(f.get_best(method="bic"), file=BIC))
         params, AIC, BIC = [i.getvalue() for i in [params, AIC, BIC]]
         dist_fit[i] = (params + AIC + BIC).replace("\n", ", ")
-    
-    display(describe)
     
     plt.title(title + str(start) + " to " + str(end), fontsize = 20)
     plt.axhline(0, color = "red", lw = .5, linestyle = "--")
@@ -176,51 +175,97 @@ def Stats(dataframe, Selection, P,  title, start, end, percentiles, dist, color)
             t.set_color("white")
     plt.yticks(np.arange(round(Selection_Mo_r.min().min(), 1), round(Selection_Mo_r.max().max(), 1), 0.05))
     plt.grid(alpha = 0.5, linestyle = "--", color = "grey")
-    plt.show()
-
-    return describe, dist_fit
+    IPython.core.display.clear_output() 
+    return describe, dist_fit, plt.show()
 
 ##############################################################################################################################################################################################################################################################################`
 
-def Optimizer(SP, rf, title):
-    returns = (SP.pct_change()).iloc[1:, :].dropna(axis = 1)
-    mean_ret = returns.mean() * 252
-    cov = returns.cov() * 252
+def Optimizer(Assets, index, rf, title):
+    Asset_ret = (Assets.pct_change()).iloc[1:, :].dropna(axis = 1)
+    index_ret = index.pct_change().iloc[1:, :].dropna(axis = 1)
+    index_ret = index_ret[index_ret.index.isin(Asset_ret.index)]
+
+    mean_ret = Asset_ret.mean() * 252
+    cov = Asset_ret.cov() * 252
+
     N = len(mean_ret)
+    w0 = np.ones(N) / N
     bnds = ((0, None), ) * N
     cons = {"type" : "eq", "fun" : lambda weights : weights.sum() - 1}
 
-
+    def Max_Sharpe(weights, Asset_ret, rf, cov):
+        rp = np.dot(weights.T, Asset_ret)
+        sp = np.sqrt(np.dot(weights.T, np.dot(cov, weights)))
+        RS = (rp - rf) / sp
+        return -(np.divide(np.subtract(rp, rf), sp))
+    
     def Min_Var(weights, cov):
-        return np.dot(weights.T, np.dot(cov, weights))
+        return np.dot(weights.T, np.dot(cov, weights)) 
+    
+    # def Min_Traynor(weights, Asset_ret, rf, cov):
+    #     rp = np.dot(weights.T, Asset_ret)
+    #     varp = np.dot(weights.T, np.dot(cov, weights))
+    #     RT = (rp - rf) / sp
+    #     return -(np.divide(np.subtract(rp, rf), sp))
+    
+    #-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    
+    opt_EMV = optimize.minimize(Max_Sharpe, w0, (mean_ret, rf, cov), 'SLSQP', bounds = bnds,
+                                constraints = cons, options={"tol": 1e-10})
+    
+    W_EMV = pd.DataFrame(np.round(opt_EMV.x.reshape(1, N), 4), columns = Asset_ret.columns, index = ["Weights"])
+    W_EMV[W_EMV <= 0.0] = np.nan
+    W_EMV.dropna(axis = 1, inplace = True)
 
-    def Max_Sharpe(w, er, rf, cov):
-        erp = np.dot(w.T, er)
-        sp = np.sqrt(np.dot(w.T, np.dot(cov, w)))
-        RS = (erp - rf) / sp
-        return -RS if sp > 0 else -np.inf
+    RAssets = Asset_ret[Asset_ret.columns[Asset_ret.columns.isin(W_EMV.columns)]]
+    # MuAssets = mean_ret[mean_ret.index.isin(W_EMV.columns)]
+    R_EMV = pd.DataFrame((RAssets*W_EMV.values).sum(axis = 1), columns = ["$r_{Sharpe_{Arg_{max}}}$"])
+    index_ret.rename(columns={index_ret.columns[0]: "$r_{mkt}$" }, inplace=True)
+    R_EMV.insert(1, index_ret.columns[0], index_ret.values)
+
+    Muopt_EMV = np.dot(opt_EMV.x.T, mean_ret) 
+    Sopt_EMV = np.sqrt(np.dot(opt_EMV.x.T, np.dot(cov, opt_EMV.x)))
+    Beta_EMV = np.divide((np.cov(R_EMV.iloc[0], R_EMV.iloc[1])[0][1]), R_EMV.iloc[1].var())
+    SR_EMV = (Muopt_EMV - rf) / Sopt_EMV
+
+    #-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    opt_MinVar = optimize.minimize(Min_Var, np.ones(N) / N, (cov,), 'SLSQP', bounds = bnds,
+                                   constraints = cons, options={"tol": 1e-10})
+
+    W_MinVar = pd.DataFrame(np.round(opt_MinVar.x.reshape(1, N), 4), columns = Asset_ret.columns, index = ["Weights"])
+    W_MinVar[W_MinVar <= 0.0] = np.nan
+    W_MinVar.dropna(axis = 1, inplace = True)
+
+    RAssets_MinVar = Asset_ret[Asset_ret.columns[Asset_ret.columns.isin(W_MinVar.columns)]]
+    R_MinVar = pd.DataFrame((RAssets_MinVar*W_MinVar.values).sum(axis = 1), columns = ["$r_{Var_{Arg_{min}}}$"])
+    R_EMV.insert(2, R_MinVar.columns[0], R_MinVar.values)
+
+    Muopt_MinVar = np.dot(opt_MinVar.x.T, mean_ret) 
+    Sopt_MinVar = np.sqrt(np.dot(opt_MinVar.x.T, np.dot(cov, opt_MinVar.x)))
+    Beta_MinVar = np.divide((np.cov(R_EMV.iloc[2], R_EMV.iloc[1])[0][1]), R_EMV.iloc[1].var())
+    SR_MinVar = (Muopt_MinVar - rf) / Sopt_MinVar 
+
+    #-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    #opt_Traynor = 
     
-    Wopt_MinVar = optimize.minimize(Min_Var, np.ones(N) / N, (cov,), 'SLSQP', bounds = bnds,
-                    constraints = cons, options={"tol": 1e-10})
-                    
-    Ropt_MinVar = np.dot(Wopt_MinVar.x.T, mean_ret)
-    Vopt_MinVar = np.sqrt(np.dot(Wopt_MinVar.x.T, np.dot(cov, Wopt_MinVar.x)))
-    Popt_MinVar = pd.DataFrame({"$\mu$" : Ropt_MinVar, "$\sigma$" : Vopt_MinVar, "$Sharpe-R_{max}$" :
-                                                (Ropt_MinVar - rf) / Vopt_MinVar}, index = ["$Min_{Var{Arg_{max}}}$"])
-    Popt_MinVar.index.name = title
-                                                    
-    Wopt_EMV = optimize.minimize(Max_Sharpe, np.ones(N) / N, (mean_ret, rf, cov), 'SLSQP', bounds = bnds,
-                                 constraints = cons, options={"tol": 1e-10})   
-    Ropt_EMV = np.dot(Wopt_EMV.x.T, mean_ret)
-    Vopt_EMV = np.sqrt(np.dot(Wopt_EMV.x.T, np.dot(cov, Wopt_EMV.x)))
-    Popt_EMV = pd.DataFrame({"$\mu$" : Ropt_EMV, "$\sigma$" : Vopt_EMV, "$Sharpe-R_{max}$" : 
-                                                 (Ropt_EMV - rf) / Vopt_EMV}, index = ["$Sharpe_{Arg_{max}}$"])
-    Popt_EMV.index.name = title
+    #-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    Mu, Sigma, Beta, SR = [Muopt_EMV, Muopt_MinVar], [Sopt_EMV, Sopt_MinVar], [Beta_EMV, Beta_MinVar], [SR_EMV, SR_MinVar]
+    index = ["$r_{P{Sharpe_{Arg_{max}}}}$", "$r_{Var_{Arg_{min}}}$"]
+    Popt = [pd.DataFrame({"$\mu_P$" : Mu[i], "$\sigma_P$" : Sigma[i], "$\Beta_{P}$": Beta[i], "$r_{Sharpe_{Arg_{max}}}$" : SR[i]},
+                          index = [index[i]]) for i in range(0, len(Mu))]
     
-    Ratios = pd.concat([Popt_EMV, Popt_MinVar], axis = 0)    
-    Argmax = d.Markdown(tabulate(Ratios, headers = "keys", tablefmt = "pipe"))
+    Popt[0].index.name = title
+    Popt[1].index.name = title
+    R_EMV = R_EMV[[R_EMV.columns[1], R_EMV.columns[2], R_EMV.columns[0]]]
+    #Get the cumulative returns with cumsum for rmkt, rEMV and rMinVar
+    accum = R_EMV.cumsum()
+
+    Argmax = [d.Markdown(tabulate(Popt[i], headers = "keys", tablefmt = "pipe")) for i in range(0, len(Popt))]
+    R_EMV = d.Markdown(tabulate(R_EMV, headers = "keys", tablefmt = "pipe"))
     
-    return Argmax
+    return Argmax, R_EMV, accum
 
 ##############################################################################################################################################################################################################################################################################
 
@@ -244,9 +289,9 @@ def Accum_ts(accum):
     ax.set_title("Cumulative Returns", fontsize = 20)
     ax.set_xlabel("Date", fontsize = 15)
     ax.set_ylabel("Cumulative Returns", fontsize = 15)
-    ax.legend(loc = "upper left", fontsize = 15)
-    ax.grid(True)
-    ax.grid(which='major', color='gray', linestyle='--', linewidth=0.5)
+    # ax.legend(loc = "upper left", fontsize = 15)
+    # ax.grid(True)
+    # ax.grid(which='major', color='gray', linestyle='--', linewidth=0.5)
     plt.xticks(rotation=90)
     plt.show()
 
