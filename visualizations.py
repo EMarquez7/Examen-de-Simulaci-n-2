@@ -109,7 +109,7 @@ def selection_data(dataframe, r, rf, best, start, end):
 
 ##############################################################################################################################################################################################################################################################################
 
-def Selection_R_SLog_Plot(data, rf, best, start, execution_date):
+def Selection_R_SLog_Plot(data, rf, best, start, execution_date, r_jump):
     Sortino25_S = vs.selection_data(data, "Simple", rf, best, start, execution_date)[1]
     Sortino25_Log = vs.selection_data(data, "Log", rf, best, start, execution_date)[1]
 
@@ -117,8 +117,8 @@ def Selection_R_SLog_Plot(data, rf, best, start, execution_date):
     Sortino25_S.plot.bar(ax = ax[0], rot = 45, fontsize = 15, grid = True, linewidth = 1)
     Sortino25_Log.plot.bar(ax = ax[1], rot = 45, fontsize = 15, grid = True, linewidth = 1)
 
-    ax[0].set_title("Selection of " + str(best) + " $X_i$ datasets from $S&P 500$ Population with $r_t$", fontsize = 20)
-    ax[1].set_title("Selection of " + str(best) + " $X_i$ datasets from $S&P 500$ Population with $r_{Log}$", fontsize = 20)
+    ax[0].set_title("Selection of " + str(best) + " $X_i$ datasets from $S&P 500$ Population with $R_{t}$", fontsize = 20)
+    ax[1].set_title("Selection of " + str(best) + " $X_i$ datasets from $S&P 500$ Population with $Ln(r_{t})$", fontsize = 20)
 
     ax[0].set_yticks(np.arange(0, Sortino25_S.max().max() + r_jump, r_jump))
     ax[1].set_yticks(np.arange(0, Sortino25_Log.max().max() + r_jump, r_jump))
@@ -144,7 +144,6 @@ def Selection_R_SLog_Plot(data, rf, best, start, execution_date):
             t.set_color('white')
     #Show figure
     return plt.show()
-
 
 ##############################################################################################################################################################################################################################################################################
 
