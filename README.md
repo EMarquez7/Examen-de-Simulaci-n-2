@@ -45,7 +45,8 @@ If you have any questions or comments, please feel free to send me a message her
 + [np.subtract](https://numpy.org/doc/stable/reference/generated/numpy.subtract.html)
 + [np.dot](https://numpy.org/doc/stable/reference/generated/numpy.dot.html)
 + [np.divide](https://numpy.org/doc/stable/reference/generated/numpy.divide.html)
-+ [np.cov](https://numpy.org/doc/stable/reference/generated/numpy.cov.html)<br>
++ [np.cov](https://numpy.org/doc/stable/reference/generated/numpy.cov.html)
++ [np.power](https://numpy.org/doc/stable/reference/generated/numpy.power.html) <br>
 
 ##### <u> Stats: </u> <br>
 

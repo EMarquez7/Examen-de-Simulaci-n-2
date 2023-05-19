@@ -86,12 +86,15 @@ def selection_data(dataframe, r, rf, best, start, end):
         returns = dataframe_date.pct_change().iloc[1:, :].dropna(axis = 1)
     if  r == "Log" :
         returns = np.log(dataframe_date).diff().iloc[1:, :].dropna(axis = 1)   
+        
+    mean_ret = returns.mean() * 252
+    sigma = returns.std() * np.sqrt(252)
+
     if r != "Simple" and r != "Log" :
         print("Aborted: Please select a valid Return type: 'Simple' or 'Log'. selection_data help command: help(vs.selection_data)")
 
-    mean_ret = returns.mean() * 252 
-    sharpe = (mean_ret - rf) / ( returns.std() * np.sqrt(252) )
-    sortino = (mean_ret - rf) / ( returns[returns < 0].std() * np.sqrt(252) )
+    sharpe = (mean_ret - rf) / sigma 
+    sortino = (mean_ret - rf) / ( (returns[returns < 0].std()) * np.sqrt(252) )
       
     summary = pd.DataFrame({"$\mu_{i{yr}}$" : mean_ret, "$\sigma_{yr}$" : returns.std() * np.sqrt(252),
                             "$R_{Sharpe}$" : sharpe, "$R_{Sortino}$" : sortino})
@@ -102,7 +105,7 @@ def selection_data(dataframe, r, rf, best, start, end):
     if  r == "Log" :
         r_selection = np.log(dataframe_date).diff().iloc[1:, :].dropna(axis = 1)
 
-    return summary, r_selection, dataframe_date
+    return dataframe_date, summary, r_selection
 
 ##############################################################################################################################################################################################################################################################################
 
