@@ -162,6 +162,19 @@ def SP500_tickers(batches):
     return data
 
 ##############################################################################################################################################################################################################################################################################
+
+def retSLog_Selection(data, rf, best, start, end):
+
+    Simple = vs.selection_data(data, "Simple", rf, best, start, end)[1]
+    Log = vs.selection_data(data, "Log", rf, best, start, end)[1]
+
+    summary = pd.concat([Simple, Log], axis=1, join="outer")
+    markdown = d.Markdown(tabulate(summary, headers = "keys", tablefmt = "pipe")) 
+
+    return markdown
+
+##############################################################################################################################################################################################################################################################################
+
 def format_table(dist_fit_T, Xi):
     """
     format_table is a function to format the output of vs.Stats[2] in order to show dist_fit: {params, AIC and BIC} for Xi resampling periods: Wk, Mo & Qt.

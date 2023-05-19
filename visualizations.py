@@ -12,6 +12,7 @@ from os import path
 #Dependencies
 import functions as fn
 import data as dt
+import visualizations as vs
 
 #Libraries in visualizations.py
 import numpy as np
@@ -56,7 +57,7 @@ warnings.filterwarnings("ignore", category=UserWarning)
 
 # -- ---------------------------------------------------------------------------------------------------------------------------------- Visualizations --------------------------------------------------------------------------------------------------------- -- #
 
-def selection_data(dataframe, rf, title, best):
+def selection_data(dataframe, r, rf, best, start, end):
     """
     Function that calculates Annualized Returns and Std. Deviation for a given dataframe in order to obtain 
     n_best Sharpe & Sortino Ratios with a risk-free rate.
@@ -64,40 +65,82 @@ def selection_data(dataframe, rf, title, best):
     ----------
     dataframe : dataframe
         Dataframe for the model.
+    r : str
+        Type of return for the model: "Simple" or "Log".
     rf : float
-        Yield Curve Rates (see Refs.) from model's end date on a Yearly basis for n_best Sharpe & Sortino Ratios. 
+        Yield Curve Rates (see refs.) from model's end date on a Yearly basis for n_best Sharpe & Sortino Ratios. 
     best: int
-        No° of best Sharpe & Sortino Ratios to integrate in selection (if dataframe cols. <= best, then all cols. are selected). 
+        No° of best Sharpe & Sortino Ratios to integrate in selection (if dataframe cols. <= best (No.°), then all cols. are selected).
+    start : str
+        Start date selected from dataframe.
+    end : str
+        End date selected from dataframe.
         
     Returns:
     -------
-    dataframe
-        Annualized Returns and Std. deviations of best Sharpe & Sortino displayed in a table and a plot bar for each column in dataframe.
-            Note: Markdown's pandas dataframe located in pos. [2] of return.
+    summary : dataframe
+            Annualized Returns, Std. deviations and best Ratios for Sharpe & Sortino with a Sortino Selection for Xi with dataframe and dates.
     """
-    
-    returns = (dataframe.pct_change()).iloc[1:, :].dropna(axis = 1)
+    dataframe_date = dataframe.loc[start:end]
+    if  r == "Simple" :
+        returns = dataframe_date.pct_change().iloc[1:, :].dropna(axis = 1)
+    if  r == "Log" :
+        returns = np.log(dataframe_date).diff().iloc[1:, :].dropna(axis = 1)   
+    if r != "Simple" and r != "Log" :
+        print("Aborted: Please select a valid Return type: 'Simple' or 'Log'. selection_data help command: help(vs.selection_data)")
+
     mean_ret = returns.mean() * 252 
     sharpe = (mean_ret - rf) / ( returns.std() * np.sqrt(252) )
     sortino = (mean_ret - rf) / ( returns[returns < 0].std() * np.sqrt(252) )
       
     summary = pd.DataFrame({"$\mu_{i{yr}}$" : mean_ret, "$\sigma_{yr}$" : returns.std() * np.sqrt(252),
                             "$R_{Sharpe}$" : sharpe, "$R_{Sortino}$" : sortino})
-    
     summary = summary.nlargest(best, "$R_{Sharpe}$").nlargest(best, "$R_{Sortino}$")
-    bars = summary.plot.bar(figsize=(22, 10), rot=45, fontsize=15, grid=True, linewidth=1)
     
-    plt.title(title, fontsize=20)
-    plt.yticks(fontsize=10)
-    plt.grid(color='gray', linestyle='--')
-    for i, t in enumerate(bars.get_xticklabels()):
+    if  r == "Simple" :
+        r_selection = dataframe_date.pct_change().iloc[1:, :].dropna(axis = 1)
+    if  r == "Log" :
+        r_selection = np.log(dataframe_date).diff().iloc[1:, :].dropna(axis = 1)
+
+    return summary, r_selection, dataframe_date
+
+##############################################################################################################################################################################################################################################################################
+
+def Selection_R_SLog_Plot(data, rf, best, start, execution_date):
+    Sortino25_S = vs.selection_data(data, "Simple", rf, best, start, execution_date)[1]
+    Sortino25_Log = vs.selection_data(data, "Log", rf, best, start, execution_date)[1]
+
+    fig, ax = plt.subplots(1, 2, figsize = (30, 12))
+    Sortino25_S.plot.bar(ax = ax[0], rot = 45, fontsize = 15, grid = True, linewidth = 1)
+    Sortino25_Log.plot.bar(ax = ax[1], rot = 45, fontsize = 15, grid = True, linewidth = 1)
+
+    ax[0].set_title("Selection of " + str(best) + " $X_i$ datasets from $S&P 500$ Population with $r_t$", fontsize = 20)
+    ax[1].set_title("Selection of " + str(best) + " $X_i$ datasets from $S&P 500$ Population with $r_{Log}$", fontsize = 20)
+
+    ax[0].set_yticks(np.arange(0, Sortino25_S.max().max() + r_jump, r_jump))
+    ax[1].set_yticks(np.arange(0, Sortino25_Log.max().max() + r_jump, r_jump))
+
+    ax[0].set_yticklabels(np.arange(0, Sortino25_S.max().max() + r_jump, r_jump).round(2), fontsize = 9)
+    ax[1].set_yticklabels(np.arange(0, Sortino25_Log.max().max() + r_jump, r_jump).round(2), fontsize = 9)
+
+    ax[0].set_xticklabels(Sortino25_S.index, rotation = 45, fontsize = 12)
+    ax[1].set_xticklabels(Sortino25_Log.index, rotation = 45, fontsize = 12)
+
+    ax[0].grid(color='gray', linestyle='--')
+    ax[1].grid(color='gray', linestyle='--')
+
+    for i, t in enumerate(ax[0].get_xticklabels()):
         if i % 2 == 0:
             t.set_color('lightgreen')
         else:
             t.set_color('white')
-    markdown = d.Markdown(tabulate(summary, headers = "keys", tablefmt = "pipe"))
-
-    return display(markdown), bars, summary
+    for i, t in enumerate(ax[1].get_xticklabels()):
+        if i % 2 == 0:
+            t.set_color('lightgreen')
+        else:
+            t.set_color('white')
+    #Show figure
+    return plt.show()
 
 
 ##############################################################################################################################################################################################################################################################################
@@ -132,13 +175,9 @@ def Stats(dataframe, Selection, P,  title, start, end, percentiles, dist, color)
         Stats returns summary statistics (mean, std, min, max, percentiles, skewness and kurtosis) in a 
         markdown object callable as a dataframe by assigning a variable to the function in pos. [2].  
     """
-    
     Selection = (dataframe[Selection.index].pct_change()).iloc[1:, :].dropna(axis = 1)
     Selection.index = pd.to_datetime(Selection.index)
-    
     Selection_Mo_r = Selection.resample(P).sum()
-
-
     Selection_Mo_r.plot(kind = "box", figsize = (22, 13),
                       title = title + str(start) + " to " + str(end), color = color, fontsize = 13)
     
