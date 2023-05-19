@@ -168,7 +168,7 @@ def Stats(dataframe, Selection, P,  title, start, end, percentiles, dist, color)
     percentiles : list
         List of percentiles to return in statistics dataframe (e.g. [.05, .25, .5, .75, .95]).
     dist : list
-        Continous Distributions to fit on datasets Xi
+        Continuous Distributions to fit on datasets Xi
     color : str
         Color of the boxplot.
     Returns:
