@@ -38,6 +38,7 @@ If you have any questions or comments, please feel free to send me a message her
 
 #### *Docs:*<br>
 ##### <u> Pandas: </u> <br>
++ [pd.isin](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.isin.html)
 + [df.resample](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.resample.html)
 ##### <u> Numpy: </u> <br>
 
