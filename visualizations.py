@@ -76,12 +76,15 @@ def BoxHist(data, bins, color, label, title):
     -------
     Boxplot and Histogram of data
     """
-
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(15, 5))
     data.plot.box(ax=ax1, color=color, vert=False)
     plt.text(0.05, 0.05, data.describe().round(6).to_string(), transform=ax1.transAxes)
     ax1.set_xlabel(label)
-    sns.histplot(data, bins=bins, kde=True, color="red", alpha=0.5, ax=ax2).legend().remove()
+    sns.histplot(data, bins=bins, kde=True, alpha=0.5, ax=ax2).legend().remove()
+    for patch in ax2.patches:
+        patch.set_facecolor(color)
+    ax2.set_yticklabels(["{:.2f}%".format(x/10000) for x in ax2.get_yticks()])
+    ax2.set_ylabel("Probability")
     ax2.set_xlabel(label)
     fig.suptitle(str(label) + title, fontsize=12, fontweight="bold")
     ax1.grid(color="gray", linestyle="--"), ax2.grid(color="lightgray", linestyle="--")
