@@ -57,7 +57,7 @@ warnings.filterwarnings("ignore")
 warnings.filterwarnings("ignore", category=UserWarning)
 # -- ---------------------------------------------------------------------------------------------------------------------------------- Visualizations --------------------------------------------------------------------------------------------------------- -- #
 
-def BoxHist(data, bins, color, label):
+def BoxHist(data, bins, color, label, title):
     """Boxplot and Histogram for given data
     ----------
     data : DataFrame
@@ -70,6 +70,8 @@ def BoxHist(data, bins, color, label):
         x1_label for boxplot.
     x2_label : str
         x2_label for histogram.
+    title : str
+        Title for both plots.
     Returns
     -------
     Boxplot and Histogram of data
@@ -77,10 +79,11 @@ def BoxHist(data, bins, color, label):
 
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(15, 5))
     data.plot.box(ax=ax1, color=color, vert=False)
+    plt.text(0.05, 0.05, data.describe().round(6).to_string(), transform=ax1.transAxes)
     ax1.set_xlabel(label)
     sns.histplot(data, bins=bins, kde=True, color="red", alpha=0.5, ax=ax2).legend().remove()
     ax2.set_xlabel(label)
-    fig.suptitle("Non Cumulative " + str(label) +" for $X_i$ in $S&P500$", fontsize=12, fontweight="bold")
+    fig.suptitle(str(label) + title, fontsize=12, fontweight="bold")
     ax1.grid(color="gray", linestyle="--"), ax2.grid(color="lightgray", linestyle="--")
 
     plt.show()
