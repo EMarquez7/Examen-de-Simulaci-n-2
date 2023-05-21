@@ -27,6 +27,7 @@ import logging
 
 import matplotlib
 import matplotlib.pyplot as plt
+import seaborn as sns
 plt.style.use("dark_background")
 
 import scipy
@@ -54,9 +55,38 @@ import time
 import warnings
 warnings.filterwarnings("ignore")
 warnings.filterwarnings("ignore", category=UserWarning)
-
 # -- ---------------------------------------------------------------------------------------------------------------------------------- Visualizations --------------------------------------------------------------------------------------------------------- -- #
 
+def BoxHist(data, bins, color, label):
+    """Boxplot and Histogram for given data
+    ----------
+    data : DataFrame
+        Data to plot.
+    bins : int
+        Number of bins for histogram.
+    color : str
+        Color for plots.
+    x1_label : str
+        x1_label for boxplot.
+    x2_label : str
+        x2_label for histogram.
+    Returns
+    -------
+    Boxplot and Histogram of data
+    """
+
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(15, 5))
+    data.plot.box(ax=ax1, color=color, vert=False)
+    ax1.set_xlabel(label)
+    sns.histplot(data, bins=bins, kde=True, color="red", alpha=0.5, ax=ax2).legend().remove()
+    ax2.set_xlabel(label)
+    fig.suptitle("Non Cumulative " + str(label) +" for $X_i$ in $S&P500$", fontsize=12, fontweight="bold")
+    ax1.grid(color="gray", linestyle="--"), ax2.grid(color="lightgray", linestyle="--")
+
+    plt.show()
+
+
+##############################################################################################################################################################################################################################################################################
 def selection_data(dataframe, r, rf, best, start, end):
     """
     Function that calculates Annualized Returns and Std. Deviation for a given dataframe in order to obtain 
@@ -100,12 +130,7 @@ def selection_data(dataframe, r, rf, best, start, end):
                             "$R_{Sharpe}$" : sharpe, "$R_{Sortino}$" : sortino})
     summary = summary.nlargest(best, "$R_{Sharpe}$").nlargest(best, "$R_{Sortino}$")
     
-    if  r == "Simple" :
-        r_selection = dataframe_date.pct_change().iloc[1:, :].dropna(axis = 1)
-    if  r == "Log" :
-        r_selection = np.log(dataframe_date).diff().iloc[1:, :].dropna(axis = 1)
-
-    return dataframe_date, summary, r_selection
+    return dataframe_date, returns, summary
 
 ##############################################################################################################################################################################################################################################################################
 
