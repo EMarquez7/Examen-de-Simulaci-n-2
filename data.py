@@ -89,5 +89,28 @@ def get_historical_price_data(ticker, years):
     return data
 
 
+def data_describe(df):
+    """ Function to describe dataframes
+    Parameters:
+    ----------
+    df: dataframe to describe
+    Returns:
+    -------
+    df: dataframe with data description
+    """
+    describe = df.describe()
+    describe.index.names = ['Data_Stats']
+
+    describe.loc['Change'] = ((df.iloc[-1] - df.iloc[0])/df.iloc[0])
+    describe.loc['return_y'] = df.pct_change().mean() * 252
+    describe.loc['std'] = df.pct_change().std() * np.sqrt(252)
+    describe.loc['var97.5'] = (df.pct_change().quantile(0.025) * np.sqrt(252))
+    describe.loc['var2.5'] = df.pct_change().quantile(0.975) * np.sqrt(252)
+    describe.loc['sharpe'] = describe.loc['return_y'] / describe.loc['std']
+    describe.loc['skew'] = df.skew()
+    describe.loc['kurtosis'] = df.kurtosis()
+
+    return describe
+
 
 

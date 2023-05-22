@@ -39,8 +39,10 @@ If you have any questions or comments, please feel free to send me a message her
 #### *Docs:*<br>
 ##### <u> Pandas: </u> <br>
 + [pd.isin](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.isin.html)
-+ [pd.df.resample](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.resample.html)
++ [pd.df.sample](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.sample.html)
 + [pd.df.fillna](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.fillna.html)
++ [pd.df.resample](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.resample.html)
+
 ##### <u> Numpy: </u> <br>
 
 + [np.add](https://numpy.org/doc/stable/reference/generated/numpy.add.html)
@@ -56,8 +58,6 @@ If you have any questions or comments, please feel free to send me a message her
 + [scipy.optimize.minimize](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html)
 + [scipy.stats.genextreme]
 
-[fitter](https://fitter.readthedocs.io/en/latest/index.html)<br>
-
 ##### <u> Sklearn: </u> <br>
 + [sklearn.model_selection.GridSearchCV](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html)
 + [Hyper-parameters Exhaustive GridSearchCV](https://scikit-learn.org/stable/modules/grid_search.html)
@@ -65,3 +65,6 @@ If you have any questions or comments, please feel free to send me a message her
 + [sklearn.neighbors.KernelDensity.fit](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KernelDensity.html#sklearn.neighbors.KernelDensity.fit)
 + [sklearn.neighbors.KernelDensity.score_samples](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KernelDensity.html#sklearn.neighbors.KernelDensity.score_samples)
 + [sklearn.metrics](https://scikit-learn.org/stable/modules/model_evaluation.html)
+
+##### <u> Others: </u> <br>
+[fitter](https://fitter.readthedocs.io/en/latest/index.html)<br>
