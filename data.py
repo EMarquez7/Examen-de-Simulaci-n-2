@@ -88,6 +88,37 @@ def get_historical_price_data(ticker, years):
 
     return data
 
+###########################################################################################################################################################################################################################################
+
+def DQR(data):
+    """
+    Function to create a data quality report for a given dataframe.
+    It returns a dataframe with the following columns:
+    columns=[['Column_Name','Data_Type', 'Unique_Values', 'Missing_Values', 'Zero_Values', 'Outliers', 'Unique_Outliers']]    
+    Parameters:
+    ----------
+    data: pd.DataFrame() :
+         Dataframe with the data to be analyzed.
+    Returns:
+    -------
+    data_quality_report: pd.DataFrame() :
+                         Dataframe with the data quality report with given columns as variables.
+    """
+
+    data = data.copy()
+    data_quality_report = pd.DataFrame(columns=['Data_Type', 'Unique_Values', 'Missing_Values', 'Zero_Values', 'Outliers', 'Unique_Outliers'])
+    data_quality_report['Columns'] = data.columns
+    data_quality_report['Data_Type'] = data.dtypes.values
+    data_quality_report['Unique_Values'] = [data[col].nunique() for col in data.columns]
+    data_quality_report['Missing_Values'] = [data[col].isna().sum() for col in data.columns]
+    data_quality_report['Zero_Values'] = [(data[col] == 0).sum() for col in data.columns]
+    data_quality_report['Outliers'] = [len(data[col][data[col] > data[col].mean() + 3*data[col].std()]) for col in data.columns]
+    data_quality_report['Unique_Outliers'] = [data[col][data[col] > data[col].mean() + 3*data[col].std()].nunique() for col in data.columns]
+    data_quality_report = data_quality_report.set_index('Columns')
+    return data_quality_report
+
+
+###########################################################################################################################################################################################################################################
 
 def data_describe(df, output, rf, start, end):
     """ Function to describe dataframes
@@ -106,7 +137,9 @@ def data_describe(df, output, rf, start, end):
 
     Returns:
     -------
-    df: prices or log returns descriptions for columns in dataframe.
+    'prices': in case prices is given as output, it returns [0]: prices_description, [1]: prices_df.iloc(start:end).
+    'log_returns': in case log_returns is given as output, it returns [0]: logret_description, [1]: prices_df.iloc(start:end), [2]: logrets.
+    'simple_returns': in case simple_returns is given as output, it returns [0]: simple_ret_description}, [1]: prices_df.iloc(start:end), [2]: simple_rets.
     """
     df = df.loc[start:end]
     description = df.describe()
@@ -152,11 +185,11 @@ def data_describe(df, output, rf, start, end):
 
 
     if output == 'prices':
-        return description.T.sort_values(by = 'Total_Change', ascending = False)
+        return description.T.sort_values(by = 'Total_Change', ascending = False), df
     elif output == 'simple_returns':
-        return description.T.sort_values(by = 'sortino', ascending = False), returns
+        return description.T.sort_values(by = 'sortino', ascending = False), df, returns
     elif output == 'log_returns':
-        return description.T.sort_values(by = 'sortino', ascending = False), returns
+        return description.T.sort_values(by = 'sortino', ascending = False), df, returns
     
     else:
         return print("Error: output must be 'prices' or 'log_returns'.")

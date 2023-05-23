@@ -58,8 +58,45 @@ warnings.filterwarnings("ignore", category=UserWarning)
 
 
 
-# -- ---------------------------------------------------------------------------------------------------------------------------------- Visualizations --------------------------------------------------------------------------------------------------------- -- #
+# -- ---------------------------------------------------------------------------------------------------------------------------------- Visualizations -------------------------------------------------------------------------------- -- #
 
+def Yearly_Returns(Simple, Log, color):
+    """
+    Function to plot yearly returns distribution and kde with Yearly Simple & Log returns in index as dataframe with quotes in cols.
+    Parameters:
+    ----------
+    Simple: dataframe
+        Dataframe with simple returns.
+    Log: dataframe
+        Dataframe with log returns.
+    color: str
+        Color for plot ticks, labels and title text
+    Returns:
+    -------
+    Plot with yearly returns.
+    """
+    fig, ax = plt.subplots(figsize=(20, 10))
+    sns.distplot(Simple.T.Yr_Return, bins=50, color="red", label="Yearly Simple $R_t$")
+    sns.distplot(Log.T.Yr_Return, bins=50, color="blue", label="Yearly Log $r_t$")
+
+    sns.kdeplot(Simple.T.Yr_Return, color="orange", linestyle="--")
+    sns.kdeplot(Log.T.Yr_Return, color="teal", linestyle="--")
+
+    plt.title("$x_i\in [x_1,x_{500}]$ in S&P500 Yearly Returns", size=20).set_color(color)
+    plt.xticks(np.arange(round(min(Simple.T.Yr_Return), 1)*1.5, round(max(Simple.T.Yr_Return), 1)*1.5, 0.05))
+    plt.xticks(rotation=45)
+    plt.xlabel("Yearly Returns")
+    plt.ylabel("Frequency")
+    ax.xaxis.label.set_color(color), ax.yaxis.label.set_color(color)
+    ax.tick_params(axis='x', colors=color), ax.tick_params(axis='y', colors=color)
+
+
+    plt.grid(color='gray', linestyle='--')
+    plt.legend()
+
+    plt.show()
+
+############################################################################################################################################################################################################################################
 def BoxHist(data, output, bins, color, label, title, start, end):
     """Boxplot and Histogram for selected output method for returns method for data, assuming equiprobable weights.
     Parameters
@@ -67,7 +104,7 @@ def BoxHist(data, output, bins, color, label, title, start, end):
     data : DataFrame
         Data to plot.
     output: str
-        'prices' or 'log_returns' string to return its stats.
+        'prices', 'log_returns' or 'simple_returns' to get stats for and plot.
     bins : int
         Number of bins for histogram.
     color : str
@@ -113,8 +150,8 @@ def BoxHist(data, output, bins, color, label, title, start, end):
 
     plt.show()
 
+################################################################################################################################################################################################################################################
 
-##############################################################################################################################################################################################################################################################################
 def summary(dataframe, r, rf, best, start, end):
     """
     Function that calculates Annualized Returns and Std. Deviation for a given returns in order to obtain 
@@ -160,7 +197,7 @@ def summary(dataframe, r, rf, best, start, end):
     
     return dataframe_date, returns, summary
 
-##############################################################################################################################################################################################################################################################################
+#################################################################################################################################################################################################################################################
 
 def Selection_R_SLog_Plot(data, rf, best, start, execution_date, r_jump):
     Sortino25_S = vs.selection_data(data, "Simple", rf, best, start, execution_date)[1]
@@ -198,8 +235,7 @@ def Selection_R_SLog_Plot(data, rf, best, start, execution_date, r_jump):
     #Show figure
     return plt.show()
 
-##############################################################################################################################################################################################################################################################################
-
+#################################################################################################################################################################################################################################################
 
 def Stats(dataframe, Selection, P,  title, start, end, percentiles, dist, color):
     """
@@ -272,8 +308,7 @@ def Stats(dataframe, Selection, P,  title, start, end, percentiles, dist, color)
     IPython.core.display.clear_output() 
     return describe, dist_fit, plt.show()
 
-##############################################################################################################################################################################################################################################################################`
-
+###################################################################################################################################################################################################################################################
 def Optimizer(Assets, index, rf, title):
     Asset_ret = (Assets.pct_change()).iloc[1:, :].dropna(axis = 1)
     index_ret = index.pct_change().iloc[1:, :].dropna(axis = 1)
@@ -361,7 +396,7 @@ def Optimizer(Assets, index, rf, title):
     
     return Argmax, R_EMV, accum
 
-##############################################################################################################################################################################################################################################################################
+##################################################################################################################################################################################################################################################
 
 def Accum_ts(accum):
     """
@@ -389,5 +424,37 @@ def Accum_ts(accum):
     plt.xticks(rotation=90)
     plt.show()
 
+###################################################################################################################################################################################################################################################
+    def create_corr_plot(df, plot_pacf=False):
+        """
+        Function that graphs lines+marker AutoCorrelation and Partial AutoCorrelation 
+        plot intended to model economic index Actual values, alpha=0.05.
+        Parameters:
+        ----------
+        index: Time series in which to perform ACF, PACF plots.
+        Returns
+        -------
+        lines+marker ACF, PACF, lines + markers plots.
+        """
+    corr_array = pacf(df.dropna(), alpha=0.05) if plot_pacf else acf(df.dropna(), alpha=0.05)
+    lower_y = corr_array[1][:,0] - corr_array[0]
+    upper_y = corr_array[1][:,1] - corr_array[0]
 
-##############################################################################################################################################################################################################################################################################
+    fig = go.Figure()
+    [fig.add_scatter(x=(x,x), y=(0,corr_array[0][x]), mode='lines+markers',line_color='#3f3f3f') 
+     for x in range(len(corr_array[0]))]
+    fig.add_scatter(x=np.arange(len(corr_array[0])), y=corr_array[0], mode='markers', marker_color='#1f77b4',
+                   marker_size=4)
+
+    fig.add_scatter(x=np.arange(len(corr_array[0])), y=upper_y, mode='lines', line_color='rgba(255,255,255,0)')
+    fig.add_scatter(x=np.arange(len(corr_array[0])), y=lower_y, mode='lines',fillcolor='rgba(32, 146, 230,0.3)',
+            fill='tonexty', line_color='rgba(255,255,255,0)')
+    fig.update_traces(showlegend=False)
+    fig.update_yaxes(zerolinecolor='black')
+    
+    title='Partial Autocorrelation (PACF)' if plot_pacf else 'Autocorrelation (ACF)'
+    fig.update_layout(title=title)
+    fig.show()
+    #,fig.show("png") Kaleido img if didactic plot not rendering
+
+    #Callable e.g: create_corr_plot(Log.iloc[:, 0], plot_pacf=True)
