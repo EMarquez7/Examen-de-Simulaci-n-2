@@ -89,28 +89,77 @@ def get_historical_price_data(ticker, years):
     return data
 
 
-def data_describe(df):
+def data_describe(df, output, rf, start, end):
     """ Function to describe dataframes
     Parameters:
     ----------
-    df: dataframe to describe
+    df: pd.DataFrame
+        prices dataframe to get stats for.
+    output: str
+        'prices', 'log_returns' or 'simple_returns' to get stats for and plot.
+    rf: float
+        risk free rate.
+    start: str
+        start date to retrieve from df.
+    end: str
+        end date to implement from df.
+
     Returns:
     -------
-    df: dataframe with data description
+    df: prices or log returns descriptions for columns in dataframe.
     """
-    describe = df.describe()
-    describe.index.names = ['Data_Stats']
+    df = df.loc[start:end]
+    description = df.describe()
+    description = description.iloc[3:, :]
+    description.index.names = [output]
+    description.columns.names = ['Companies']
 
-    describe.loc['Change'] = ((df.iloc[-1] - df.iloc[0])/df.iloc[0])
-    describe.loc['return_y'] = df.pct_change().mean() * 252
-    describe.loc['std'] = df.pct_change().std() * np.sqrt(252)
-    describe.loc['var97.5'] = (df.pct_change().quantile(0.025) * np.sqrt(252))
-    describe.loc['var2.5'] = df.pct_change().quantile(0.975) * np.sqrt(252)
-    describe.loc['sharpe'] = describe.loc['return_y'] / describe.loc['std']
-    describe.loc['skew'] = df.skew()
-    describe.loc['kurtosis'] = df.kurtosis()
+    if output == 'prices' :
+        description.loc['Mean'] = df.mean()
+        description.loc['Yr_Std'] = df.std()
+        description.loc['Total_Change'] = (df.iloc[-1]/ df.iloc[0]) - 1
+        description.loc['var97.5(-)'] = fn.VaR(df, alpha = 0.025)
+        description.loc['var2.5(+)'] = fn.VaR(df, alpha = 0.975)
+        description.loc['Price_skew'] = df.skew()
+        description.loc['Price_kurtosis'] = df.kurtosis()
 
-    return describe
+    if  output == "simple_returns" :
+        returns = df.pct_change().iloc[1:, :].dropna(axis = 1)
+        description.loc['Simple_skew'] = returns.skew()
+        description.loc['Simple_kurtosis'] = returns.kurtosis()
+        r_simple_acum = ((1+returns).cumprod()-1).iloc[-1]
+        description.loc['Accum_Simple'] = r_simple_acum
+        description.loc['Yr_Return'] = returns.mean() *252
+        description.loc['Yr_Std'] = returns.std() * np.sqrt(252)
+        description.loc['var97.5(-)'] = fn.VaR(returns, alpha = 0.025)
+        description.loc['var2.5(+)'] = fn.VaR(returns, alpha = 0.975)
+        description.loc['sharpe'] = (description.loc['Yr_Return'] - rf) / (returns.std() * np.sqrt(252))
+        description.loc['sortino'] = (description.loc['Yr_Return'] - rf) / (returns[returns < 0].std() * np.sqrt(252))
+        description.loc['Yr_MaxDrawdown'] = description.loc['Accum_Simple'] / (1 + description.loc['Accum_Simple']).cummax() - 1
+
+    if  output == "log_returns" :
+        returns = np.log(df).diff().iloc[1:, :].dropna(axis = 1)   
+        description.loc['Logret_skew'] = returns.skew()
+        description.loc['Logret_kurtosis'] = returns.kurtosis()
+        description.loc['Accum_Logret'] = (returns.cumsum().apply(np.exp)-1).iloc[-1]
+        description.loc['Yr_Return'] = returns.mean() *252
+        description.loc['Yr_Std'] = returns.std() * np.sqrt(252)
+        description.loc['var97.5(-)'] = fn.VaR(returns, alpha = 0.025)
+        description.loc['var2.5(+)'] = fn.VaR(returns, alpha = 0.975)
+        description.loc['sharpe'] = (description.loc['Yr_Return'] - rf) / (returns.std() * np.sqrt(252))
+        description.loc['sortino'] = (description.loc['Yr_Return'] - rf) / (returns[returns < 0].std() * np.sqrt(252))
+        description.loc['Yr_MaxDrawdown'] = description.loc['Accum_Logret'] / (1 + description.loc['Accum_Logret']).cummax() - 1
+
+
+    if output == 'prices':
+        return description.T.sort_values(by = 'Total_Change', ascending = False)
+    elif output == 'simple_returns':
+        return description.T.sort_values(by = 'sortino', ascending = False), returns
+    elif output == 'log_returns':
+        return description.T.sort_values(by = 'sortino', ascending = False), returns
+    
+    else:
+        return print("Error: output must be 'prices' or 'log_returns'.")
 
 
 

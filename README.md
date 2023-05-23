@@ -44,7 +44,7 @@ If you have any questions or comments, please feel free to send me a message her
 + [pd.df.resample](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.resample.html)
 
 ##### <u> Numpy: </u> <br>
-
++ [np.quantile](https://numpy.org/doc/stable/reference/generated/numpy.quantile.html)
 + [np.add](https://numpy.org/doc/stable/reference/generated/numpy.add.html)
 + [np.subtract](https://numpy.org/doc/stable/reference/generated/numpy.subtract.html)
 + [np.dot](https://numpy.org/doc/stable/reference/generated/numpy.dot.html)

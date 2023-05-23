@@ -60,11 +60,14 @@ warnings.filterwarnings("ignore", category=UserWarning)
 
 # -- ---------------------------------------------------------------------------------------------------------------------------------- Visualizations --------------------------------------------------------------------------------------------------------- -- #
 
-def BoxHist(data, bins, color, label, title):
-    """Boxplot and Histogram for given data
+def BoxHist(data, output, bins, color, label, title, start, end):
+    """Boxplot and Histogram for selected output method for returns method for data, assuming equiprobable weights.
+    Parameters
     ----------
     data : DataFrame
         Data to plot.
+    output: str
+        'prices' or 'log_returns' string to return its stats.
     bins : int
         Number of bins for histogram.
     color : str
@@ -75,13 +78,27 @@ def BoxHist(data, bins, color, label, title):
         x2_label for histogram.
     title : str
         Title for both plots.
+    start : str
+        Start date for Stats calculations from dt.data_describe.
+    end : str
+        End date for Stats calculations from dt.data_describe.
     Returns
     -------
-    Boxplot and Histogram of data
+    Boxplot and Histogram with Stats visualization 
+
+
+    Returns
+    -------
+    Boxplot and Histogram of Returns Method with its dt.describe_stats summary with equiprobable weights.
     """
-    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(15, 5))
+    plt.style.use("classic")
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(22, 8))
     data.plot.box(ax=ax1, color=color, vert=False)
-    plt.text(0.05, 0.05, data.describe().round(6).to_string(), transform=ax1.transAxes)
+    Box_Stats = pd.DataFrame(((dt.data_describe(data, output, .00169, start, end).sort_values(by="sortino", 
+    ascending=False).head(25).T).iloc[7:, :]).mean(axis=1)).rename(columns={0:"Equiprob. xi mean"})
+
+    plt.text(0.05, 0.05, Box_Stats.to_string(), transform=ax1.transAxes)
+
     ax1.set_xlabel(label)
     sns.histplot(data, bins=bins, kde=True, alpha=0.5, ax=ax2).legend().remove()
     for patch in ax2.patches:
@@ -89,16 +106,18 @@ def BoxHist(data, bins, color, label, title):
     ax2.set_yticklabels(["{:.2f}%".format(x/10000) for x in ax2.get_yticks()])
     ax2.set_ylabel("Probability")
     ax2.set_xlabel(label)
-    fig.suptitle(str(label) + title, fontsize=12, fontweight="bold")
+    fig.suptitle(str(label) + title, fontsize=18)
     ax1.grid(color="gray", linestyle="--"), ax2.grid(color="lightgray", linestyle="--")
+    #Face color for plots
+    ax1.set_facecolor("lightgray"), ax2.set_facecolor("lightgray")
 
     plt.show()
 
 
 ##############################################################################################################################################################################################################################################################################
-def selection_data(dataframe, r, rf, best, start, end):
+def summary(dataframe, r, rf, best, start, end):
     """
-    Function that calculates Annualized Returns and Std. Deviation for a given dataframe in order to obtain 
+    Function that calculates Annualized Returns and Std. Deviation for a given returns in order to obtain 
     n_best Sharpe & Sortino Ratios with a risk-free rate.
     Parameters:
     ----------
@@ -137,7 +156,7 @@ def selection_data(dataframe, r, rf, best, start, end):
       
     summary = pd.DataFrame({"$\mu_{i{yr}}$" : mean_ret, "$\sigma_{yr}$" : returns.std() * np.sqrt(252),
                             "$R_{Sharpe}$" : sharpe, "$R_{Sortino}$" : sortino})
-    summary = summary.nlargest(best, "$R_{Sharpe}$").nlargest(best, "$R_{Sortino}$")
+    summary = summary.nlargest(best, "$R_{Sortino}$")
     
     return dataframe_date, returns, summary
 

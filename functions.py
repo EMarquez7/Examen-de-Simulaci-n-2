@@ -149,7 +149,7 @@ def SP500_tickers(batches):
     Parameters:
     ----------
     batches : int
-        N tickers in lists of lists in function S&P 500 tickers.
+             N tickers in lists of lists in function S&P 500 tickers.
     Returns:
     -------
     list
@@ -160,6 +160,30 @@ def SP500_tickers(batches):
     data = [[x.replace(".", "-") for x in list[x:x+batches]] for x in range(0, len(list), batches)]
     
     return data
+
+##############################################################################################################################################################################################################################################################################
+
+def VaR(df, alpha):
+    """
+    Function to calculate the Value at Risk (VaR) of a prices series.
+    Parameters:
+    ----------
+    prices : pd.DataFrame
+        df from which to obtain VaRs with the percentile method (np.quantile).
+    alpha : float
+        Confidence level for historical VaR considering f(x) = z (.5 is the median).
+        + e.g alpha = 0.975 : 2.5% of the values are below VaR.
+        + e.g alpha =.025 : 97.5% of the values are above VaR.
+        Because percentages have a normal distribution.0
+
+    Returns:
+    -------
+    VaR : float
+        Value at Risk (VaR) of a prices series.
+    """
+    VaR = df.quantile(1-alpha)
+
+    return VaR
 
 ##############################################################################################################################################################################################################################################################################
 
