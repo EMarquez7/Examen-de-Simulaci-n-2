@@ -32,8 +32,9 @@ If you have any questions or comments, please feel free to send me a message her
 ----
 ### **References:**<br>
 
+[*i.i.d*](https://en.wikipedia.org/wiki/Independent_and_identically_distributed_random_variables) ; [Convolution-of-Distributions](https://en.wikipedia.org/wiki/Convolution_of_probability_distributions)<br>
+[LaTeX](https://en.wikipedia.org/wiki/List_of_mathematical_symbols_by_subject)<br>
 [Daily Treasury Par Yield Curve Rates](https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value_month=202304)<br>
-[Convolution-of-Distributions](https://en.wikipedia.org/wiki/Convolution_of_probability_distributions)<br>
 [S&P 500 companies](https://en.wikipedia.org/wiki/List_of_S%26P_500_companies)<br>
 
 #### *Docs:*<br>
