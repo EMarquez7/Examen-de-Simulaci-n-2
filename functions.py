@@ -90,17 +90,18 @@ def get_requirements(docstring):
     """
     Function to create requirements.txt file in order to setup environment. Libraries and requirements dictionary
     must be imported within the function: 1° section libraries with versions attributes, 2° section libraries without
-    versions attribute. Note: Prebuilt libraries should not be included. Include `jupyter` if there are .ipynb's in proj.
-
+    versions attribute. Note: Prebuilt libraries should not be included. Include `jupyter` if there are .ipynb scripts.
+    are in the repository as it is not automatically included.
 
     Parameters
     ----------
     docstring: str
-        Docstring of requirements.txt script in a project.
+        Docstring of requirements.txt script in a project. 
+        Usually contains project, script, author, license and repository (remote) 
     Returns
     -------
     requirements.txt
-        File with libraries and their respective versions for a project environment setup.
+        requirements.txt with the libraries used and their respective version attributes for an environment setup.
     """
 
     #1° SECTION: Libs. with version attributes used in project.
@@ -118,7 +119,7 @@ def get_requirements(docstring):
         for key, value in requirements.items():
             f.write(f"{key} {value} \n")
 
-        #2° SECTION: Libs. without version attributes in project.
+        #2° SECTION: Libs. without version attributes in project
         f.write("jupyter >= 1.0.0 \n") 
 
         f.write("yahoofinanicals >= 1.14 \n")
@@ -130,9 +131,12 @@ def get_requirements(docstring):
     return path.abspath("requirements.txt")
 
 ########################################################################################################################################################################################################################################
-
 def library_install(requirements_txt):
-    """Install requirements.txt file in project created with fn.get_requirements. """
+    """Install requirements.txt file in project created with fn.get_requirements.
+    Parameters
+        requirements_txt : str
+        requirements.txt file name.
+    """
     import os
     import warnings
     warnings.filterwarnings("ignore")
@@ -142,7 +146,6 @@ def library_install(requirements_txt):
         print(f.read())
 
 #########################################################################################################################################################################################################################################
-
 def SP500_tickers(batches):
     """
     Function to fetch tickers from S&P500 .html by batches or (N) lists of lists. Undivisible n batches sizes slice list[-1] 
@@ -162,10 +165,9 @@ def SP500_tickers(batches):
     return data
 
 ##########################################################################################################################################################################################################################################
-
 def VaR(df, alpha):
     """
-    Function to calculate the Value at Risk (VaR) of a prices series.
+    Function to calculate the Value at Risk (VaR) to the upside/downside of a not necessarily time series.
     Parameters:
     ----------
     prices : pd.DataFrame
@@ -186,7 +188,6 @@ def VaR(df, alpha):
     return VaR
 
 ###########################################################################################################################################################################################################################################
-
 def retSLog_Selection(data, rf, best, start, end):
 
     Simple = vs.selection_data(data, "Simple", rf, best, start, end)[1]
