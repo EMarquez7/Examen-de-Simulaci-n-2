@@ -56,6 +56,8 @@ If you have any questions or comments, please feel free to send me a message her
 ##### <u> Stats: </u> <br>
 
 + [scipy.stats](https://docs.scipy.org/doc/scipy/reference/stats.html)
++ [scipy.stats.rv_continuous](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.rv_continuous.html)
++ [scipy.stats.rv_discrete](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.rv_discrete.html)
 + [scipy.optimize.minimize](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html)
 + [scipy.stats.genextreme]
 

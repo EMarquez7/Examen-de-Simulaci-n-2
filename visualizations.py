@@ -59,7 +59,7 @@ warnings.filterwarnings("ignore", category=UserWarning)
 
 
 # -- ---------------------------------------------------------------------------------------------------------------------------------- Visualizations -------------------------------------------------------------------------------- -- #
-def cmap_bar(df_col, df_index, x_arange, y_arange, title, x_label, y_label):
+def cmap_bar(df_col, df_index, x_ticks, y_ticks, title, x_label, y_label):
     """
     Parameters
     ----------
@@ -85,8 +85,8 @@ def cmap_bar(df_col, df_index, x_arange, y_arange, title, x_label, y_label):
     plt.bar(df_index, df_col, color=plt.cm.RdYlGn(df_col))
     plt.title(title,  fontsize=15)
     plt.grid(axis='y', linestyle='--', alpha=.5, linewidth=.5)
-    plt.yticks(y_arange)
-    plt.xticks(x_arange, rotation=45, fontsize=9)
+    plt.yticks(y_ticks)
+    plt.xticks(x_ticks, rotation=45, fontsize=9)
     plt.xlabel(x_label, fontsize=15), plt.ylabel(y_label, fontsize=15)
     plt.margins(x=0, y=0)
     plt.tight_layout()
