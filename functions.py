@@ -153,12 +153,12 @@ def SP500_tickers(batches):
     ----------
     batches : int
              N tickers in lists of lists in function S&P 500 tickers.
+    index: str
+             Index to fetch tickers from S&P 500.    
     Returns:
     -------
-    list
-        Lists of lists for all quotes listed in the S&P 500 acc0rding to refs. 
+    'list 1': List of S&P 500 companies for all quotes listed in the S&P 500 acc0rding to refs.
     """
-
     list = pd.read_html("https://en.wikipedia.org/wiki/List_of_S%26P_500_companies")[0]["Symbol"].values.tolist()
     data = [[x.replace(".", "-") for x in list[x:x+batches]] for x in range(0, len(list), batches)]
     
@@ -167,7 +167,7 @@ def SP500_tickers(batches):
 ##########################################################################################################################################################################################################################################
 def VaR(df, alpha):
     """
-    Function to calculate the Value at Risk (VaR) to the upside/downside of a not necessarily time series.
+    Function to calculate the Value at Risk (VaR) percentile to the upside/downside of a time series.
     Parameters:
     ----------
     prices : pd.DataFrame
