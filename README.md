@@ -1,4 +1,4 @@
-##  S&P 500 Risk Optimizations Forecast  [![S&P500-Optimizations-Forecast](https://img.shields.io/badge/EstebanMqz-S&P500Risk_Optimizations_Forecast-black?style=square&logo=github&logoColor=black)](https://github.com/EstebanMqz/SP500-Risk-Optimizations-Forecast)
+##  S&P 500 Risk Optimizations Forecast
 
 ### Description: 
 
@@ -24,12 +24,12 @@ whose purpose is to forecast the mentioned period while being able to incorporat
 
 ###### Interface: [![React-Badge](https://img.shields.io/badge/React-61DAFB?style=square&logo=react&logoColor=black)](https://create-react-app.dev)
 
-###### Version Control: [![GitHub-Badge](https://img.shields.io/badge/GitHub-100000?style=square&logo=github&logoColor=white)](https://github.com)&nbsp;[![Git-Badge](https://img.shields.io/badge/Git-F05032.svg?style=square&logo=Git&logoColor=white)](https://git-scm.com)
+###### Version Control: [![GitHub-Badge](https://img.shields.io/badge/GitHub-100000?style=square&logo=github&logoColor=white)](https://github.com)&nbsp;[![Git-Badge](https://img.shields.io/badge/Git-F05032.svg?style=square&logo=Git&logoColor=white)](https://git-scm.com)  
 [![Git-Commads](https://img.shields.io/badge/Git%20Commands-gray?style=square&logo=git&logoColor=white)](https://github.com/EstebanMqz/Git-Commands)
+
 ###### License: [![Creative Commons BY 3.0](https://img.shields.io/badge/License-CC%20BY%203.0-yellow.svg?style=square&logo=creative-commons&logoColor=white)](https://creativecommons.org/licenses/by/3.0/)
 
 </Details>
-
 <br>
 
 ##### Work Contact: 
@@ -39,7 +39,10 @@ whose purpose is to forecast the mentioned period while being able to incorporat
 
 ![GitHub Logo](https://github.com/EstebanMqz.png?size=50) [![Github](https://img.shields.io/badge/Github-000000?style=square&logo=github&logoColor=white)](https://github.com/EstebanMqz) 
 
-<br>
+##### **Diagram:**
+[![Repository](https://img.shields.io/badge/Repository-0089D6?style=square&logo=microsoft-azure&logoColor=white)](https://mango-dune-07a8b7110.1.azurestaticapps.net/?repo=EstebanMqz%2FSP500-Risk-Optimizations-Forecast)
+
+<img src="diagram.svg" width="280" height="280">
 
 #### Table of Contents: 
 The processes made are illustrated by the following:
@@ -60,11 +63,9 @@ fn.library_install("requirements.txt")
 Efficient Data Extraction techniques are made for its cleaning and Exploration followed by Descriptive Statistics $\forall x_i\in [x_1,x_{500}] \hookrightarrow$ S&P 500 that make a storytell out of themselves as well as what and how it has happened. <br>
 *This is made in addition to theoretical demonstrations and experimental comparisons that opt for the use of transformed data.* <br>
 
-Moreover, estimators and statistical measures are modelled and they incorporate common periodicity resampling periods, <br>
-as well as some of the tools displayed on this `README.md`. <br>
+Moreover, estimators and statistical measures are modelled and they incorporate common periodicity resampling periods, as well as some of the tools that will displayed on this `README.md`. <br>
 
-As result, the following optimizations are made to subsequently generate simulations with what would have been its past behavior, <br>
-concluding with the optimization's forecast out of simulated data:
+As result, the following optimizations are made to subsequently generate simulations with what would have been its past behavior, concluding with the optimization's forecast out of the simulated data: <br>
 
 ![Alt text](images/Methodology.jpg)
 
@@ -74,49 +75,35 @@ concluding with the optimization's forecast out of simulated data:
 <Details>
 <Summary> <b>Click to expand</b> </Summary>
 
-
 ##### </u> Pandas: </u> <br>
 
-+ [pd.isin](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.isin.html)
-+ [pd.df.sample](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.sample.html)
-+ [pd.df.fillna](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.fillna.html)
-+ [pd.df.resample](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.resample.html)
+[`pd.isin`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.isin.html) [`pd.df.sample`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.sample.html) [`pd.df.fillna`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.fillna.html) [`pd.df.resample`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.resample.html)
 
 ##### </u> Numpy: </u> <br>
 
-+ [np.quantile](https://numpy.org/doc/stable/reference/generated/numpy.quantile.html)
-+ [np.arange](https://numpy.org/doc/stable/reference/generated/numpy.arange.html)
-+ [np.add](https://numpy.org/doc/stable/reference/generated/numpy.add.html)
-+ [np.subtract](https://numpy.org/doc/stable/reference/generated/numpy.subtract.html)
-+ [np.dot](https://numpy.org/doc/stable/reference/generated/numpy.dot.html)
-+ [np.divide](https://numpy.org/doc/stable/reference/generated/numpy.divide.html)
-+ [np.cov](https://numpy.org/doc/stable/reference/generated/numpy.cov.html)
-+ [np.power](https://numpy.org/doc/stable/reference/generated/numpy.power.html) <br>
+[`np.quantile`](https://numpy.org/doc/stable/reference/generated/numpy.quantile.html) [`np.arange`](https://numpy.org/doc/stable/reference/generated/numpy.arange.html) [`np.add`](https://numpy.org/doc/stable/reference/generated/numpy.add.html) [`np.subtract`](https://numpy.org/doc/stable/reference/generated/numpy.subtract.html) [`np.dot`](https://numpy.org/doc/stable/reference/generated/numpy.dot.html) [`np.divide`](https://numpy.org/doc/stable/reference/generated/numpy.divide.html) [`np.cov`](https://numpy.org/doc/stable/reference/generated/numpy.cov.html) [`np.power`](https://numpy.org/doc/stable/reference/generated/numpy.power.html) <br>
 
 ##### </u> Stats: </u> <br>
 
-+ [scipy.stats](https://docs.scipy.org/doc/scipy/reference/stats.html)
-+ [scipy.stats.rv_continuous](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.rv_continuous.html)
-+ [scipy.stats.rv_discrete](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.rv_discrete.html)
-+ [scipy.optimize.minimize](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html)
+[`scipy.stats`](https://docs.scipy.org/doc/scipy/reference/stats.html) [`scipy.stats.rv_continuous`](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.rv_continuous.html) [`scipy.stats.rv_discrete`](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.rv_discrete.html) [`scipy.optimize.minimize`](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html)
 
 ##### </u> Sklearn: </u> <br>
 
-+ [sklearn.model_selection.GridSearchCV](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html)
-+ [Hyper-parameters Exhaustive GridSearchCV](https://scikit-learn.org/stable/modules/grid_search.html)
-+ [sklearn.neighbors.KernelDensity](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KernelDensity.html)
-+ [sklearn.neighbors.KernelDensity.fit](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KernelDensity.html#sklearn.neighbors.KernelDensity.fit)
-+ [sklearn.neighbors.KernelDensity.score_samples](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KernelDensity.html#sklearn.neighbors.KernelDensity.score_samples)
-+ [sklearn.metrics](https://scikit-learn.org/stable/modules/model_evaluation.html)
+[`sklearn.model_selection.GridSearchCV`](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html) [`Hyper-parameters Exhaustive GridSearchCV`](https://scikit-learn.org/stable/modules/grid_search.html) <br>
+
+[`sklearn.neighbors.KernelDensity`](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KernelDensity.html) [`sklearn.neighbors.KernelDensity.fit`](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KernelDensity.html#sklearn.neighbors.KernelDensity.fit) <br>
+
+[`sklearn.neighbors.KernelDensity.score_samples`](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KernelDensity.html#sklearn.neighbors.KernelDensity.score_samples) [`sklearn.metrics`](https://scikit-learn.org/stable/modules/model_evaluation.html)
 
 ###### Other Libraries: <br>
 
-+ [fitter](https://fitter.readthedocs.io/en/latest/index.html)<br>
-+ [statsmodels](https://www.statsmodels.org/stable/index.html)<br>
++ [`fitter`](https://fitter.readthedocs.io/en/latest/index.html)<br>
+
++ [`statsmodels`](https://www.statsmodels.org/stable/index.html)<br>
 
 ###### *Other References*: <br>
-+ [Convolution of Distributions](https://en.wikipedia.org/wiki/Convolution_of_probability_distributions)
-+ [*i.i.d* $x \sim X$](https://en.wikipedia.org/wiki/Independent_and_identically_distributed_random_variables)<br>
-+ [LaTeX](https://en.wikipedia.org/wiki/List_of_mathematical_symbols_by_subject)</br>
-+ [Daily Treasury Par Yield Curve Rates](https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value_month=202304)<br>
-+ [$S$&$P$ $500$ Symbols](https://en.wikipedia.org/wiki/List_of_S%26P_500_companies)</br>
++ [`Convolution of Distributions`](https://en.wikipedia.org/wiki/Convolution_of_probability_distributions)
++ [`*i.i.d* $x \sim X$`](https://en.wikipedia.org/wiki/Independent_and_identically_distributed_random_variables)<br>
++ [`LaTeX`](https://en.wikipedia.org/wiki/List_of_mathematical_symbols_by_subject)</br>
++ [`Daily Treasury Par Yield Curve Rates`](https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value_month=202304)<br>
++ [`$S$&$P$ $500$ Symbols`](https://en.wikipedia.org/wiki/List_of_S%26P_500_companies)</br>
