@@ -20,15 +20,13 @@ import pandas as pd
 pd.set_option("display.max_rows", None, "display.max_columns", None
               ,"display.max_colwidth", None, "display.width", None)
 
-from io import StringIO
-import ast
-from fitter import Fitter, get_common_distributions, get_distributions 
-import logging
-
 import matplotlib
 import matplotlib.pyplot as plt
 import seaborn as sns
 plt.style.use("dark_background")
+
+import plotly.graph_objects as go 
+import plotly.express as px
 
 import scipy
 import scipy.stats as st
@@ -45,14 +43,16 @@ from tabulate import tabulate
 import IPython.display as d
 import IPython.core.display
 
+import ast
 from io import StringIO
 from fitter import Fitter, get_common_distributions, get_distributions 
 import logging
-logging.getLogger().setLevel(logging.ERROR)
 
 import datetime 
 import time
 import warnings
+
+logging.getLogger().setLevel(logging.ERROR)
 warnings.filterwarnings("ignore")
 warnings.filterwarnings("ignore", category=UserWarning)
 

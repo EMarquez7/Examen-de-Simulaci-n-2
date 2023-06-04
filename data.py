@@ -21,7 +21,12 @@ pd.set_option("display.max_rows", None, "display.max_columns", None
 
 import matplotlib
 import matplotlib.pyplot as plt
+import seaborn as sns
 plt.style.use("dark_background")
+
+
+import plotly.graph_objects as go 
+import plotly.express as px
 
 import scipy
 import scipy.stats as st
@@ -32,20 +37,22 @@ import sklearn
 from sklearn.neighbors import KernelDensity
 from sklearn.model_selection import GridSearchCV
 from sklearn import metrics
-import ast
 
 from yahoofinancials import YahooFinancials 
 from tabulate import tabulate
 import IPython.display as d
+import IPython.core.display
 
+import ast
 from io import StringIO
 from fitter import Fitter, get_common_distributions, get_distributions 
 import logging
-logging.getLogger().setLevel(logging.ERROR)
 
 import datetime 
 import time
 import warnings
+
+logging.getLogger().setLevel(logging.ERROR)
 warnings.filterwarnings("ignore")
 warnings.filterwarnings("ignore", category=UserWarning)
 
@@ -210,7 +217,7 @@ def data_describe(df, output, rf, start, end):
         return description, log_returns
     
     else:
-        return print("Error: output must be 'prices', 'Simple', 'log_returns'.")
+        return print("Error: output must be 'Prices', 'Simple', 'Log_returns'.")
 
 
 

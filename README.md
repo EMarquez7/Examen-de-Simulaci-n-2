@@ -4,9 +4,8 @@
 
 Since Covid, data has changed in most industries with few exceptions and the markets are just another example.<br>
 
-With this in mind, the present repository automates tasks that deliver a full understanding of the market since and until the user *(you)* execution's date. <br>
-Furthermore, it generates a variety of callable optimizations
-whose purpose is to forecast the mentioned period while being able to incorporate newly generated data with the usage of the snippets provided by the scripts, which are executed by clicking: <br>
+For this reason, the present repository automates tasks that deliver a full understanding until the user *(you)* execution's date. <br>
+Furthermore, it generates a variety of optimizations whose purpose is to forecast the mentioned period while being able to incorporate newly generated data with the usage of the snippets provided by the scripts, they could be executed by clicking: <br>
 
 [![S&P500-Optimizations-Forecast](https://img.shields.io/badge/Notebook-Run>All-black?style=square&logo=github&logoColor=black)](https://github.com/EstebanMqz/SP500-Risk-Optimizations-Forecast/blob/main/SP500-Risk-Optimized-Portfolios-ML.ipynb) <br>
 
@@ -30,14 +29,18 @@ whose purpose is to forecast the mentioned period while being able to incorporat
 ###### License: [![Creative Commons BY 3.0](https://img.shields.io/badge/License-CC%20BY%203.0-yellow.svg?style=square&logo=creative-commons&logoColor=white)](https://creativecommons.org/licenses/by/3.0/)
 
 </Details>
-<br>
 
-##### Work Contact: 
+##### Work Contact:
+<font>
+<Details>
+<Summary> <b>Click to expand</b> </Summary>
 
 [![Website](https://img.shields.io/badge/Website-ffffff?style=square&logo=opera&logoColor=red)](https://estebanmqz.com) [![LinkedIn](https://img.shields.io/badge/LinkedIn-041a80?style=square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/esteban-m65381722210212839/) [![Portfolio](https://img.shields.io/badge/Github-Portfolio-010b38?style=square&logo=github&logoColor=black)](https://estebanmqz.github.io/Portfolio/) [![E-mail](https://img.shields.io/badge/Business-Mail-052ce6?style=square&logo=mail&logoColor=white)](mailto:esteban@esteban.com)
 <br>
 
 ![GitHub Logo](https://github.com/EstebanMqz.png?size=50) [![Github](https://img.shields.io/badge/Github-000000?style=square&logo=github&logoColor=white)](https://github.com/EstebanMqz) 
+
+</Details>
 
 ##### **Diagram:**
 [![Repository](https://img.shields.io/badge/Repository-0089D6?style=square&logo=microsoft-azure&logoColor=white)](https://mango-dune-07a8b7110.1.azurestaticapps.net/?repo=EstebanMqz%2FSP500-Risk-Optimizations-Forecast)
@@ -49,26 +52,33 @@ The processes made are illustrated by the following:
 
 ![Alt text](images/ToC.jpg)
 
-*Note: The newly generated output containing dataframes and visualizations is saved in `Data` and `Images` folders respectively, <br>
-while their insights are made in the `.ipynb` file.*
+*Note: Newly generated dataframes is saved in `Data` and visualizations in `Images` folders respectively.* <br>
 
 ### Methodology: 
 
-After the Virtual Environment is set up and the libraries installed by executing: <br>
+After the Virtual Environment [fn.get_requirements](https://github.com/EstebanMqz/SP500-Risk-Optimized-Portfolios-PostCovid-ML/blob/main/functions.py) is set up and the libraries installed by executing: <br>
 
 ```python
 fn.library_install("requirements.txt")
 ```
+1. Individual Datasets:
 
-Efficient Data Extraction techniques are made for its cleaning and Exploration followed by Descriptive Statistics $\forall x_i\in [x_1,x_{500}] \hookrightarrow$ S&P 500 that make a storytell out of themselves as well as what and how it has happened. <br>
-*This is made in addition to theoretical demonstrations and experimental comparisons that opt for the use of transformed data.* <br>
+Data Extraction techniques are made for its cleaning and Exploration followed by Descriptive Statistics<br>
+$x_i\in [x_1,x_{500}]$ $\hookrightarrow$ $S$&$P$ $500$ and $x_{j\neq i}\in$ $[x_1,x_{25}]_{{R_{Sortino_{+_{25}}}}}$ $\subset$ $x_i$, to show what and how it has happened. <br>
 
-Moreover, estimators and statistical measures are modelled and they incorporate common periodicity resampling periods, as well as some of the tools that will displayed on this `README.md`. <br>
+They incorporate to [`pandas.DataFrame.describe`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html) the following variables for Simple $R_t$ and Log Returns $r_t$ in order to be visualized:<br>
++ $\mu_{y}$
++ $\sigma_{y}$
++ $\sum_{t=1}^{n} R_t$ $\&$ $r_t$
++ $VaR_{97.5}$ - $VaR_{2.5}$
++ $MDD$
++ $R_{Sharpe}$, $R_{Sortino}$, $R_{Calmar}$, $R_{Burke}$.<br>
+
+*Visualizations include common periodicity resampling periods.* <br>
 
 As result, the following optimizations are made to subsequently generate simulations with what would have been its past behavior, concluding with the optimization's forecast out of the simulated data: <br>
 
 ![Alt text](images/Methodology.jpg)
-
 ---
 #### **References:**
 <font>
@@ -77,7 +87,7 @@ As result, the following optimizations are made to subsequently generate simulat
 
 ##### </u> Pandas: </u> <br>
 
-[`pd.isin`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.isin.html) [`pd.df.sample`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.sample.html) [`pd.df.fillna`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.fillna.html) [`pd.df.resample`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.resample.html)
+[`pd.isin`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.isin.html) [`pd.df.sample`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.sample.html) [`pd.df.fillna`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.fillna.html) [`pd.df.resample`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.resample.html) [`pandas.DataFrame.describe`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html)
 
 ##### </u> Numpy: </u> <br>
 

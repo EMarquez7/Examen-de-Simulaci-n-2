@@ -8,20 +8,27 @@
 # -- ----------------------------------------------------------------------------------------------------------------- #  
 """
 
-from os import path
+import glob, os, sys, warnings
+import pipreqs
+pipreqs.__path__ = ['/path/to/pipreqs']
+
 #Dependencies
 import visualizations as vs
 import data as dt
 
+
 # Libraries in functions.py
 import numpy as np
 import pandas as pd
-pd.set_option("display.max_rows", None, "display.max_columns", None
-              ,"display.max_colwidth", None, "display.width", None)
+
 
 import matplotlib
 import matplotlib.pyplot as plt
+import seaborn as sns
 plt.style.use("dark_background")
+
+import plotly.graph_objects as go 
+import plotly.express as px
 
 import scipy
 import scipy.stats as st
@@ -32,103 +39,46 @@ import sklearn
 from sklearn.neighbors import KernelDensity
 from sklearn.model_selection import GridSearchCV
 from sklearn import metrics
-import ast
 
 from yahoofinancials import YahooFinancials 
 from tabulate import tabulate
 import IPython.display as d
+import IPython.core.display
 
+import ast
 from io import StringIO
 from fitter import Fitter, get_common_distributions, get_distributions 
 import logging
-logging.getLogger().setLevel(logging.ERROR)
 
 import datetime 
 import time
 import warnings
+
+logging.getLogger().setLevel(logging.ERROR)
 warnings.filterwarnings("ignore")
 warnings.filterwarnings("ignore", category=UserWarning)
 
 # -- ------------------------------------------------------------------------------------------------------------------------------ Functions ----------------------------------------------------------------------------------------------------------------------------- -- #
 
 ##############################################################################################################################################################################################################################################################################
-
-docstring = ""
-
 def get_requirements(docstring):
-    #MODIFY libraries:
-    import numpy as np
-    import pandas as pd
-    
-    import matplotlib
-    import matplotlib.pyplot as plt
-
-    import scipy
-    import scipy.stats as st
-    from scipy import optimize
-
-    import sklearn
-    from sklearn.neighbors import KernelDensity
-    from sklearn.model_selection import GridSearchCV
-    from sklearn import metrics
-    import ast
-
-    from yahoofinancials import YahooFinancials
-    from tabulate import tabulate
-    import IPython.display as d
-
-    from io import StringIO
-    from fitter import Fitter, get_common_distributions, get_distributions 
-    import logging
-    logging.getLogger().setLevel(logging.ERROR)
-
-    import datetime
-    import time
-    import warnings
-    warnings.filterwarnings("ignore")
-    warnings.filterwarnings("ignore", category=UserWarning)
     """
-    Function to create requirements.txt file in order to setup environment. Libraries and requirements dictionary
-    must be imported within the function: 1° section libraries with versions attributes, 2° section libraries without
-    versions attribute. Note: Prebuilt libraries should not be included. Include `jupyter` if there are .ipynb scripts.
-    are in the repository as it is not automatically included.
-
+    Function to create requirements.txt file for a repository.
     Parameters
     ----------
     docstring: str
-        Docstring of requirements.txt script in a project. 
-        Usually contains project, script, author, license and repository (remote) 
+        Docstring of requirements.txt script in a project: project, script, author, license and remote.
     Returns
     -------
     requirements.txt
-        requirements.txt with the libraries used and their respective version attributes for an environment setup.
+        requirements.txt with modules and versions used in project.
     """
-
-    #1° SECTION: Libs. with version attributes used in project.
-    requirements = {
-        "numpy >=": np.__version__  ,
-        "pandas >=": pd.__version__ ,
-        "matplotlib >=": matplotlib.__version__ , 
-        "scipy >=": scipy.version.version   , 
-        "sklearn >=": sklearn.__version__   ,
-        "logging >=": logging.__version__   ,
-    }
-
-    with open("requirements.txt", "w") as f:
-        f.write(docstring)
-        for key, value in requirements.items():
-            f.write(f"{key} {value} \n")
-
-        #2° SECTION: Libs. without version attributes in project
-        f.write("jupyter >= 1.0.0 \n") 
-
-        f.write("yahoofinanicals >= 1.14 \n")
-        f.write("tabulate >= 0.8.9 \n")
-        f.write("IPython >= 8.12.0 \n")
-        f.write("fitter >= 1.5.2 \n")
-
-    print("requirements.txt file created in local path:", path.abspath("requirements.txt"))
-    return path.abspath("requirements.txt")
+    
+    with open("requirements.txt", "r+") as f:
+        old = f.read() 
+        f.seek(0) 
+        f.write((docstring + old).replace("==", " >="))
+        f.write("jupyter >= 1.0.0 \n")
 
 ########################################################################################################################################################################################################################################
 def library_install(requirements_txt):
