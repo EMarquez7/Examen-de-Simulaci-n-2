@@ -8,9 +8,7 @@
 # -- ----------------------------------------------------------------------------------------------------------------- #  
 """
 
-import glob, os, sys, warnings
-import pipreqs
-pipreqs.__path__ = ['/path/to/pipreqs']
+import glob, warnings
 
 #Dependencies
 import visualizations as vs
@@ -77,23 +75,20 @@ def get_requirements(docstring):
     with open("requirements.txt", "r+") as f:
         old = f.read() 
         f.seek(0) 
-        f.write((docstring + old).replace("==", " >="))
+        f.write((docstring + old).replace("==", " >= "))
         f.write("jupyter >= 1.0.0 \n")
 
-########################################################################################################################################################################################################################################
-def library_install(requirements_txt):
-    """Install requirements.txt file in project created with fn.get_requirements.
-    Parameters
-        requirements_txt : str
-        requirements.txt file name.
-    """
-    import os
-    import warnings
-    warnings.filterwarnings("ignore")
-    os.system(f"pip install -r {requirements_txt}")
-    print("Requirements installed.")
-    with open("requirements.txt", "r") as f:
-        print(f.read())
+    with open(glob.glob('*.txt')[0], 'r') as file:
+        lines = file.readlines()
+        for line in lines:
+            if '~' in line:
+                lines.remove(line)
+            #If ipython is in line write ipython >= 8.13.0
+            elif 'ipython' in line:
+                lines.remove(line)
+                lines.append('ipython >= 8.10.0 \n')
+    with open(glob.glob('*.txt')[0], 'w') as file:
+        file.writelines(lines)
 
 #########################################################################################################################################################################################################################################
 def SP500_tickers(batches):
