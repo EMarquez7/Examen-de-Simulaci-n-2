@@ -58,7 +58,64 @@ warnings.filterwarnings("ignore")
 warnings.filterwarnings("ignore", category=UserWarning)
 
 # -- ------------------------------------------------------------------------------------------------------------------- Data ------------------------------------------------------------------------------------------------------------------ -- #
+def symbols_index(batches):
+    """
+    Function to fetch symbols as groups per row from any of the provided indexes. Undivisible batches are rounded automatically to fetch all symbols.
+    Parameters:
+    ----------
+    batches : int
+             N symbols fetched as a group or list of lists from an index.  
+    Returns:
+    -------
+    df : pd.DataFrame
+            DataFrame with Symbols with columns(batches) and rows containing index symbols.
+    intput: "1: SP500, 2: DOW_30, 3: NASDAQ_100, 4: RUSSELL_1000, 5: FTSE_100, 6: IPC_35, 7: DAX_40, 8: IBEX_35, 9: CAC_40, 10: EUROSTOXX_50, 11: FTSEMIB_40, 12: HANGSENG_73:"
+    Output: Symbols in index.
+    """
+    
+    indexes = ["SP500", "Dow_30", "Nasdaq_100", "Russell_1000", "FTSE_100", "IPC_35", "DAX_40", "IBEX_35", "CAC_40", "EUROSTOXX_50", "FTSEMIB_40", "HANGSENG_73"]
+    columns = ["Symbol", "Symbol", "Ticker", "Ticker", "Ticker", "Symbol", "Ticker", "Ticker", "Ticker", "Ticker", "Ticker", "Ticker"]
 
+    wiki = "https://en.wikipedia.org/wiki"
+    indexes_html = [wiki + str("/List_of_S%26P_500_companies"), wiki+str("/Dow_Jones_Industrial_Average"), wiki + str("/NASDAQ-100"), wiki +str("/Russell_1000_Index"),
+                wiki + str("/FTSE_100_Index"), wiki + str("/Indice_de_Precios_y_Cotizaciones"), wiki + str("/DAX"), wiki + str("/IBEX_35"), wiki + str("/CAC_40"),
+                wiki + str("/EURO_STOXX_50"), wiki + str("/FTSE_MIB"), wiki + str("/Hang_Seng_Index")]
+                    
+    ref = input("1: SP500, 2: DOW_30, 3: NASDAQ_100, 4: RUSSELL_1000, 5: FTSE_100, 6: IPC_35, 7: DAX_40, 8: IBEX_35, 9: CAC_40, 10: EUROSTOXX_50, 11: FTSEMIB_40, 12: HANGSENG_73:")
+    ref = int(ref)  
+
+    index, index_html, column = indexes[ref-1], pd.read_html(indexes_html[ref-1]), columns[ref-1]
+
+    i = 0
+    while i < len(index_html):
+        try:
+            list = index_html[i][column].values.tolist() 
+        except: 
+            i += 1 
+            continue 
+        else: 
+            break
+ 
+    #If ref is between 1 and 4, shorther
+    if ref == 1 or ref == 2 or ref == 3 or ref == 4:
+        list = [[x.replace(".", "-") for x in list[x:x+batches]] for x in range(0, len(list), batches)]
+    elif ref == 7 or ref == 9 or ref == 10 or ref ==11:
+        list = [[x for x in list[x:x+batches]] for x in range(0, len(list), batches)]
+    elif ref == 5: 
+        list = [[x + ".L" for x in list[x:x+batches]] for x in range(0, len(list), batches)]
+    elif ref == 6:
+        list = [[x + ".MX" for x in list[x:x+batches]] for x in range(0, len(list), batches)]
+    elif ref == 8:
+        list = [[x + ".MC" for x in list[x:x+batches]] for x in range(0, len(list), batches)]
+    elif ref == 12:
+        list = [[x + ".HK" for x in list[x:x+batches]] for x in range(0, len(list), batches)]
+        #Remove strings with SEHK: prefix in a one-liner
+        list = [[x.replace("SEHK:", "") for x in list[x]] for x in range(0, len(list))]
+
+    df = pd.DataFrame(list)
+    df.rename_axis(index, axis=1, inplace=True)
+    
+    return df
 
 ###########################################################################################################################################################################################################################################
 
