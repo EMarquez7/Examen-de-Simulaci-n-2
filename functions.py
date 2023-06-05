@@ -91,25 +91,6 @@ def get_requirements(docstring):
     with open(glob.glob('*.txt')[0], 'w') as file:
         file.writelines(lines)
 
-#########################################################################################################################################################################################################################################
-def SP500_tickers(batches):
-    """
-    Function to fetch tickers from S&P500 .html by batches or (N) lists of lists. Undivisible n batches sizes slice list[-1] 
-    Parameters:
-    ----------
-    batches : int
-             N tickers in lists of lists in function S&P 500 tickers.
-    index: str
-             Index to fetch tickers from S&P 500.    
-    Returns:
-    -------
-    'list 1': List of S&P 500 companies for all quotes listed in the S&P 500 acc0rding to refs.
-    """
-    list = pd.read_html("https://en.wikipedia.org/wiki/List_of_S%26P_500_companies")[0]["Symbol"].values.tolist()
-    data = [[x.replace(".", "-") for x in list[x:x+batches]] for x in range(0, len(list), batches)]
-    
-    return data
-
 ##########################################################################################################################################################################################################################################
 def VaR(df, alpha):
     """

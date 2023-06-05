@@ -38,6 +38,7 @@ from sklearn.neighbors import KernelDensity
 from sklearn.model_selection import GridSearchCV
 from sklearn import metrics
 
+import re
 from yahoofinancials import YahooFinancials 
 from tabulate import tabulate
 import IPython.display as d
@@ -56,7 +57,11 @@ logging.getLogger().setLevel(logging.ERROR)
 warnings.filterwarnings("ignore")
 warnings.filterwarnings("ignore", category=UserWarning)
 
-# -- ----------------------------------------------------------------------------------------------- Data ------------------------------------------------------------------------------- -- #
+# -- ------------------------------------------------------------------------------------------------------------------- Data ------------------------------------------------------------------------------------------------------------------ -- #
+
+
+###########################################################################################################################################################################################################################################
+
 def get_historical_price_data(ticker, years):
     """
     Function to retrieve Adj. Closes data from OHLCV of ticker(s) from Yahoo_Financials for n years backwards from today's date.
