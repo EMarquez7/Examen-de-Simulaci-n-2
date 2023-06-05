@@ -87,6 +87,7 @@ def get_requirements(docstring):
             elif 'ipython' in line:
                 lines.remove(line)
                 lines.append('ipython >= 8.10.0 \n')
+                
     with open(glob.glob('*.txt')[0], 'w') as file:
         file.writelines(lines)
 
