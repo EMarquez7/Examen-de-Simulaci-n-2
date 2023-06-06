@@ -72,7 +72,6 @@ def symbols_index(batches):
     intput: "1: SP500, 2: DOW_30, 3: NASDAQ_100, 4: RUSSELL_1000, 5: FTSE_100, 6: IPC_35, 7: DAX_40, 8: IBEX_35, 9: CAC_40, 10: EUROSTOXX_50, 11: FTSEMIB_40, 12: HANGSENG_73:"
     Output: Symbols in index.
     """
-    
     indexes = ["SP500", "Dow_30", "Nasdaq_100", "Russell_1000", "FTSE_100", "IPC_35", "DAX_40", "IBEX_35", "CAC_40", "EUROSTOXX_50", "FTSEMIB_40", "HANGSENG_73"]
     columns = ["Symbol", "Symbol", "Ticker", "Ticker", "Ticker", "Symbol", "Ticker", "Ticker", "Ticker", "Ticker", "Ticker", "Ticker"]
 
@@ -95,8 +94,7 @@ def symbols_index(batches):
             continue 
         else: 
             break
- 
-    #If ref is between 1 and 4, shorther
+
     if ref == 1 or ref == 2 or ref == 3 or ref == 4:
         list = [[x.replace(".", "-") for x in list[x:x+batches]] for x in range(0, len(list), batches)]
     elif ref == 7 or ref == 9 or ref == 10 or ref ==11:
@@ -109,7 +107,6 @@ def symbols_index(batches):
         list = [[x + ".MC" for x in list[x:x+batches]] for x in range(0, len(list), batches)]
     elif ref == 12:
         list = [[x + ".HK" for x in list[x:x+batches]] for x in range(0, len(list), batches)]
-        #Remove strings with SEHK: prefix in a one-liner
         list = [[x.replace("SEHK:", "") for x in list[x]] for x in range(0, len(list))]
 
     df = pd.DataFrame(list)
