@@ -2,12 +2,21 @@
 
 ### Description: 
 
-Since Covid, data has changed in most industries with few exceptions and the markets are just another example.<br>
+Since Covid, data has changed in most industries and there are few exceptions is one of the markets are one of the greatest examples.<br>
+It can be assumed, therefore, it will cover the optimization process followed by the modelling of the data after its extraction and exploration and several optimizations will be made and compared statistically to make forecasts out of the one that appears to be the best. <br>
 
-For this reason, the present repository automates tasks that deliver a full understanding until the user *(you)* execution's date. <br>
-Furthermore, it generates a variety of optimizations whose purpose is to forecast the mentioned period while being able to incorporate newly generated data with the usage of the snippets provided by the scripts, they could be executed by clicking: <br>
+In this regard, this will be made for $\mathbb Z_1$ = $S\&P500$ out of $\mathbb Z_n: ({1,2,3,..., n})$ indexes available in the repository where the matrix $R^{n \times m}$ will be daily rate of return of the $j_{th}$ symbol at the $i_{th}$ day, which will be transformed given the fact that they are multiplicative as shown: <br>
 
-[![S&P500-Optimizations-Forecast](https://img.shields.io/badge/Notebook-Run>All-black?style=square&logo=github&logoColor=black)](https://github.com/EstebanMqz/SP500-Risk-Optimizations-Forecast/blob/main/SP500-Risk-Optimized-Portfolios-ML.ipynb) <br>
+
+
+
+With this information 
+the present repository automates tasks that deliver a full understanding of its behavior until the user *(you)* execution's date. <br> 
+
+
+
+components the present repository automates tasks that deliver a full understanding of its behavior until the user *(you)* execution's date. <br>
+Furthermore, it generates a variety of optimizations whose purpose is to forecast the mentioned period while being able to incorporate newly generated data with the usage of the snippets provided by the scripts in the notebook: &nbsp; [![S&P500-Optimizations-Forecast](https://img.shields.io/badge/Notebook--gray?style=square&logo=github&logoColor=black)](https://github.com/EstebanMqz/SP500-Risk-Optimizations-Forecast/blob/main/SP500-Risk-Optimized-Portfolios-ML.ipynb) <br>
 
 #### **Repository Tools:**
 <font>
@@ -19,7 +28,7 @@ Furthermore, it generates a variety of optimizations whose purpose is to forecas
 
 ###### Language: [![Python-Badge](https://img.shields.io/badge/Python-3776AB.svg?style=square&logo=Python&logoColor=green)](https://www.python.org)[![Markdown-Badge](https://img.shields.io/badge/Markdown-000000.svg?style=square&logo=Markdown&logoColor=white)](https://www.markdownguide.org)[![yaml-Badge](https://img.shields.io/badge/YAML-000000?style=square&logo=yaml&logoColor=red)](https://yaml.org)
 
-###### Libraries:  [![Numpy-Badge](https://img.shields.io/badge/Numpy-013243?style=square&logo=numpy&logoColor=white)](https://numpy.org)  [![Pandas-Badge](https://img.shields.io/badge/Pandas-150458?style=square&logo=pandas&logoColor=white)](https://pandas.pydata.org)  [![Scipy-Badge](https://img.shields.io/badge/Scipy-darkblue?style=square&logo=scipy&logoColor=white)](https://www.scipy.org)  [![Sklearn-Badge](https://img.shields.io/badge/Sklearn-red?style=square&logo=scikit-learn&logoColor=white)](https://scikit-learn.org/stable/)  [![Fitter-Badge](https://img.shields.io/badge/Fitter-000000?style=square&logo=python&&logoColor=yellow)](https://fitter.readthedocs.io/en/latest/)  [![Matplotlib-Badge](https://img.shields.io/badge/Matplotlib-40403f?style=square&logo=python&logoColor=blue)](https://matplotlib.org)  [![Seaborn-Badge](https://img.shields.io/badge/Seaborn-40403f?style=square&logo=python&logoColor=blue)](https://seaborn.pydata.org)
+###### Libraries:  [![Numpy-Badge](https://img.shields.io/badge/Numpy-013243?style=square&logo=numpy&logoColor=white)](https://numpy.org)  [![Pandas-Badge](https://img.shields.io/badge/Pandas-150458?style=square&logo=pandas&logoColor=white)](https://pandas.pydata.org)  [![Scipy-Badge](https://img.shields.io/badge/Scipy-darkblue?style=square&logo=scipy&logoColor=white)](https://www.scipy.org)  [![Fitter-Badge](https://img.shields.io/badge/Fitter-000000?style=square&logo=python&&logoColor=yellow)](https://fitter.readthedocs.io/en/latest/)  [![Matplotlib-Badge](https://img.shields.io/badge/Matplotlib-40403f?style=square&logo=python&logoColor=blue)](https://matplotlib.org)  [![Seaborn-Badge](https://img.shields.io/badge/Seaborn-40403f?style=square&logo=python&logoColor=blue)](https://seaborn.pydata.org)
 
 ###### Interface: [![React-Badge](https://img.shields.io/badge/React-61DAFB?style=square&logo=react&logoColor=black)](https://create-react-app.dev)
 
@@ -112,8 +121,8 @@ As result, the following optimizations are made to subsequently generate simulat
 + [`statsmodels`](https://www.statsmodels.org/stable/index.html)<br>
 
 ###### *Other References*: <br>
++ ##### Indexes: [`S&P`](https://en.wikipedia.org/wiki/List_of_S%26P_500_companies), [`Dow Jones`](https://en.wikipedia.org/wiki/Dow_Jones_Industrial_Average), [`NASDAQ 100`](https://en.wikipedia.org/wiki/NASDAQ-100), [`Russell 1000`](https://en.wikipedia.org/wiki/Russell_1000_Index), [`FTSE 100`](https://en.wikipedia.org/wiki/FTSE_100_Index), [`IPC`](https://en.wikipedia.org/wiki/Indice_de_Precios_y_Cotizaciones), [`DAX`](https://en.wikipedia.org/wiki/DAX), [`IBEX 35`](https://en.wikipedia.org/wiki/IBEX_35), [`CAC 40`](https://en.wikipedia.org/wiki/CAC_40), [`EURO STOXX 50`](https://en.wikipedia.org/wiki/EURO_STOXX_50), [`FTSE MIB`](https://en.wikipedia.org/wiki/FTSE_MIB), [`Hang Seng Index`](https://en.wikipedia.org/wiki/Hang_Seng_Index)
 + [`Convolution of Distributions`](https://en.wikipedia.org/wiki/Convolution_of_probability_distributions)
 + [`*i.i.d* $x \sim X$`](https://en.wikipedia.org/wiki/Independent_and_identically_distributed_random_variables)<br>
 + [`LaTeX`](https://en.wikipedia.org/wiki/List_of_mathematical_symbols_by_subject)</br>
 + [`Daily Treasury Par Yield Curve Rates`](https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value_month=202304)<br>
-+ [`$S$&$P$ $500$ Symbols`](https://en.wikipedia.org/wiki/List_of_S%26P_500_companies)</br>

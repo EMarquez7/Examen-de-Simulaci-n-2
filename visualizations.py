@@ -97,6 +97,7 @@ def cmap_bar(df_col, df_index, x_ticks, y_ticks, title, x_label, y_label):
 def Yearly_Returns(Simple, Log, color):
     """
     Function to plot yearly returns distribution and kde with Yearly Simple & Log returns in index as dataframe with quotes in cols.
+
     Parameters:
     ----------
     Simple: dataframe
@@ -133,6 +134,7 @@ def Yearly_Returns(Simple, Log, color):
 ############################################################################################################################################################################################################################################
 def BoxHist(data, output, bins, color, label, title, start, end):
     """Boxplot and Histogram for selected output method for returns method for data, assuming equiprobable weights.
+
     Parameters
     ----------
     data : DataFrame
@@ -189,6 +191,7 @@ def summary(dataframe, r, rf, best, start, end):
     """
     Function that calculates Annualized Returns and Std. Deviation for a given returns in order to obtain 
     n_best Sharpe & Sortino Ratios with a risk-free rate.
+
     Parameters:
     ----------
     dataframe : dataframe
@@ -271,6 +274,7 @@ def Selection_R_SLog_Plot(data, rf, best, start, execution_date, r_jump):
 def Stats(dataframe, Selection, P,  title, start, end, percentiles, dist, color):
     """
     Stats is a function that resamples data from a Selection performed over a dataframe.
+
     Parameters:
     ----------
     dataframe : dataframe
@@ -432,6 +436,7 @@ def Accum_ts(accum):
     """
     Accum_ts is a function that plots time-series in a dataframe with 3 strategies as cols with matplot.
     Given dates in X-axis labels are formatted on a monthly / yearly basis for visualization purposes.
+
     Parameters:
     ----------
     accum : dataframe
@@ -456,11 +461,10 @@ def Accum_ts(accum):
 
 ###################################################################################################################################################################################################################################################
 def create_corr_plot(df, plot_pacf=False): 
-
-
     """
     Function that graphs lines+marker AutoCorrelation and Partial AutoCorrelation 
     plot intended to model economic index Actual values, alpha=0.05.
+
     Parameters:
     ----------
     index: Time series in which to perform ACF, PACF plots.

@@ -59,8 +59,11 @@ warnings.filterwarnings("ignore", category=UserWarning)
 
 # -- ------------------------------------------------------------------------------------------------------------------- Data ------------------------------------------------------------------------------------------------------------------ -- #
 def symbols_index(batches):
-    """
-    Function to fetch symbols as groups per row from any of the provided indexes. Undivisible batches are rounded automatically to fetch all symbols.
+    {"""
+    Function to fetch symbols by batches from any of the major indexes given as input. NaNs fill the last batch if necessary. 
+    After running the function an input is required by the user to select the index to fetch the symbols from
+    intput: "1: SP500, 2: DOW_30, 3: NASDAQ_100, 4: RUSSELL_1000, 5: FTSE_100, 6: IPC_35, 7: DAX_40, 8: IBEX_35, 9: CAC_40, 10: EUROSTOXX_50, 11: FTSEMIB_40, 12: HANGSENG_73:"
+
     Parameters:
     ----------
     batches : int
@@ -69,9 +72,8 @@ def symbols_index(batches):
     -------
     df : pd.DataFrame
             DataFrame with Symbols with columns(batches) and rows containing index symbols.
-    intput: "1: SP500, 2: DOW_30, 3: NASDAQ_100, 4: RUSSELL_1000, 5: FTSE_100, 6: IPC_35, 7: DAX_40, 8: IBEX_35, 9: CAC_40, 10: EUROSTOXX_50, 11: FTSEMIB_40, 12: HANGSENG_73:"
     Output: Symbols in index.
-    """
+    """}
     indexes = ["SP500", "Dow_30", "Nasdaq_100", "Russell_1000", "FTSE_100", "IPC_35", "DAX_40", "IBEX_35", "CAC_40", "EUROSTOXX_50", "FTSEMIB_40", "HANGSENG_73"]
     columns = ["Symbol", "Symbol", "Ticker", "Ticker", "Ticker", "Symbol", "Ticker", "Ticker", "Ticker", "Ticker", "Ticker", "Ticker"]
 
@@ -112,36 +114,45 @@ def symbols_index(batches):
     df = pd.DataFrame(list)
     df.rename_axis(index, axis=1, inplace=True)
     
-    return df
+    return df,list
 
 ###########################################################################################################################################################################################################################################
 
-def get_historical_price_data(ticker, years):
-    """
-    Function to retrieve Adj. Closes data from OHLCV of ticker(s) from Yahoo_Financials for n years backwards from today's date.
-    It returns a dataframe with the Adj. Close(s) of ticker(s) with datetime as index.
+def get_historical_price_data(tickers, years, columns = ["adjclose", "open", "high", "low", "close", "volume"]):
+    {"""
+    Function to fetch adjcloses and OHLCV cols. for ticker(s) with Yahoo_Financials api, n years backwards from today's date.
+    Note: Slicing dates in returned pd.DataFrame should be done afterwards from calling the function.
+
     Parameters:
     ----------
-    ticker : str
-        Ticker of the stock(s) to be downloaded as a string or str list, e.g: ["ticker_1", "ticker_2", ... , "ticker_n"]
+    ticker : list
+        Ticker of the stock(s) symbols to be downloaded, e.g: ["ticker_1", "ticker_2", ... , "ticker_n"] (max. 50) within a list.
     years : int
-        Number of years for data download from today's date backwards.
+        Number of years for data download from today's date backwards (slicing dates is afterwards if required).
+    columns : list
+        List of columns to be downloaded from ticker's OHCLV. as ["adjclose", "open", "high", "low", "close", "volume"]
+        e.g: ["open", "close", "volume"]. If adjclose is not included, it will be added in first column with the ticker's name.
 
     Returns:
     -------
     data : pandas.DataFrame
-        Adj. Close(s) of ticker(s) with datetime as index, modify function to obtain        
-    """
+        pd.DataFrame of adjcloses and given OHLCV cols. for ticker(s) with datetime as index.    
+    """}
     start = (datetime.datetime.now() - datetime.timedelta(days = 365 * years)).strftime("%Y-%m-%d") 
     end = (datetime.datetime.now()).strftime("%Y-%m-%d") #Today
 
     try:
-                data = pd.DataFrame(YahooFinancials(ticker).get_historical_price_data(start_date = start,
-                                                                        end_date = end, time_interval="daily")[ticker]["prices"])
+                data = pd.DataFrame(YahooFinancials(tickers).get_historical_price_data(start_date = start,
+                                                                        end_date = end, time_interval="daily")[tickers]["prices"])
                 data["formatted_date"] = pd.to_datetime(data["formatted_date"])
                 data = data.set_index("formatted_date")
-                data = data.drop(["date", "high", "low", "open", "close", "volume"], axis = 1)               
-                data = data.rename(columns = {"adjclose" : ticker})
+
+                if "adjclose" not in columns:
+                      columns.insert(0, "adjclose")
+
+                data = data[columns] 
+                data = data.drop(columns = data.columns[~data.columns.isin(columns)])
+                data = data.rename(columns = {"adjclose": tickers})
 
     except KeyError:
         pass
@@ -154,10 +165,11 @@ def get_historical_price_data(ticker, years):
 
 ###########################################################################################################################################################################################################################################
 def DQR(data):
-    """
+    {"""
     Function to create a data quality report for a given dataframe.
     It returns a dataframe with the following columns:
-    columns=[['Column_Name','Data_Type', 'Unique_Values', 'Missing_Values', 'Zero_Values', 'Outliers', 'Unique_Outliers']]    
+    columns=[['Column_Name','Data_Type', 'Unique_Values', 'Missing_Values', 'Zero_Values', 'Outliers', 'Unique_Outliers']]
+    
     Parameters:
     ----------
     data: pd.DataFrame() :
@@ -166,7 +178,7 @@ def DQR(data):
     -------
     data_quality_report: pd.DataFrame() :
                          Dataframe with the data quality report with given columns as variables.
-    """
+    """}
 
     data = data.copy()
     data_quality_report = pd.DataFrame(columns=['Data_Type', 'Unique_Values', 'Missing_Values', 'Zero_Values', 'Outliers', 'Unique_Outliers'])
@@ -183,7 +195,7 @@ def DQR(data):
 
 ###########################################################################################################################################################################################################################################
 def data_describe(df, output, rf, start, end):
-    """ Function that returns an adavnaced describe dataframee for time series values simple_returns or log_returns with a start and end date in case it is a subset.
+    {""" Function that returns an adavnaced describe dataframee for time series values simple_returns or log_returns with a start and end date in case it is a subset.
     Otherwise, dates would be the original start and end dates of the dataframe. 
 
     Parameters:
@@ -205,7 +217,7 @@ def data_describe(df, output, rf, start, end):
     'Simple': If output == 'Simple', returns: stats for simple_returns, simple_returns
     'log_returns': If output == 'Log_returns', returns: stats for log_returns, log_returns  
     
-    """
+    """}
     df = df.loc[start:end]
     description = df.describe()
     description = description.iloc[3:, :]
