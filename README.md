@@ -89,40 +89,48 @@ As result, the following optimizations are made to subsequently generate simulat
 
 ![Alt text](images/Methodology.jpg)
 ---
-#### **References:**
+### **References:**
 <font>
 <Details>
 <Summary> <b>Click to expand</b> </Summary>
 
-##### </u> Pandas: </u> <br>
+#### Libraries:
+
++ ##### </u> Pandas: </u> <br>
 
 [`pd.isin`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.isin.html) [`pd.df.sample`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.sample.html) [`pd.df.fillna`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.fillna.html) [`pd.df.resample`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.resample.html) [`pandas.DataFrame.describe`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html)
 
-##### </u> Numpy: </u> <br>
++ ##### </u> Numpy: </u> <br>
 
 [`np.quantile`](https://numpy.org/doc/stable/reference/generated/numpy.quantile.html) [`np.arange`](https://numpy.org/doc/stable/reference/generated/numpy.arange.html) [`np.add`](https://numpy.org/doc/stable/reference/generated/numpy.add.html) [`np.subtract`](https://numpy.org/doc/stable/reference/generated/numpy.subtract.html) [`np.dot`](https://numpy.org/doc/stable/reference/generated/numpy.dot.html) [`np.divide`](https://numpy.org/doc/stable/reference/generated/numpy.divide.html) [`np.cov`](https://numpy.org/doc/stable/reference/generated/numpy.cov.html) [`np.power`](https://numpy.org/doc/stable/reference/generated/numpy.power.html) <br>
 
-##### </u> Stats: </u> <br>
++ ##### </u> Stats: </u> <br>
 
 [`scipy.stats`](https://docs.scipy.org/doc/scipy/reference/stats.html) [`scipy.stats.rv_continuous`](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.rv_continuous.html) [`scipy.stats.rv_discrete`](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.rv_discrete.html) [`scipy.optimize.minimize`](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html)
 
-##### </u> Sklearn: </u> <br>
++ ##### </u> Sklearn: </u> <br>
 
 [`sklearn.model_selection.GridSearchCV`](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html) [`Hyper-parameters Exhaustive GridSearchCV`](https://scikit-learn.org/stable/modules/grid_search.html) <br>
-
 [`sklearn.neighbors.KernelDensity`](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KernelDensity.html) [`sklearn.neighbors.KernelDensity.fit`](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KernelDensity.html#sklearn.neighbors.KernelDensity.fit) <br>
-
 [`sklearn.neighbors.KernelDensity.score_samples`](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KernelDensity.html#sklearn.neighbors.KernelDensity.score_samples) [`sklearn.metrics`](https://scikit-learn.org/stable/modules/model_evaluation.html)
 
-###### Other Libraries: <br>
++ ##### Other: <br>
 
-+ [`fitter`](https://fitter.readthedocs.io/en/latest/index.html)<br>
+[`fitter`](https://fitter.readthedocs.io/en/latest/index.html)<br>
+[`statsmodels`](https://www.statsmodels.org/stable/index.html)<br><br>
 
-+ [`statsmodels`](https://www.statsmodels.org/stable/index.html)<br>
+###### Other References: <br>
+###### *Indexes Supported*:<br>
++ [`S&P`](https://en.wikipedia.org/wiki/List_of_S%26P_500_companies) [`Dow Jones`](https://en.wikipedia.org/wiki/Dow_Jones_Industrial_Average) [`NASDAQ 100`](https://en.wikipedia.org/wiki/NASDAQ-100) [`Russell 1000`](https://en.wikipedia.org/wiki/Russell_1000_Index) [`FTSE 100`](https://en.wikipedia.org/wiki/FTSE_100_Index) [`IPC`](https://en.wikipedia.org/wiki/Indice_de_Precios_y_Cotizaciones) [`DAX`](https://en.wikipedia.org/wiki/DAX) [`IBEX 35`](https://en.wikipedia.org/wiki/IBEX_35) [`CAC 40`](https://en.wikipedia.org/wiki/CAC_40) [`EURO STOXX 50`](https://en.wikipedia.org/wiki/EURO_STOXX_50) [`FTSE MIB`](https://en.wikipedia.org/wiki/FTSE_MIB) [`Hang Seng Index`](https://en.wikipedia.org/wiki/Hang_Seng_Index)
 
-###### *Other References*: <br>
-+ ##### Indexes: [`S&P`](https://en.wikipedia.org/wiki/List_of_S%26P_500_companies), [`Dow Jones`](https://en.wikipedia.org/wiki/Dow_Jones_Industrial_Average), [`NASDAQ 100`](https://en.wikipedia.org/wiki/NASDAQ-100), [`Russell 1000`](https://en.wikipedia.org/wiki/Russell_1000_Index), [`FTSE 100`](https://en.wikipedia.org/wiki/FTSE_100_Index), [`IPC`](https://en.wikipedia.org/wiki/Indice_de_Precios_y_Cotizaciones), [`DAX`](https://en.wikipedia.org/wiki/DAX), [`IBEX 35`](https://en.wikipedia.org/wiki/IBEX_35), [`CAC 40`](https://en.wikipedia.org/wiki/CAC_40), [`EURO STOXX 50`](https://en.wikipedia.org/wiki/EURO_STOXX_50), [`FTSE MIB`](https://en.wikipedia.org/wiki/FTSE_MIB), [`Hang Seng Index`](https://en.wikipedia.org/wiki/Hang_Seng_Index)
-+ [`Convolution of Distributions`](https://en.wikipedia.org/wiki/Convolution_of_probability_distributions)
-+ [`*i.i.d* $x \sim X$`](https://en.wikipedia.org/wiki/Independent_and_identically_distributed_random_variables)<br>
-+ [`LaTeX`](https://en.wikipedia.org/wiki/List_of_mathematical_symbols_by_subject)</br>
+###### *Official Market Risks Data & Announcements*:
 + [`Daily Treasury Par Yield Curve Rates`](https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value_month=202304)<br>
++ [`Bank of International Settlements (BIS)`](https://www.bis.org/statistics/index.htm)<br>
+
+###### *Other*:
++ [`Convolution of Distributions`](https://en.wikipedia.org/wiki/Convolution_of_probability_distributions)<br>
++ [`i.i.d`](https://en.wikipedia.org/wiki/Independent_and_identically_distributed_random_variables)<br>
++ [`LaTeX`](https://en.wikipedia.org/wiki/List_of_mathematical_symbols_by_subject)</br>
++ [`Expected Shortfall (ES)`](https://en.wikipedia.org/wiki/Expected_shortfall)<br>
+
+

@@ -58,7 +58,6 @@ warnings.filterwarnings("ignore", category=UserWarning)
 
 # -- ------------------------------------------------------------------------------------------------------------------------------ Functions ----------------------------------------------------------------------------------------------------------------------------- -- #
 
-##############################################################################################################################################################################################################################################################################
 def get_requirements(docstring):
     {"""
     Function to create requirements.txt file for a repository.
@@ -91,6 +90,29 @@ def get_requirements(docstring):
                 
     with open(glob.glob('*.txt')[0], 'w') as file:
         file.writelines(lines)
+
+
+##############################################################################################################################################################################################################################################################################
+def df_index(list, adjindex, n_size):
+    {"""Function that receives pd.DataFrames of mod[0].symbols_index compressed in lists which contains index symbols and their OHCLV get_historical_price_data with its F size as int
+    and returns a pd.DataFrame with their respective symbols, sizes and mean volumes.
+
+    Parameters
+    ----------
+    list : list
+        List of pd.DataFrames in the indexes compressed in lists which contains passed indexes symbols.
+    adjindex : pd.DataFrame
+        pd.DataFrame of list OHCLV data with a fetched 'volume' column necessarily.
+    n_size : int
+        Size of the passed indexes as a list of int. (e.g. [250, 5, 100, 50, 10, 5, 25, 200, 10, 10, 5, 1000])
+    """}
+
+    n_symbols = [list[i].count(axis=1).sum() for i in range(len(list))]
+    adjindex_size = pd.DataFrame({ 'Symbols': n_symbols, 'Size=F': n_size, "Volume Mean": adjindex.volume.mean() })
+    adjindex_size.set_index(pd.Series([adjindex.columns[i] for i in range(0, len(adjindex.columns), 6)]), inplace=True)
+    adjindex_size.sort_values(by="Volume Mean", ascending=False)
+    
+    return adjindex_size
 
 ##########################################################################################################################################################################################################################################
 def VaR(df, alpha):

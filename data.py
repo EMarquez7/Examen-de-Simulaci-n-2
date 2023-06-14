@@ -62,7 +62,7 @@ def symbols_index(batches):
     {"""
     Function to fetch symbols by batches from any of the major indexes given as input. NaNs fill the last batch if necessary. 
     After running the function an input is required by the user to select the index to fetch the symbols from
-    intput: "1: SP500, 2: DOW_30, 3: NASDAQ_100, 4: RUSSELL_1000, 5: FTSE_100, 6: IPC_35, 7: DAX_40, 8: IBEX_35, 9: CAC_40, 10: EUROSTOXX_50, 11: FTSEMIB_40, 12: HANGSENG_73:"
+    input: "1: SP500, 2: DOW_30, 3: NASDAQ_100, 4: RUSSELL_1000, 5: FTSE_100, 6: IPC_35, 7: DAX_40, 8: IBEX_35, 9: CAC_40, 10: EUROSTOXX_50, 11: FTSEMIB_40, 12: HANGSENG_73:"
 
     Parameters:
     ----------
@@ -71,10 +71,10 @@ def symbols_index(batches):
     Returns:
     -------
     df : pd.DataFrame
-            DataFrame with Symbols with columns(batches) and rows containing index symbols.
+            DataFrame of Symbols with columns(batches) and rows containing index symbols.
     Output: Symbols in index.
     """}
-    indexes = ["SP500", "Dow_30", "Nasdaq_100", "Russell_1000", "FTSE_100", "IPC_35", "DAX_40", "IBEX_35", "CAC_40", "EUROSTOXX_50", "FTSEMIB_40", "HANGSENG_73"]
+    indexes = ["SP500", "DOW_30", "NASDAQ_100", "RUSSELL_1000", "FTSE_100", "IPC_35", "DAX_40", "IBEX_35", "CAC_40", "EUROSTOXX_50", "FTSEMIB_40", "HANGSENG_73"]
     columns = ["Symbol", "Symbol", "Ticker", "Ticker", "Ticker", "Symbol", "Ticker", "Ticker", "Ticker", "Ticker", "Ticker", "Ticker"]
 
     wiki = "https://en.wikipedia.org/wiki"
@@ -114,7 +114,7 @@ def symbols_index(batches):
     df = pd.DataFrame(list)
     df.rename_axis(index, axis=1, inplace=True)
     
-    return df,list
+    return df, list
 
 ###########################################################################################################################################################################################################################################
 
@@ -164,6 +164,8 @@ def get_historical_price_data(tickers, years, columns = ["adjclose", "open", "hi
     return data
 
 ###########################################################################################################################################################################################################################################
+
+
 def DQR(data):
     {"""
     Function to create a data quality report for a given dataframe.
