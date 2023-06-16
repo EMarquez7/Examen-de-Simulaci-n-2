@@ -119,7 +119,7 @@ As result, the following optimizations are made to subsequently generate simulat
 [`fitter`](https://fitter.readthedocs.io/en/latest/index.html)<br>
 [`statsmodels`](https://www.statsmodels.org/stable/index.html)<br><br>
 
-###### Other References: <br>
++ ##### Other References: <br>
 ###### *Indexes Supported*:<br>
 + [`S&P`](https://en.wikipedia.org/wiki/List_of_S%26P_500_companies) [`Dow Jones`](https://en.wikipedia.org/wiki/Dow_Jones_Industrial_Average) [`NASDAQ 100`](https://en.wikipedia.org/wiki/NASDAQ-100) [`Russell 1000`](https://en.wikipedia.org/wiki/Russell_1000_Index) [`FTSE 100`](https://en.wikipedia.org/wiki/FTSE_100_Index) [`IPC`](https://en.wikipedia.org/wiki/Indice_de_Precios_y_Cotizaciones) [`DAX`](https://en.wikipedia.org/wiki/DAX) [`IBEX 35`](https://en.wikipedia.org/wiki/IBEX_35) [`CAC 40`](https://en.wikipedia.org/wiki/CAC_40) [`EURO STOXX 50`](https://en.wikipedia.org/wiki/EURO_STOXX_50) [`FTSE MIB`](https://en.wikipedia.org/wiki/FTSE_MIB) [`Hang Seng Index`](https://en.wikipedia.org/wiki/Hang_Seng_Index)
 
@@ -128,9 +128,11 @@ As result, the following optimizations are made to subsequently generate simulat
 + [`Bank of International Settlements (BIS)`](https://www.bis.org/statistics/index.htm)<br>
 
 ###### *Other*:
++ [`LaTeX`](https://en.wikipedia.org/wiki/List_of_mathematical_symbols_by_subject)</br>
++ [`Expected Shortfall (ES)`](https://en.wikipedia.org/wiki/Expected_shortfall) [`Value at Risk (VaR)`](https://en.wikipedia.org/wiki/Value_at_risk) 
 + [`Convolution of Distributions`](https://en.wikipedia.org/wiki/Convolution_of_probability_distributions)<br>
 + [`i.i.d`](https://en.wikipedia.org/wiki/Independent_and_identically_distributed_random_variables)<br>
-+ [`LaTeX`](https://en.wikipedia.org/wiki/List_of_mathematical_symbols_by_subject)</br>
+
 + [`Expected Shortfall (ES)`](https://en.wikipedia.org/wiki/Expected_shortfall)<br>
 
 
