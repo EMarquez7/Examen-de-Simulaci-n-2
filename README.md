@@ -16,7 +16,7 @@ the present repository automates tasks that deliver a full understanding of its 
 
 
 components the present repository automates tasks that deliver a full understanding of its behavior until the user *(you)* execution's date. <br>
-Furthermore, it generates a variety of optimizations whose purpose is to forecast the mentioned period while being able to incorporate newly generated data with the usage of the snippets provided by the scripts in the notebook: &nbsp; [![S&P500-Optimizations-Forecast](https://img.shields.io/badge/Notebook--gray?style=square&logo=github&logoColor=black)](https://github.com/EstebanMqz/SP500-Risk-Optimizations-Forecast/blob/main/SP500-Risk-Optimized-Portfolios-ML.ipynb) <br>
+Furthermore, it generates a variety of optimizations whose purpose is to forecast the mentioned period while being able to incorporate newly generated data with the usage of the snippets provided by the scripts in the notebook: &nbsp; [![S&P500-Optimizations-Forecast](https://img.shields.io/badge/Notebook--gray?style=square&logo=github&logoColor=black)](https://nbviewer.org/github/EstebanMqz/SP500-Risk-Optimizations-Forecast/blob/main/SP500-Risk-Optimized-Portfolios-ML.ipynb) <br>
 
 #### **Repository Tools:**
 <font>
