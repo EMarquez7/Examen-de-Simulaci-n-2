@@ -52,7 +52,7 @@ Description:
 Data has changed since Covid in most industries and the markets project the public's sentiment, financially speaking.<br>
 With this in mind, indexes <i><b>symbols, adjcloses & OHCLVs</i></b> are fetched in order to show the big picture of fluctuations to the user, as well as to note important insights.<br>
 <font color= '#008dde'> <b>Supports:</b>
-$S\&P_{500}$ , $Nasdaq_{100}$, $Dow_{30}$, $Russell_{1000}$, $FTSE_{100}$, $IPC_{35}$, $DAX_{40}$, $IBEX_{35}$, $CAC_{40}$, $EUROSTOXX_{50}$, $FTSEMIB_{40}$ $\&$ $HANGSENG_{73}$ </font> <i> (see refs.) </i>.
+$SP_{500}$ , $Nasdaq_{100}$, $Dow_{30}$, $Russell_{1000}$, $FTSE_{100}$, $IPC_{35}$, $DAX_{40}$, $IBEX_{35}$, $CAC_{40}$, $EUROSTOXX_{50}$, $FTSEMIB_{40}$ and $HANGSENG_{73}$ </font> <i> (see refs.) </i>.
 
 Out of the indexes supported, the $S\&P500$ is modelled because:<br>
 
