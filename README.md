@@ -54,7 +54,7 @@ With this in mind, indexes <i><b>symbols, adjcloses & OHCLVs</i></b> are fetched
 <font color= '#008dde'> <b>Supports:</b>
 $SP_{500}$ , $Nasdaq_{100}$, $Dow_{30}$, $Russell_{1000}$, $FTSE_{100}$, $IPC_{35}$, $DAX_{40}$, $IBEX_{35}$, $CAC_{40}$, $EUROSTOXX_{50}$, $FTSEMIB_{40}$ and $HANGSENG_{73}$ </font> <i> (see refs.) </i>.
 
-Out of the indexes supported, the $S\&P500$ is modelled because:<br>
+Out of the indexes supported, the $SP_{500}$ is modelled because:<br>
 
 1. It is the most commonly used index for determining the <i><u>overall state of the economy.</u></i><br>
 2. Because it has the <i><u>most liquid derivatives markets</u></i> worldwide and the same can generally be said for its components.<br>
