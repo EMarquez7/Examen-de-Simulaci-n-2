@@ -1,27 +1,28 @@
-##  S&P 500 Risk Optimizations Forecast
+## <center> <font color= '#3d74eb'><b> Index Optimizations - Simulations and Forecast </b> </font> </center>
 
-### Description: 
+<div align="right">
 
-Since Covid, data has changed in most industries and there are few exceptions is one of the markets are one of the greatest examples.<br>
-It can be assumed, therefore, it will cover the optimization process followed by the modelling of the data after its extraction and exploration and several optimizations will be made and compared statistically to make forecasts out of the one that appears to be the best. <br>
+&nbsp; [![Jupyter](https://img.shields.io/badge/jupyter-nbviewer-000000?style=square&logo=jupyter&logoColor=orange)](https://nbviewer.jupyter.org/github/EstebanMqz/SP500-Risk-Optimizations-Forecast/blob/main/SP500-Risk-Optimized-Portfolios-ML.ipynb) <br>
 
-In this regard, this will be made for $\mathbb Z_1$ = $S\&P500$ out of $\mathbb Z_n: ({1,2,3,..., n})$ indexes available in the repository where the matrix $R^{n \times m}$ will be daily rate of return of the $j_{th}$ symbol at the $i_{th}$ day, which will be transformed given the fact that they are multiplicative as shown: <br>
+</div>
 
+<Details>
+<Summary> <b>  Click to expand: </b> 
 
+![S&P500-Optimizations-Forecast](https://img.shields.io/badge/Author's_Contact-EstebanMqz-black?style=square&logo=github&logoColor=black)
 
+</b> </Summary>
 
-With this information 
-the present repository automates tasks that deliver a full understanding of its behavior until the user *(you)* execution's date. <br> 
+[![Website](https://img.shields.io/badge/Website-ffffff?style=square&logo=opera&logoColor=red)](https://estebanmqz.com) [![LinkedIn](https://img.shields.io/badge/LinkedIn-041a80?style=square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/esteban-m65381722210212839/) [![Portfolio](https://img.shields.io/badge/Github-Portfolio-010b38?style=square&logo=github&logoColor=black)](https://estebanmqz.github.io/Portfolio/) [![E-mail](https://img.shields.io/badge/Business-Mail-052ce6?style=square&logo=mail&logoColor=white)](mailto:esteban@esteban.com)
+<br>
 
+![GitHub Logo](https://github.com/EstebanMqz.png?size=50) [![Github](https://img.shields.io/badge/Github-000000?style=square&logo=github&logoColor=white)](https://github.com/EstebanMqz) 
 
+</Details>
 
-components the present repository automates tasks that deliver a full understanding of its behavior until the user *(you)* execution's date. <br>
-Furthermore, it generates a variety of optimizations whose purpose is to forecast the mentioned period while being able to incorporate newly generated data with the usage of the snippets provided by the scripts in the notebook: &nbsp; [![S&P500-Optimizations-Forecast](https://img.shields.io/badge/Notebook--gray?style=square&logo=github&logoColor=black)](https://nbviewer.org/github/EstebanMqz/SP500-Risk-Optimizations-Forecast/blob/main/SP500-Risk-Optimized-Portfolios-ML.ipynb) <br>
-
-#### **Repository Tools:**
 <font>
 <Details>
-<Summary> <b>Click to expand</b> </Summary>
+<Summary> <b>Repository Tools:</b> </Summary>
 
 ###### Actions: [![Repo-Visualization-Badge](https://img.shields.io/badge/Action-Visualization-020521?style=square&logo=github&logoColor=white)](https://githubnext.com/projects/repo-visualization)
 ###### Main Text-Editor: [![VSCode-Badge](https://img.shields.io/badge/VSCode-007ACC?style=square&logo=visual-studio-code&logoColor=white)](https://code.visualstudio.com/)&nbsp;[![Jupyter-Badge](https://img.shields.io/badge/Jupyter-F37626?style=square&logo=Jupyter&logoColor=white)](https://jupyter.org/try) 
@@ -38,23 +39,29 @@ Furthermore, it generates a variety of optimizations whose purpose is to forecas
 ###### License: [![Creative Commons BY 3.0](https://img.shields.io/badge/License-CC%20BY%203.0-yellow.svg?style=square&logo=creative-commons&logoColor=white)](https://creativecommons.org/licenses/by/3.0/)
 
 </Details>
-
-##### Work Contact:
-<font>
 <Details>
-<Summary> <b>Click to expand</b> </Summary>
+<Summary> <b> Diagram: </b> </Summary>
 
-[![Website](https://img.shields.io/badge/Website-ffffff?style=square&logo=opera&logoColor=red)](https://estebanmqz.com) [![LinkedIn](https://img.shields.io/badge/LinkedIn-041a80?style=square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/esteban-m65381722210212839/) [![Portfolio](https://img.shields.io/badge/Github-Portfolio-010b38?style=square&logo=github&logoColor=black)](https://estebanmqz.github.io/Portfolio/) [![E-mail](https://img.shields.io/badge/Business-Mail-052ce6?style=square&logo=mail&logoColor=white)](mailto:esteban@esteban.com)
-<br>
-
-![GitHub Logo](https://github.com/EstebanMqz.png?size=50) [![Github](https://img.shields.io/badge/Github-000000?style=square&logo=github&logoColor=white)](https://github.com/EstebanMqz) 
-
-</Details>
-
-##### **Diagram:**
 [![Repository](https://img.shields.io/badge/Repository-0089D6?style=square&logo=microsoft-azure&logoColor=white)](https://mango-dune-07a8b7110.1.azurestaticapps.net/?repo=EstebanMqz%2FSP500-Risk-Optimizations-Forecast)
 
 <img src="diagram.svg" width="280" height="280">
+</Details>
+
+Description: 
+
+Data has changed since Covid in most industries and the markets project the public's sentiment, financially speaking.<br>
+With this in mind, indexes <i><b>symbols, adjcloses & OHCLVs</i></b> are fetched in order to show the big picture of fluctuations to the user, as well as to note important insights.<br>
+<font color= '#008dde'> <b>Supports:</b>
+$S\&P_{500}$ , $Nasdaq_{100}$, $Dow_{30}$, $Russell_{1000}$, $FTSE_{100}$, $IPC_{35}$, $DAX_{40}$, $IBEX_{35}$, $CAC_{40}$, $EUROSTOXX_{50}$, $FTSEMIB_{40}$ $\&$ $HANGSENG_{73}$ </font> <i> (see refs.) </i>.
+
+Out of the indexes supported, the $S\&P500$ is modelled because:<br>
+
+1. It is the most commonly used index for determining the <i><u>overall state of the economy.</u></i><br>
+2. Because it has the <i><u>most liquid derivatives markets</u></i> worldwide and the same can generally be said for its components.<br>
+ *Note: Market Risk exposure hedging won't be covered in this repository.*<br>
+1. Its components provide a <i><u>broader scope</u></i> to different industries.<br>
+<br>
+
 
 #### Table of Contents: 
 The processes made are illustrated by the following:
