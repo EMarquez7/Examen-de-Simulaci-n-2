@@ -1,4 +1,5 @@
-$\color{lightblue}{\textrm{Index Optimizations - Simulations and Forecast}}$
+<style>p{color:white;}</style> <p align="center"> <b> <font size="6"> <font color= '#3d74eb'> Index Optimizations - Simulations and Forecast  </b> </p> </font></font>
+
 
 <div align="right">
 
