@@ -1,4 +1,4 @@
-## <center> <font color= '#3d74eb'><b> Index Optimizations - Simulations and Forecast </b> </font> </center>
+$\color{lightblue}{\textrm{Index Optimizations - Simulations and Forecast}}$
 
 <div align="right">
 
@@ -7,7 +7,7 @@
 </div>
 
 <Details>
-<Summary> <b>  Click to expand: </b> 
+<Summary> <b> Click here: </b> 
 
 ![S&P500-Optimizations-Forecast](https://img.shields.io/badge/Author's_Contact-EstebanMqz-black?style=square&logo=github&logoColor=black)
 
@@ -22,7 +22,7 @@
 
 <font>
 <Details>
-<Summary> <b>Repository Tools:</b> </Summary>
+<Summary> <b>Tools:</b> </Summary>
 
 ###### Actions: [![Repo-Visualization-Badge](https://img.shields.io/badge/Action-Visualization-020521?style=square&logo=github&logoColor=white)](https://githubnext.com/projects/repo-visualization)
 ###### Main Text-Editor: [![VSCode-Badge](https://img.shields.io/badge/VSCode-007ACC?style=square&logo=visual-studio-code&logoColor=white)](https://code.visualstudio.com/)&nbsp;[![Jupyter-Badge](https://img.shields.io/badge/Jupyter-F37626?style=square&logo=Jupyter&logoColor=white)](https://jupyter.org/try) 
@@ -40,7 +40,7 @@
 
 </Details>
 <Details>
-<Summary> <b> Diagram: </b> </Summary>
+<Summary> <b> Repository: </b> </Summary>
 
 [![Repository](https://img.shields.io/badge/Repository-0089D6?style=square&logo=microsoft-azure&logoColor=white)](https://mango-dune-07a8b7110.1.azurestaticapps.net/?repo=EstebanMqz%2FSP500-Risk-Optimizations-Forecast)
 
