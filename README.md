@@ -1,89 +1,66 @@
-<style>p{color:white;}</style> <p align="center"> <b> <font size="6"> <font color= '#3d74eb'> Index Optimizations - Simulations and Forecast  </b> </p> </font></font>
+## <h1><div align="center"><font color= '#318f17'><b> Optimized Indexes Forecasts </b></font></div></h1>
 
+<div align="right"> <Details> <Summary> <i> <font color= '#ff9100'> Click to expand: </font> </i>
 
-<div align="right">
+![S&P500-Optimizations-Forecast](https://img.shields.io/badge/Author's_Contact-Financial_Eng._Esteban_Márquez-black?style=square&logo=github&logoColor=black) </Summary>
 
-&nbsp; [![Jupyter](https://img.shields.io/badge/jupyter-nbviewer-000000?style=square&logo=jupyter&logoColor=orange)](https://nbviewer.jupyter.org/github/EstebanMqz/SP500-Risk-Optimizations-Forecast/blob/main/SP500-Risk-Optimized-Portfolios-ML.ipynb) <br>
+[![Website](https://img.shields.io/badge/Website-ffffff?style=square&logo=opera&logoColor=red)](https://estebanmqz.com) [![LinkedIn](https://img.shields.io/badge/LinkedIn-041a80?style=square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/esteban-m65381722210212839/) [![Portfolio](https://img.shields.io/badge/Github-Portfolio-010b38?style=square&logo=github&logoColor=black)](https://estebanmqz.github.io/Portfolio/) [![E-mail](https://img.shields.io/badge/Business-Mail-052ce6?style=square&logo=mail&logoColor=white)](mailto:esteban@esteban.com)</br>
 
-</div>
-
-<Details>
-<Summary> <b> Click here: </b> 
-
-![S&P500-Optimizations-Forecast](https://img.shields.io/badge/Author's_Contact-EstebanMqz-black?style=square&logo=github&logoColor=black)
-
-</b> </Summary>
-
-[![Website](https://img.shields.io/badge/Website-ffffff?style=square&logo=opera&logoColor=red)](https://estebanmqz.com) [![LinkedIn](https://img.shields.io/badge/LinkedIn-041a80?style=square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/esteban-m65381722210212839/) [![Portfolio](https://img.shields.io/badge/Github-Portfolio-010b38?style=square&logo=github&logoColor=black)](https://estebanmqz.github.io/Portfolio/) [![E-mail](https://img.shields.io/badge/Business-Mail-052ce6?style=square&logo=mail&logoColor=white)](mailto:esteban@esteban.com)
-<br>
-
-![GitHub Logo](https://github.com/EstebanMqz.png?size=50) [![Github](https://img.shields.io/badge/Github-000000?style=square&logo=github&logoColor=white)](https://github.com/EstebanMqz) 
-
+![GitHub Logo](https://github.com/EstebanMqz.png?size=50) [![Github](https://img.shields.io/badge/Github-000000?style=square&logo=github&logoColor=white)](https://github.com/EstebanMqz)
 </Details>
 
-<font>
-<Details>
-<Summary> <b>Tools:</b> </Summary>
+<Details> <Summary> <i> <font color= '#ff9100'> Repository Tools: </font> </i> </Summary>
 
 ###### Actions: [![Repo-Visualization-Badge](https://img.shields.io/badge/Action-Visualization-020521?style=square&logo=github&logoColor=white)](https://githubnext.com/projects/repo-visualization)
-###### Main Text-Editor: [![VSCode-Badge](https://img.shields.io/badge/VSCode-007ACC?style=square&logo=visual-studio-code&logoColor=white)](https://code.visualstudio.com/)&nbsp;[![Jupyter-Badge](https://img.shields.io/badge/Jupyter-F37626?style=square&logo=Jupyter&logoColor=white)](https://jupyter.org/try) 
-
-###### Language: [![Python-Badge](https://img.shields.io/badge/Python-3776AB.svg?style=square&logo=Python&logoColor=green)](https://www.python.org)[![Markdown-Badge](https://img.shields.io/badge/Markdown-000000.svg?style=square&logo=Markdown&logoColor=white)](https://www.markdownguide.org)[![yaml-Badge](https://img.shields.io/badge/YAML-000000?style=square&logo=yaml&logoColor=red)](https://yaml.org)
-
-###### Libraries:  [![Numpy-Badge](https://img.shields.io/badge/Numpy-013243?style=square&logo=numpy&logoColor=white)](https://numpy.org)  [![Pandas-Badge](https://img.shields.io/badge/Pandas-150458?style=square&logo=pandas&logoColor=white)](https://pandas.pydata.org)  [![Scipy-Badge](https://img.shields.io/badge/Scipy-darkblue?style=square&logo=scipy&logoColor=white)](https://www.scipy.org)  [![Fitter-Badge](https://img.shields.io/badge/Fitter-000000?style=square&logo=python&&logoColor=yellow)](https://fitter.readthedocs.io/en/latest/)  [![Matplotlib-Badge](https://img.shields.io/badge/Matplotlib-40403f?style=square&logo=python&logoColor=blue)](https://matplotlib.org)  [![Seaborn-Badge](https://img.shields.io/badge/Seaborn-40403f?style=square&logo=python&logoColor=blue)](https://seaborn.pydata.org)
-
+###### Main Text-Editor: [![VSCode-Badge](https://img.shields.io/badge/VSCode-007ACC?style=square&logo=visual-studio-code&logoColor=white)](https://code.visualstudio.com/)&nbsp;[![Jupyter-Badge](https://img.shields.io/badge/Jupyter-F37626?style=square&logo=Jupyter&logoColor=white)](https://jupyter.org/try)
+###### Language: [![Python-Badge](https://img.shields.io/badge/Python-3776AB.svg?style=square&logo=Python&logoColor=green)](https://www.python.org)[![Markdown-Badge](https://img.shields.io/badge/Markdown-000000.svg?style=square&logo=Markdown&logoColor=white)](https://www.markdownguide.org)[![yaml-Badge](https://img.shields.io/badge/YAML-000000?style=square&logo=yaml&logoColor=red)](https://yaml.org)  
+###### Libraries: [![Numpy-Badge](https://img.shields.io/badge/Numpy-013243?style=square&logo=numpy&logoColor=white)](https://numpy.org)  [![Pandas-Badge](https://img.shields.io/badge/Pandas-150458?style=square&logo=pandas&logoColor=white)](https://pandas.pydata.org)  [![Scipy-Badge](https://img.shields.io/badge/Scipy-darkblue?style=square&logo=scipy&logoColor=white)](https://www.scipy.org)  [![Fitter-Badge](https://img.shields.io/badge/Fitter-000000?style=square&logo=python&&logoColor=yellow)](https://fitter.readthedocs.io/en/latest/)  [![Matplotlib-Badge](https://img.shields.io/badge/Matplotlib-40403f?style=square&logo=python&logoColor=blue)](https://matplotlib.org)  [![Seaborn-Badge](https://img.shields.io/badge/Seaborn-40403f?style=square&logo=python&logoColor=blue)](https://seaborn.pydata.org)
 ###### Interface: [![React-Badge](https://img.shields.io/badge/React-61DAFB?style=square&logo=react&logoColor=black)](https://create-react-app.dev)
-
-###### Version Control: [![GitHub-Badge](https://img.shields.io/badge/GitHub-100000?style=square&logo=github&logoColor=white)](https://github.com)&nbsp;[![Git-Badge](https://img.shields.io/badge/Git-F05032.svg?style=square&logo=Git&logoColor=white)](https://git-scm.com)  
-[![Git-Commads](https://img.shields.io/badge/Git%20Commands-gray?style=square&logo=git&logoColor=white)](https://github.com/EstebanMqz/Git-Commands)
-
-###### License: [![Creative Commons BY 3.0](https://img.shields.io/badge/License-CC%20BY%203.0-yellow.svg?style=square&logo=creative-commons&logoColor=white)](https://creativecommons.org/licenses/by/3.0/)
-
+###### Version Control: [![Git-Badge](https://img.shields.io/badge/Git-F05032.svg?style=square&logo=Git&logoColor=white)](https://git-scm.com) [![Git-Commads](https://img.shields.io/badge/Git%20Commands-gray?style=square&logo=git&logoColor=white)](https://github.com/EstebanMqz/Git-Commands)
 </Details>
-<Details>
-<Summary> <b> Repository: </b> </Summary>
+</div>
+<Details> <Summary> <i> <font color= '#aaaab3'> File Visualization: </font> </i> </Summary>
 
-[![Repository](https://img.shields.io/badge/Repository-0089D6?style=square&logo=microsoft-azure&logoColor=white)](https://mango-dune-07a8b7110.1.azurestaticapps.net/?repo=EstebanMqz%2FSP500-Risk-Optimizations-Forecast)
+[![Repository](https://img.shields.io/badge/Repository-0089D6?style=square&logo=microsoft-azure&logoColor=white)](https://mango-dune-07a8b7110.1.azurestaticapps.net/?repo=EstebanMqz%2FSP500-Risk-Optimizations-Forecast) [![Jupyter](https://img.shields.io/badge/Render-nbviewer-000000?style=square&logo=jupyter&logoColor=orange)](https://nbviewer.jupyter.org/github/EstebanMqz/SP500-Risk-Optimizations-Forecast/blob/main/SP500-Risk-Optimized-Portfolios-ML.ipynb)
 
 <img src="diagram.svg" width="280" height="280">
+
+</Details> 
+
+<Details> <Summary> <h3> <font color= '#0e3de6'> Table of Contents:  </font> </h3> </Summary>
+
+<img src="images/ToC.jpg" width="741" height="660">
+
 </Details>
 
-Description: 
 
-Data has changed since Covid in most industries and the markets project the public's sentiment, financially speaking.<br>
-With this in mind, indexes <i><b>symbols, adjcloses & OHCLVs</i></b> are fetched in order to show the big picture of fluctuations to the user, as well as to note important insights.<br>
-<font color= '#008dde'> <b>Supports:</b>
-$SP_{500}$ , $Nasdaq_{100}$, $Dow_{30}$, $Russell_{1000}$, $FTSE_{100}$, $IPC_{35}$, $DAX_{40}$, $IBEX_{35}$, $CAC_{40}$, $EUROSTOXX_{50}$, $FTSEMIB_{40}$ and $HANGSENG_{73}$ </font> <i> (see refs.) </i>.
 
-Out of the indexes supported, the $SP_{500}$ is modelled because:<br>
+
+### Methodology
+
+Out of the indexes supported, the $S\&P500$ is generally used as benchmark because:<br>
 
 1. It is the most commonly used index for determining the <i><u>overall state of the economy.</u></i><br>
 2. Because it has the <i><u>most liquid derivatives markets</u></i> worldwide and the same can generally be said for its components.<br>
  *Note: Market Risk exposure hedging won't be covered in this repository.*<br>
 1. Its components provide a <i><u>broader scope</u></i> to different industries.<br>
-<br>
-
-
-#### Table of Contents: 
-The processes made are illustrated by the following:
-
-![Alt text](images/ToC.jpg)
 
 *Note: Newly generated dataframes is saved in `Data` and visualizations in `Images` folders respectively.* <br>
 
-### Methodology: 
 
 After the Virtual Environment [fn.get_requirements](https://github.com/EstebanMqz/SP500-Risk-Optimized-Portfolios-PostCovid-ML/blob/main/functions.py) is set up and the libraries installed by executing: <br>
 
 ```python
 fn.library_install("requirements.txt")
 ```
+
 1. Individual Datasets:
 
 Data Extraction techniques are made for its cleaning and Exploration followed by Descriptive Statistics<br>
-$x_i\in [x_1,x_{500}]$ $\hookrightarrow$ $S$&$P$ $500$ and $x_{j\neq i}\in$ $[x_1,x_{25}]_{{R_{Sortino_{+_{25}}}}}$ $\subset$ $x_i$, to show what and how it has happened. <br>
+$x_i\in [x_1,x_{500}]$ $\hookrightarrow$ $S$&$P$ $500$ and $x_{j\neq i}\in$ $[x_1,x_{25}]*{{R*{Sortino_{+_{25}}}}}$ $\subset$ $x_i$, to show what and how it has happened. <br>
 
 They incorporate to [`pandas.DataFrame.describe`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html) the following variables for Simple $R_t$ and Log Returns $r_t$ in order to be visualized:<br>
+
 + $\mu_{y}$
 + $\sigma_{y}$
 + $\sum_{t=1}^{n} R_t$ $\&$ $r_t$
@@ -97,12 +74,14 @@ As result, the following optimizations are made to subsequently generate simulat
 
 ![Alt text](images/Methodology.jpg)
 ---
+
 ### **References:**
+
 <font>
 <Details>
 <Summary> <b>Click to expand</b> </Summary>
 
-#### Libraries:
+#### Libraries
 
 + ##### </u> Pandas: </u> <br>
 
@@ -128,19 +107,21 @@ As result, the following optimizations are made to subsequently generate simulat
 [`statsmodels`](https://www.statsmodels.org/stable/index.html)<br><br>
 
 + ##### Other References: <br>
+
 ###### *Indexes Supported*:<br>
+
 + [`S&P`](https://en.wikipedia.org/wiki/List_of_S%26P_500_companies) [`Dow Jones`](https://en.wikipedia.org/wiki/Dow_Jones_Industrial_Average) [`NASDAQ 100`](https://en.wikipedia.org/wiki/NASDAQ-100) [`Russell 1000`](https://en.wikipedia.org/wiki/Russell_1000_Index) [`FTSE 100`](https://en.wikipedia.org/wiki/FTSE_100_Index) [`IPC`](https://en.wikipedia.org/wiki/Indice_de_Precios_y_Cotizaciones) [`DAX`](https://en.wikipedia.org/wiki/DAX) [`IBEX 35`](https://en.wikipedia.org/wiki/IBEX_35) [`CAC 40`](https://en.wikipedia.org/wiki/CAC_40) [`EURO STOXX 50`](https://en.wikipedia.org/wiki/EURO_STOXX_50) [`FTSE MIB`](https://en.wikipedia.org/wiki/FTSE_MIB) [`Hang Seng Index`](https://en.wikipedia.org/wiki/Hang_Seng_Index)
 
-###### *Official Market Risks Data & Announcements*:
+###### *Official Market Risks Data & Announcements*
+
 + [`Daily Treasury Par Yield Curve Rates`](https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value_month=202304)<br>
 + [`Bank of International Settlements (BIS)`](https://www.bis.org/statistics/index.htm)<br>
 
-###### *Other*:
+###### *Other*
+
 + [`LaTeX`](https://en.wikipedia.org/wiki/List_of_mathematical_symbols_by_subject)</br>
-+ [`Expected Shortfall (ES)`](https://en.wikipedia.org/wiki/Expected_shortfall) [`Value at Risk (VaR)`](https://en.wikipedia.org/wiki/Value_at_risk) 
++ [`Expected Shortfall (ES)`](https://en.wikipedia.org/wiki/Expected_shortfall) [`Value at Risk (VaR)`](https://en.wikipedia.org/wiki/Value_at_risk)
 + [`Convolution of Distributions`](https://en.wikipedia.org/wiki/Convolution_of_probability_distributions)<br>
 + [`i.i.d`](https://en.wikipedia.org/wiki/Independent_and_identically_distributed_random_variables)<br>
 
 + [`Expected Shortfall (ES)`](https://en.wikipedia.org/wiki/Expected_shortfall)<br>
-
-
