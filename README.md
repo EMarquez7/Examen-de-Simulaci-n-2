@@ -41,7 +41,7 @@ Sections and processes are illustrated:
 
 <Details> <Summary> <h3> <font color= '#3d74eb'> 1.2 Description:  </font> </h3> </Summary> 
 
-[web-app (parser)](https://github.com/EstebanMqz/Optimized_Indexes_Forecasts/blob/c414ca71b86219725a8d55bc03674573faa02087/images/ToC.jpg)
+[App (parser)](github.com/EstebanMqz/Optimized_Indexes_Forecasts/blob/main/images/Description.jpg)
 
 Data has changed since Covid in most industries and the markets project the public's sentiment, financially speaking.<br>
 In this regard, from indexes $OHLCVs$, Volumes $V_{t}$ are standarized and compared dynamically in a web-app to show the big picture of $I$ to the user, as well as to note important insights.<br> 
@@ -56,14 +56,14 @@ From <i><b>Logarithmic Compounded Returns</b></i> the following are calculated a
 + Optimizations: $R_{Sharpe}$, $R_{Sortino}$, $R_{Calmar}$, $R_{Burke}$, $R_{Kappa}$, $R_{\Omega}$, $R_{Traynor}$, $R_{Jensen}$.
 + Risk measures: $VaR_{\alpha}$, $ES_{\alpha}$, $MDD$.<br>
 
-Out of the indexes supported, the $S\&P500$ is generally used as benchmark because:<br>
+Out of the indexes supported, the $SP500$ is generally used as benchmark because:<br>
 
 1. It's the most commonly used index to determine the <i><u>overall state of the economy.</u></i><br>
 2. Because it has the <i><u>most liquid derivatives markets</u></i> (the same generally applies for $j$ components).<br>
  *Note: Market Risk exposure hedging won't be covered in this repository.*<br>
 1. Its $j$ components provide a <i><u>broader scope</u></i> to different industries.<br>
 
-Therefore, $\mathbb{R}^{500} = x_j\in [x_1,x_{500}] \hookrightarrow S\&P500$ is modelled as an example of its usage *(sections 4-7).*
+Therefore, $\mathbb{R}^{500} = x_j\in [x_1,x_{500}] \hookrightarrow $SP500$ is modelled as an example of its usage *(sections 4-7).*
 
 Optimizations Accumulated Returns are obtained, simulated and forecasted from:
 
@@ -76,7 +76,7 @@ $$R^{n \times m} = \sum_{t=1}^{n} \sum_{j=1}^{m} w_{j}\ ln(1+r_t)$$
 </Details>
 
 
-<Details> <Summary> <h4> <font color= '#3d74eb'> 8. References </font> </h4> </Summary> 
+<Details> <Summary> <h3> <font color= '#3d74eb'> 8. References </font> </h3> </Summary> 
 
 <font color= 'white'><h6>
 
