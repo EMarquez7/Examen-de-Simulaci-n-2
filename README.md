@@ -41,7 +41,7 @@ Sections and processes are illustrated:
 
 <Details> <Summary> <h3> <font color= '#3d74eb'> 1.2 Description:  </font> </h3> </Summary> 
 
-[App (parser)](github.com/EstebanMqz/Optimized_Indexes_Forecasts/blob/main/images/Description.jpg)
+[App-parser](https://github.com/EstebanMqz/Optimized_Indexes_Forecasts/blob/main/images/Description.jpg)
 
 Data has changed since Covid in most industries and the markets project the public's sentiment, financially speaking.<br>
 In this regard, from indexes $OHLCVs$, Volumes $V_{t}$ are standarized and compared dynamically in a web-app to show the big picture of $I$ to the user, as well as to note important insights.<br> 
