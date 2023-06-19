@@ -1,6 +1,10 @@
-## <h1><div align="center"><font color= '#318f17'><b> Optimized Indexes Forecasts </b></font></div></h1>
+<h1><div align="center"><font color= '#318f17'><b> Optimized Indexes Forecasts </b></font></div></h1>
 
-<div align="right"> <Details> <Summary> <i> <font color= '#ff9100'> Click to expand: </font> </i>
+<div align="right">
+
+[![Creative Commons BY 3.0](https://img.shields.io/badge/License-CC%20BY%203.0-yellow.svg?style=square&logo=creative-commons&logoColor=white)](https://creativecommons.org/licenses/by/3.0/)
+
+<Details> <Summary> <i> <font color= '#ff9100'> Click to expand: </font> </i>
 
 ![S&P500-Optimizations-Forecast](https://img.shields.io/badge/Author's_Contact-Financial_Eng._Esteban_Márquez-black?style=square&logo=github&logoColor=black) </Summary>
 
@@ -19,7 +23,7 @@
 ###### Version Control: [![Git-Badge](https://img.shields.io/badge/Git-F05032.svg?style=square&logo=Git&logoColor=white)](https://git-scm.com) [![Git-Commads](https://img.shields.io/badge/Git%20Commands-gray?style=square&logo=git&logoColor=white)](https://github.com/EstebanMqz/Git-Commands)
 </Details>
 </div>
-<Details> <Summary> <i> <font color= '#aaaab3'> File Visualization: </font> </i> </Summary>
+<Details> <Summary> <i> Files Visualization: </i> </Summary>
 
 [![Repository](https://img.shields.io/badge/Repository-0089D6?style=square&logo=microsoft-azure&logoColor=white)](https://mango-dune-07a8b7110.1.azurestaticapps.net/?repo=EstebanMqz%2FSP500-Risk-Optimizations-Forecast) [![Jupyter](https://img.shields.io/badge/Render-nbviewer-000000?style=square&logo=jupyter&logoColor=orange)](https://nbviewer.jupyter.org/github/EstebanMqz/SP500-Risk-Optimizations-Forecast/blob/main/SP500-Risk-Optimized-Portfolios-ML.ipynb)
 
@@ -27,59 +31,54 @@
 
 </Details> 
 
-<Details> <Summary> <h3> <font color= '#0e3de6'> Table of Contents:  </font> </h3> </Summary>
+<Details> <Summary> <h3> <font color= '#3d74eb'> 1.1 Table of Contents:  </font> </h3> </Summary>
 
-<img src="images/ToC.jpg" width="741" height="660">
+Sections and processes are illustrated:
+
+<img src="images/ToC.jpg" width="494" height="440">
+
+</Details>
+
+<Details> <Summary> <h3> <font color= '#3d74eb'> 1.2 Description:  </font> </h3> </Summary> 
+
+[web-app (parser)](https://github.com/EstebanMqz/Optimized_Indexes_Forecasts/blob/c414ca71b86219725a8d55bc03674573faa02087/images/ToC.jpg)
+
+Data has changed since Covid in most industries and the markets project the public's sentiment, financially speaking.<br>
+In this regard, from indexes $OHLCVs$, Volumes $V_{t}$ are standarized and compared dynamically in a web-app to show the big picture of $I$ to the user, as well as to note important insights.<br> 
+Moreover, from $Adj_{Closes} \rightarrow P_t$ <i>, its Compounded Returns</i> are manipulated as: $ln({P_t})-ln({P_{t-1}})$ because of their <b>additive nature</b> (instead of multiplicative)<br>
+among other characteristics <i>(see 3.2)</i>, which makes the following true:<br>
+$$\prod_{t=1}^{n}(1+r_t) \implies \bigg[{\mathrm{e}^{\sum_{t=1}^{n} ln (1+r_t) }} \bigg]$$ 
+
+From <i><b>Logarithmic Compounded Returns</b></i> the following are calculated and interpreted <i>(sections 3-7)</i><br>
+
++ Estimators: $\mu_{j_d}, \mu_{j_{Yr}} \mu_{P_d}, \mu_{P_{Yr}}$.
++ Disperssion measures: $Q_n$, $IQR$, $\sigma_{j_d}, \sigma_{j_{Yr}} \sigma_{P_d}, \sigma_{P_{Yr}}$, Correlation $\rho_{i,j}$ and Covariance $\sigma_{i,j}$ matrices.<br>
++ Optimizations: $R_{Sharpe}$, $R_{Sortino}$, $R_{Calmar}$, $R_{Burke}$, $R_{Kappa}$, $R_{\Omega}$, $R_{Traynor}$, $R_{Jensen}$.
++ Risk measures: $VaR_{\alpha}$, $ES_{\alpha}$, $MDD$.<br>
+
+Out of the indexes supported, the $S\&P500$ is generally used as benchmark because:<br>
+
+1. It's the most commonly used index to determine the <i><u>overall state of the economy.</u></i><br>
+2. Because it has the <i><u>most liquid derivatives markets</u></i> (the same generally applies for $j$ components).<br>
+ *Note: Market Risk exposure hedging won't be covered in this repository.*<br>
+1. Its $j$ components provide a <i><u>broader scope</u></i> to different industries.<br>
+
+Therefore, $\mathbb{R}^{500} = x_j\in [x_1,x_{500}] \hookrightarrow S\&P500$ is modelled as an example of its usage *(sections 4-7).*
+
+Optimizations Accumulated Returns are obtained, simulated and forecasted from:
+
+$$R^{n \times m} = \sum_{t=1}^{n} \sum_{j=1}^{m} w_{j}\ ln(1+r_t)$$
++ $m$ = No° of components.
++ $j$ = Component
++ $n$ = No° of periods. 
++ $t$ = Period.
 
 </Details>
 
 
+<Details> <Summary> <h4> <font color= '#3d74eb'> 8. References </font> </h4> </Summary> 
 
-
-### Methodology
-
-Out of the indexes supported, the $S\&P500$ is generally used as benchmark because:<br>
-
-1. It is the most commonly used index for determining the <i><u>overall state of the economy.</u></i><br>
-2. Because it has the <i><u>most liquid derivatives markets</u></i> worldwide and the same can generally be said for its components.<br>
- *Note: Market Risk exposure hedging won't be covered in this repository.*<br>
-1. Its components provide a <i><u>broader scope</u></i> to different industries.<br>
-
-*Note: Newly generated dataframes is saved in `Data` and visualizations in `Images` folders respectively.* <br>
-
-
-After the Virtual Environment [fn.get_requirements](https://github.com/EstebanMqz/SP500-Risk-Optimized-Portfolios-PostCovid-ML/blob/main/functions.py) is set up and the libraries installed by executing: <br>
-
-```python
-fn.library_install("requirements.txt")
-```
-
-1. Individual Datasets:
-
-Data Extraction techniques are made for its cleaning and Exploration followed by Descriptive Statistics<br>
-$x_i\in [x_1,x_{500}]$ $\hookrightarrow$ $S$&$P$ $500$ and $x_{j\neq i}\in$ $[x_1,x_{25}]*{{R*{Sortino_{+_{25}}}}}$ $\subset$ $x_i$, to show what and how it has happened. <br>
-
-They incorporate to [`pandas.DataFrame.describe`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html) the following variables for Simple $R_t$ and Log Returns $r_t$ in order to be visualized:<br>
-
-+ $\mu_{y}$
-+ $\sigma_{y}$
-+ $\sum_{t=1}^{n} R_t$ $\&$ $r_t$
-+ $VaR_{97.5}$ - $VaR_{2.5}$
-+ $MDD$
-+ $R_{Sharpe}$, $R_{Sortino}$, $R_{Calmar}$, $R_{Burke}$.<br>
-
-*Visualizations include common periodicity resampling periods.* <br>
-
-As result, the following optimizations are made to subsequently generate simulations with what would have been its past behavior, concluding with the optimization's forecast out of the simulated data: <br>
-
-![Alt text](images/Methodology.jpg)
----
-
-### **References:**
-
-<font>
-<Details>
-<Summary> <b>Click to expand</b> </Summary>
+<font color= 'white'><h6>
 
 #### Libraries
 
@@ -112,12 +111,12 @@ As result, the following optimizations are made to subsequently generate simulat
 
 + [`S&P`](https://en.wikipedia.org/wiki/List_of_S%26P_500_companies) [`Dow Jones`](https://en.wikipedia.org/wiki/Dow_Jones_Industrial_Average) [`NASDAQ 100`](https://en.wikipedia.org/wiki/NASDAQ-100) [`Russell 1000`](https://en.wikipedia.org/wiki/Russell_1000_Index) [`FTSE 100`](https://en.wikipedia.org/wiki/FTSE_100_Index) [`IPC`](https://en.wikipedia.org/wiki/Indice_de_Precios_y_Cotizaciones) [`DAX`](https://en.wikipedia.org/wiki/DAX) [`IBEX 35`](https://en.wikipedia.org/wiki/IBEX_35) [`CAC 40`](https://en.wikipedia.org/wiki/CAC_40) [`EURO STOXX 50`](https://en.wikipedia.org/wiki/EURO_STOXX_50) [`FTSE MIB`](https://en.wikipedia.org/wiki/FTSE_MIB) [`Hang Seng Index`](https://en.wikipedia.org/wiki/Hang_Seng_Index)
 
-###### *Official Market Risks Data & Announcements*
+###### *Official Market Risks Data:*
 
 + [`Daily Treasury Par Yield Curve Rates`](https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value_month=202304)<br>
 + [`Bank of International Settlements (BIS)`](https://www.bis.org/statistics/index.htm)<br>
 
-###### *Other*
+###### *Other:*
 
 + [`LaTeX`](https://en.wikipedia.org/wiki/List_of_mathematical_symbols_by_subject)</br>
 + [`Expected Shortfall (ES)`](https://en.wikipedia.org/wiki/Expected_shortfall) [`Value at Risk (VaR)`](https://en.wikipedia.org/wiki/Value_at_risk)
