@@ -44,7 +44,7 @@ Sections and processes are illustrated:
 Data has changed since Covid in most industries and the markets project the public's sentiment, financially speaking.<br>
 In this regard, from indexes OHLCVs, Volumes are standarized and compared dynamically in a web-app to show the big picture of indexes supported to the user, as well as to note important insights.<br> 
 
-[App-parser](https://github.com/EstebanMqz/Optimized_Indexes_Forecasts/blob/main/images/Description.jpg)<br>
+[App-View](https://github.com/EstebanMqz/Optimized_Indexes_Forecasts/blob/main/images/Description.jpg)<br>
 Moreover, from $Adj_{Closes} \rightarrow P_t$ returns $r_t$ are obtained and </i> manipulated as: $ln({P_{t+1}})-ln({P_{t}})$ because of their <b>additive nature</b> among other characteristics, which transforms the multiplicative nature of <b>Compounded Returns</b> <i>(see 3.2)</i>:
 $$\prod_{t=1}^{n}(1+r_t) \implies \bigg[{\mathrm{e}^{\sum_{t=1}^{n} ln (1+r_t) }} \bigg]$$ 
 
@@ -60,7 +60,7 @@ Considering, the $SP500$ is generally used as benchmark because:<br>
 1. It's the most commonly used index to determine the <i><u>overall state of the economy.</u></i><br>
 2. It has the <i><u>most liquid derivatives markets</u></i> (the same generally applies for $j$ components).<br>
  *Note: Market Risk exposure hedging won't be covered.*<br>
-3. Its components provide a <i><u>broader scope</u></i> to industries.<br>
+1. Its components provide a <i><u>broader scope</u></i> to industries.<br>
 
 Out of the indexes supported, it will be modelled as an example <u><i>(sections 4-7)</i></u>:<br>
 $\mathbb{R}^{500}$ = $x_j\in [x_1,x_{500}] \hookrightarrow SP500$.
@@ -77,7 +77,7 @@ And concluding with their Simulations and Forecasts.
 
 </Details>
 
-<Details> <Summary> <h3> <font color= '#3d74eb'> 2 Requirements:  </font> </h3> </Summary> 
+<Details> <Summary> <h3> <font color= '#3d74eb'> 2. Requirements:  </font> </h3> </Summary> 
 
 Import files with `.py` extension in cwd callable as a list.
 
@@ -85,18 +85,35 @@ Import files with `.py` extension in cwd callable as a list.
 import glob
 mod = [__import__(name[:-3]) for name in glob.glob('*.py')]
 ```
-Generate [`requirements.txt`](https://github.com/EstebanMqz/Optimized_Indexes_Forecasts/blob/main/requirements.txt) file with latest versions of libraries used in project <i>(predefined docstring)</i>.
+
+Generate [`requirements.txt`](https://github.com/EstebanMqz/Optimized_Indexes_Forecasts/blob/main/requirements.txt) file with latest versions of libraries used in project.
 
 ```python
 !pipreqs --encoding utf-8 "./" --force
 mod[1].get_requirements(docstring)
 with open(glob.glob('*.txt')[0], 'r') as file: print(file.read())
 ```
+
 Install the packages in environment and import libraries <i>(refer to 2.2)</i>.
+
 ```
 %%capture
 !pip install -r requirements.txt
 ```
+
+</Details>
+
+<Details> <Summary> <h3> <font color= '#3d74eb'> 3. Data Extraction and Exploration:  </font> </h3> </Summary>
+
+Data is extracted for indexes an saved in an html <u><i>embed dataframe</i></u>: [`OHCLV-web`](https://htmlpreview.github.io/?https://github.com/EstebanMqz/Optimized_Indexes_Forecasts/blob/main/HTML/adjindex.html) *(see refs.)*.<br>
+Volumes are standarized and compared dynamically in an html <u><i>embed plot</i></u>: [`Plotly-web-app`](https://github.com/EstebanMqz/Optimized_Indexes_Forecasts/blob/main/images/Description.jpg).<br>
+
+As an example of its usage, an image of its features is captured by selecting the NASDAQ and the SP500: 
+
+<img src="images/Stdz_Vt_GSPC&NQ.jpg">
+
+<i>Nasdaq relative volume has sustained at much higher levels than the benchmark since Covid for example.</i>
+
 
 
 </Details>
@@ -145,3 +162,4 @@ Install the packages in environment and import libraries <i>(refer to 2.2)</i>.
 + [`Value at Risk (VaR)`](https://en.wikipedia.org/wiki/Value_at_risk) [`Expected Shortfall (ES)`](https://en.wikipedia.org/wiki/Expected_shortfall)
 + [`Convolution of Distributions`](https://en.wikipedia.org/wiki/Convolution_of_probability_distributions) [`i.i.d`](https://en.wikipedia.org/wiki/Independent_and_identically_distributed_random_variables)<br>
 
+</Details>

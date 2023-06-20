@@ -60,8 +60,63 @@ warnings.filterwarnings("ignore", category=UserWarning)
 
 
 # -- ---------------------------------------------------------------------------------------------------------------------------------- Visualizations -------------------------------------------------------------------------------- -- #
+def plotly_chart(OHCLV, assets, path, title, legend):
+    {"""
+    Function to make a dynamic plotly chart from concatenated OHCLVs dataframes (OHCLV) that shows the standarized mean of the assets volumes and their respective values.
+    It is returned in an html for its interactive features to be displayed in a browser, aside from the notebook in repository.
+    Parameters:
+    ----------
+    OHCLV: pd.dataframe
+        Concatenated dataframes of OHCLVs for n assets.
+    assets: list
+        List of assets as str from which their data was fetched from and concatenated in OHCLV.
+    path: str
+        Path to save the html file in current working directory.
+    title: str
+        Title of the dynamic plotly chart, and y-axis.
+    legend: str
+        Legend for all the assets in the plotly chart.
+        (e.g: "Stocks", "Indexes", "Currencies", "Commodities", "Cryptos", "ETFs" etc.)
+    """}
+         
+    OHCLV_stdz = (OHCLV.volume - OHCLV.volume.mean()) / OHCLV.volume.std()
+    OHCLV_stdz.columns = [OHCLV.columns[i] for i in range(0, len(OHCLV.columns), 6)]
+
+    fig = px.line(OHCLV_stdz, title = title).update_traces(line_width = .4).update_layout(legend_title_text = legend).update_layout(clickmode = 'event+select')
+    fig.add_trace(go.Scatter(x = OHCLV_stdz.index, y = OHCLV_stdz.mean(axis = 1), mode = 'lines', name = 'Mean'))
+    fig.update_traces(selector = dict(name = 'Mean'), mode = "lines", line = dict(width=.7), line_color = "black")
+
+    fig.add_annotation(text = "Click to show/hide traces:", xref = "paper", yref = "paper", x = 1, y = 1, showarrow = True, font = dict(size = 12))
+    fig.update_layout(legend_title_text = legend)
+
+    fig.update_traces(hovertemplate = None)
+    fig.update_layout(hovermode = "x unified", hoverlabel=dict(bgcolor="white", font_size=10, font_family="Rockwell"))
+
+    fig.update_layout(
+        width = 1500,
+        height = 1000,
+        margin = dict(
+            l = 0,
+            r = 50,
+            b = 0,
+            t = 100,
+            pad = 4),
+        paper_bgcolor = "LightSteelBlue",
+    )
+
+    fig.update_xaxes(rangeslider_visible = True, range = [OHCLV.head().index[0].to_pydatetime(), datetime.date.today()], title_text = 'Date', rangeslider_thickness = 0.08)
+    fig.update_yaxes(title_text = title)
+
+    fig.write_html(path)
+
+    fig.write_html("HTML/Standarized_Volumes.html")
+    fig.show()
+
+######################################################################################################################################################################################################################################
+
 def cmap_bar(df_col, df_index, x_ticks, y_ticks, title, x_label, y_label):
-    """
+    {"""
+    Function to plot a bar chart with a colormap.
     Parameters
     ----------
     df_col : pd.DataFrame col.
@@ -81,7 +136,7 @@ def cmap_bar(df_col, df_index, x_ticks, y_ticks, title, x_label, y_label):
     Returns
     -------
     Plot of the column.
-    """
+    """}
     fig, ax = plt.subplots(figsize=(25, 10))
     plt.bar(df_index, df_col, color=plt.cm.RdYlGn(df_col))
     plt.title(title,  fontsize=15)
@@ -96,7 +151,7 @@ def cmap_bar(df_col, df_index, x_ticks, y_ticks, title, x_label, y_label):
 
 ############################################################################################################################################################################################################################################
 def Yearly_Returns(Simple, Log, color):
-    """
+    {"""
     Function to plot yearly returns distribution and kde with Yearly Simple & Log returns in index as dataframe with quotes in cols.
 
     Parameters:
@@ -110,7 +165,7 @@ def Yearly_Returns(Simple, Log, color):
     Returns:
     -------
     Plot with yearly returns.
-    """
+    """}
     fig, ax = plt.subplots(figsize=(20, 10))
     sns.distplot(Simple.T.Yr_Return, bins=50, color="red", label="Yearly Simple $R_t$")
     sns.distplot(Log.T.Yr_Return, bins=50, color="blue", label="Yearly Log $r_t$")
@@ -134,7 +189,7 @@ def Yearly_Returns(Simple, Log, color):
 
 ############################################################################################################################################################################################################################################
 def BoxHist(data, output, bins, color, label, title, start, end):
-    """Boxplot and Histogram for selected output method for returns method for data, assuming equiprobable weights.
+    {"""Boxplot and Histogram for selected output method for returns method for data, assuming equiprobable weights.
 
     Parameters
     ----------
@@ -158,13 +213,8 @@ def BoxHist(data, output, bins, color, label, title, start, end):
         End date for Stats calculations from dt.data_describe.
     Returns
     -------
-    Boxplot and Histogram with Stats visualization 
-
-
-    Returns
-    -------
     Boxplot and Histogram of Returns Method with its dt.describe_stats summary with equiprobable weights.
-    """
+    """}
     plt.style.use("classic")
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(22, 8))
     data.plot.box(ax=ax1, color=color, vert=False)
@@ -189,7 +239,7 @@ def BoxHist(data, output, bins, color, label, title, start, end):
 
 ################################################################################################################################################################################################################################################
 def summary(dataframe, r, rf, best, start, end):
-    """
+    {"""
     Function that calculates Annualized Returns and Std. Deviation for a given returns in order to obtain 
     n_best Sharpe & Sortino Ratios with a risk-free rate.
 
@@ -212,7 +262,7 @@ def summary(dataframe, r, rf, best, start, end):
     -------
     summary : dataframe
             Annualized Returns, Std. deviations and best Ratios for Sharpe & Sortino with a Sortino Selection for Xi with dataframe and dates.
-    """
+    """}
     dataframe_date = dataframe.loc[start:end]
     if  r == "Simple" :
         returns = dataframe_date.pct_change().iloc[1:, :].dropna(axis = 1)
@@ -273,7 +323,7 @@ def Selection_R_SLog_Plot(data, rf, best, start, execution_date, r_jump):
 
 #################################################################################################################################################################################################################################################
 def Stats(dataframe, Selection, P,  title, start, end, percentiles, dist, color):
-    """
+    {"""
     Stats is a function that resamples data from a Selection performed over a dataframe.
 
     Parameters:
@@ -301,7 +351,7 @@ def Stats(dataframe, Selection, P,  title, start, end, percentiles, dist, color)
     describe : dataframe
         Stats returns summary statistics (mean, std, min, max, percentiles, skewness and kurtosis) in a 
         markdown object callable as a dataframe by assigning a variable to the function in pos. [2].  
-    """
+    """}
     Selection = (dataframe[Selection.index].pct_change()).iloc[1:, :].dropna(axis = 1)
     Selection.index = pd.to_datetime(Selection.index)
     Selection_Mo_r = Selection.resample(P).sum()
@@ -434,7 +484,7 @@ def Optimizer(Assets, index, rf, title):
 
 ##################################################################################################################################################################################################################################################
 def Accum_ts(accum):
-    """
+    {"""
     Accum_ts is a function that plots time-series in a dataframe with 3 strategies as cols with matplot.
     Given dates in X-axis labels are formatted on a monthly / yearly basis for visualization purposes.
 
@@ -446,7 +496,7 @@ def Accum_ts(accum):
     -------
     Plot
         Plot of time-series in dataframe.
-    """
+    """}
     fig, ax = plt.subplots(figsize = (15, 7))
     ax.plot(accum.index, accum.iloc[:, 0], color = "red", label = accum.columns[0])
     ax.plot(accum.index, accum.iloc[:, 1], color = "green", label = accum.columns[1])
@@ -462,7 +512,7 @@ def Accum_ts(accum):
 
 ###################################################################################################################################################################################################################################################
 def create_corr_plot(df, plot_pacf=False): 
-    """
+    {"""
     Function that graphs lines+marker AutoCorrelation and Partial AutoCorrelation 
     plot intended to model economic index Actual values, alpha=0.05.
 
@@ -472,7 +522,7 @@ def create_corr_plot(df, plot_pacf=False):
     Returns:
     -------
         lines+marker ACF, PACF, lines + markers plots.
-    """
+    """}
     corr_array = pacf(df.dropna(), alpha=0.05) if plot_pacf else acf(df.dropna(), alpha=0.05)
     lower_y = corr_array[1][:,0] - corr_array[0]
     upper_y = corr_array[1][:,1] - corr_array[0]
@@ -495,40 +545,5 @@ def create_corr_plot(df, plot_pacf=False):
     #,fig.show("png") Kaleido img if didactic plot not rendering
 
     #Callable e.g: create_corr_plot(Log.iloc[:, 0], plot_pacf=True)
-
-
-    def cmap_bar(df_col, df_index, x_arange, y_arange, title, x_label, y_label):
-        """
-        Parameters
-        ----------
-        df_col : pd.DataFrame col.
-            Column values to plot.
-        df_index : pd.DataFrame index
-            Indexes to match their respective col. values.
-        x_ticks : list
-            List of x ticks (e.g: as np.arange or np.linspace)
-        y_ticks : list
-            List of y ticks (e.g: as np.arange or np.linspace)
-        title : str
-            Title of the plot.
-        x_label : str
-            Label of the x axis.
-        y_label : str
-            Label of the y axis.
-        Returns
-        -------
-        Plot of the column.
-        """
-        fig, ax = plt.subplots(figsize=(25, 10))
-        plt.bar(df_index, df_col, color=plt.cm.RdYlGn(df_col))
-        plt.title(title,  fontsize=15)
-        plt.grid(axis='y', linestyle='--', alpha=.5, linewidth=.5)
-        plt.yticks(y_arange)
-        plt.xticks(x_arange, rotation=45, fontsize=9)
-        plt.xlabel(x_label, fontsize=15), plt.ylabel(y_label, fontsize=15)
-        plt.margins(x=0, y=0)
-        plt.tight_layout()
-
-    return plt.show()
 
 ###################################################################################################################################################################################################################################################
