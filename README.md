@@ -35,43 +35,45 @@
 
 Sections and processes are illustrated:
 
-<img src="images/ToC.jpg" width="494" height="440">
+<img src="images/ToC.jpg">
 
 </Details>
 
 <Details> <Summary> <h3> <font color= '#3d74eb'> 1.2 Description:  </font> </h3> </Summary> 
 
-[App-parser](https://github.com/EstebanMqz/Optimized_Indexes_Forecasts/blob/main/images/Description.jpg)
-
 Data has changed since Covid in most industries and the markets project the public's sentiment, financially speaking.<br>
-In this regard, from indexes $OHLCVs$, Volumes $V_{t}$ are standarized and compared dynamically in a web-app to show the big picture of $I$ to the user, as well as to note important insights.<br> 
-Moreover, from $Adj_{Closes} \rightarrow P_t$ <i>, its Compounded Returns</i> are manipulated as: $ln({P_t})-ln({P_{t-1}})$ because of their <b>additive nature</b> (instead of multiplicative)<br>
-among other characteristics <i>(see 3.2)</i>, which makes the following true:<br>
+In this regard, from indexes OHLCVs, Volumes are standarized and compared dynamically in a web-app to show the big picture of indexes supported to the user, as well as to note important insights.<br> 
+
+[App-parser](https://github.com/EstebanMqz/Optimized_Indexes_Forecasts/blob/main/images/Description.jpg)<br>
+Moreover, from $Adj_{Closes} \rightarrow P_t$ returns $r_t$ are obtained and </i> manipulated as: $ln({P_{t+1}})-ln({P_{t}})$ because of their <b>additive nature</b> among other characteristics, which transforms the multiplicative nature of <b>Compounded Returns</b> <i>(see 3.2)</i>:
 $$\prod_{t=1}^{n}(1+r_t) \implies \bigg[{\mathrm{e}^{\sum_{t=1}^{n} ln (1+r_t) }} \bigg]$$ 
 
-From <i><b>Logarithmic Compounded Returns</b></i> the following are calculated and interpreted <i>(sections 3-7)</i><br>
+From $ln(1+r_t)$ the following are calculated and interpreted <u><i>(sections 3-7)</i></u>:
 
 + Estimators: $\mu_{j_d}, \mu_{j_{Yr}} \mu_{P_d}, \mu_{P_{Yr}}$.
 + Disperssion measures: $Q_n$, $IQR$, $\sigma_{j_d}, \sigma_{j_{Yr}} \sigma_{P_d}, \sigma_{P_{Yr}}$, Correlation $\rho_{i,j}$ and Covariance $\sigma_{i,j}$ matrices.<br>
 + Optimizations: $R_{Sharpe}$, $R_{Sortino}$, $R_{Calmar}$, $R_{Burke}$, $R_{Kappa}$, $R_{\Omega}$, $R_{Traynor}$, $R_{Jensen}$.
 + Risk measures: $VaR_{\alpha}$, $ES_{\alpha}$, $MDD$.<br>
 
-Out of the indexes supported, the $SP500$ is generally used as benchmark because:<br>
+Considering, the $SP500$ is generally used as benchmark because:<br>
 
 1. It's the most commonly used index to determine the <i><u>overall state of the economy.</u></i><br>
-2. Because it has the <i><u>most liquid derivatives markets</u></i> (the same generally applies for $j$ components).<br>
- *Note: Market Risk exposure hedging won't be covered in this repository.*<br>
-1. Its $j$ components provide a <i><u>broader scope</u></i> to different industries.<br>
+2. It has the <i><u>most liquid derivatives markets</u></i> (the same generally applies for $j$ components).<br>
+ *Note: Market Risk exposure hedging won't be covered.*<br>
+3. Its components provide a <i><u>broader scope</u></i> to industries.<br>
 
-Therefore, $\mathbb{R}^{500} = x_j\in [x_1,x_{500}] \hookrightarrow $SP500$ is modelled as an example of its usage *(sections 4-7).*
+Out of the indexes supported, it will be modelled as an example <u><i>(sections 4-7)</i></u>:<br>
+$\mathbb{R}^{500}$ = $x_j\in [x_1,x_{500}] \hookrightarrow SP500$.
 
-Optimizations Accumulated Returns are obtained, simulated and forecasted from:
+Starting from its Optimizations $R^{n \times m}$:
 
 $$R^{n \times m} = \sum_{t=1}^{n} \sum_{j=1}^{m} w_{j}\ ln(1+r_t)$$
 + $m$ = No° of components.
 + $j$ = Component
 + $n$ = No° of periods. 
 + $t$ = Period.
+
+And concluding with their Simulations and Forecasts.
 
 </Details>
 
@@ -102,8 +104,7 @@ $$R^{n \times m} = \sum_{t=1}^{n} \sum_{j=1}^{m} w_{j}\ ln(1+r_t)$$
 
 + ##### Other: <br>
 
-[`fitter`](https://fitter.readthedocs.io/en/latest/index.html)<br>
-[`statsmodels`](https://www.statsmodels.org/stable/index.html)<br><br>
+[`fitter`](https://fitter.readthedocs.io/en/latest/index.html) [`statsmodels`](https://www.statsmodels.org/stable/index.html)<br><br>
 
 + ##### Other References: <br>
 
@@ -111,16 +112,13 @@ $$R^{n \times m} = \sum_{t=1}^{n} \sum_{j=1}^{m} w_{j}\ ln(1+r_t)$$
 
 + [`S&P`](https://en.wikipedia.org/wiki/List_of_S%26P_500_companies) [`Dow Jones`](https://en.wikipedia.org/wiki/Dow_Jones_Industrial_Average) [`NASDAQ 100`](https://en.wikipedia.org/wiki/NASDAQ-100) [`Russell 1000`](https://en.wikipedia.org/wiki/Russell_1000_Index) [`FTSE 100`](https://en.wikipedia.org/wiki/FTSE_100_Index) [`IPC`](https://en.wikipedia.org/wiki/Indice_de_Precios_y_Cotizaciones) [`DAX`](https://en.wikipedia.org/wiki/DAX) [`IBEX 35`](https://en.wikipedia.org/wiki/IBEX_35) [`CAC 40`](https://en.wikipedia.org/wiki/CAC_40) [`EURO STOXX 50`](https://en.wikipedia.org/wiki/EURO_STOXX_50) [`FTSE MIB`](https://en.wikipedia.org/wiki/FTSE_MIB) [`Hang Seng Index`](https://en.wikipedia.org/wiki/Hang_Seng_Index)
 
-###### *Official Market Risks Data:*
+###### *Market Risk Data (risk-free, alpha):*
 
-+ [`Daily Treasury Par Yield Curve Rates`](https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value_month=202304)<br>
-+ [`Bank of International Settlements (BIS)`](https://www.bis.org/statistics/index.htm)<br>
++ [`Daily Treasury Par Yield Curve Rates`](https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value_month=202304) [`Bank of International Settlements (BIS)`](https://www.bis.org/statistics/index.htm)<br>
 
 ###### *Other:*
 
-+ [`LaTeX`](https://en.wikipedia.org/wiki/List_of_mathematical_symbols_by_subject)</br>
-+ [`Expected Shortfall (ES)`](https://en.wikipedia.org/wiki/Expected_shortfall) [`Value at Risk (VaR)`](https://en.wikipedia.org/wiki/Value_at_risk)
-+ [`Convolution of Distributions`](https://en.wikipedia.org/wiki/Convolution_of_probability_distributions)<br>
-+ [`i.i.d`](https://en.wikipedia.org/wiki/Independent_and_identically_distributed_random_variables)<br>
++ [`LaTeX`](https://en.wikipedia.org/wiki/List_of_mathematical_symbols_by_subject) [`Plotly HTML`](https://htmlpreview.github.io)
++ [`Value at Risk (VaR)`](https://en.wikipedia.org/wiki/Value_at_risk) [`Expected Shortfall (ES)`](https://en.wikipedia.org/wiki/Expected_shortfall)
++ [`Convolution of Distributions`](https://en.wikipedia.org/wiki/Convolution_of_probability_distributions) [`i.i.d`](https://en.wikipedia.org/wiki/Independent_and_identically_distributed_random_variables)<br>
 
-+ [`Expected Shortfall (ES)`](https://en.wikipedia.org/wiki/Expected_shortfall)<br>

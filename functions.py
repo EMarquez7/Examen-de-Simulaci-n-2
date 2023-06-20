@@ -1,12 +1,12 @@
-"""
-# -- -------------------------------------------------------------------------------------------------------------- -- #   
-# -- project: S&P500-Risk-Optimized-Portfolios-PostCovid-ML.                                                        -- #           
-# -- script: data.py : Python script with general functions for the proj.                                           -- #                 
-# -- author: EstebanMqz                                                                                             -- #  
-# -- license: CC BY 3.0                                                                                             -- #
-# -- repository: https://github.com/EstebanMqz/SP500-Risk-Optimized-Portfolios-PostCovid-ML/blob/main/functions.py  -- #           
-# -- ----------------------------------------------------------------------------------------------------------------- #  
-"""
+{"""
+# -- --------------------------------------------------------------------------------------------- -- #   
+# -- Repository-name: Optimized_Indexes_Forecasts                                                  -- #           
+# -- functions.py: Python script with general functionalities for the repository.                  -- #                 
+# -- author: EstebanMqz                                                                            -- #  
+# -- license: CC BY 3.0                                                                            -- #
+# -- script: https://github.com/EstebanMqz/Optimized_Indexes_Forecasts/blob/main/functions.py      -- #           
+# -- --------------------------------------------------------------------------------------------- -- #  
+"""}
 
 import glob, warnings
 

@@ -1,12 +1,13 @@
-"""
-# -- ------------------------------------------------------------------------------------------------------------------- -- #   
-# -- project: S&P500-Risk-Optimized-Portfolios-PostCovid-ML.                                                             -- #           
-# -- script: data.py : Python script with visualizations functionalities for the proj.                                   -- #                 
-# -- author: EstebanMqz                                                                                                  -- #  
-# -- license: CC BY 3.0                                                                                                  -- #
-# -- repository: https://github.com/EstebanMqz/SP500-Risk-Optimized-Portfolios-PostCovid-ML/blob/main/visualizations.py  -- #           
-# -- ------------------------------------------------------------------------------------------------------------------- -- #  
-"""
+{"""
+# -- ------------------------------------------------------------------------------------------------------- -- #   
+# -- Repository: Optimized_Indexes_Forecasts                                                                 -- #           
+# -- visualizations.py: Python script with visualizations functionalities for the repository.                -- #                 
+# -- author: EstebanMqz                                                                                      -- #  
+# -- license: CC BY 3.0                                                                                      -- #
+# -- repository: https://github.com/EstebanMqz/Optimized_Indexes_Forecasts/blob/main/visualizations.py       -- #           
+# -- ------------------------------------------------------------------------------------------------------- -- #  
+"""}
+
 
 from os import path
 #Dependencies
