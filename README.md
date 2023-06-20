@@ -77,6 +77,29 @@ And concluding with their Simulations and Forecasts.
 
 </Details>
 
+<Details> <Summary> <h3> <font color= '#3d74eb'> 2 Requirements:  </font> </h3> </Summary> 
+
+Import files with `.py` extension in cwd callable as a list.
+
+``` python
+import glob
+mod = [__import__(name[:-3]) for name in glob.glob('*.py')]
+```
+Generate [`requirements.txt`](https://github.com/EstebanMqz/Optimized_Indexes_Forecasts/blob/main/requirements.txt) file with latest versions of libraries used in project <i>(predefined docstring)</i>.
+
+```python
+!pipreqs --encoding utf-8 "./" --force
+mod[1].get_requirements(docstring)
+with open(glob.glob('*.txt')[0], 'r') as file: print(file.read())
+```
+Install the packages in environment and import libraries <i>(refer to 2.2)</i>.
+```
+%%capture
+!pip install -r requirements.txt
+```
+
+
+</Details>
 
 <Details> <Summary> <h3> <font color= '#3d74eb'> 8. References </font> </h3> </Summary> 
 
