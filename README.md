@@ -106,7 +106,7 @@ Install the packages in environment and import libraries <i>(refer to 2.2)</i>.
 <Details> <Summary> <h3> <font color= '#3d74eb'> 3. Data Extraction and Exploration:  </font> </h3> </Summary>
 
 Data is extracted for indexes an saved in an html <u><i>embed dataframe</i></u>: [`OHCLV-web`](https://htmlpreview.github.io/?https://github.com/EstebanMqz/Optimized_Indexes_Forecasts/blob/main/HTML/adjindex.html) *(see refs.)*.<br>
-Volumes are standarized and compared dynamically in an html <u><i>embed plot</i></u>: [`Plotly-web-app`](https://github.com/EstebanMqz/Optimized_Indexes_Forecasts/blob/main/images/Description.jpg).<br>
+Volumes are standarized and compared dynamically in an html <u><i>embed plot</i></u>: [`Plotly-web-app`](https://htmlpreview.github.io/?https://github.com/EstebanMqz/Optimized_Indexes_Forecasts/blob/main/HTML/Standarized_Volumes.html).<br>
 
 As an example of its usage, an image of its features is captured by selecting the NASDAQ and the SP500: 
 
