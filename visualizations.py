@@ -60,28 +60,28 @@ warnings.filterwarnings("ignore", category=UserWarning)
 
 
 # -- ---------------------------------------------------------------------------------------------------------------------------------- Visualizations -------------------------------------------------------------------------------- -- #
-def plotly_chart(OHCLV, assets, path, title, legend):
+def plotly_chart(OHCLV, column_name, path, title, legend):
     {"""
-    Function to make a dynamic plotly chart from concatenated OHCLVs dataframes (OHCLV) that shows the standarized mean of the assets volumes and their respective values.
+    Function to make a dynamic plotly chart from concatenated OHCLVs dataframes (including adjcloses) that shows the standarized mean of the assets volumes and their respective values.
     It is returned in an html for its interactive features to be displayed in a browser, aside from the notebook in repository.
     Parameters:
     ----------
     OHCLV: pd.dataframe
-        Concatenated dataframes of OHCLVs for n assets.
-    assets: list
-        List of assets as str from which their data was fetched from and concatenated in OHCLV.
+        Concatenated dataframes of OHCLVs for n assets with values of columns: ["open", "high", "low", "close", "volume", "adjclose"].
+    column_name: str
+        Name of the column to be standarized and plotted for n assets.
     path: str
-        Path to save the html file in current working directory.
+        Path to save the html file in current working directory (local).
     title: str
         Title of the dynamic plotly chart, and y-axis.
     legend: str
         Legend for all the assets in the plotly chart.
         (e.g: "Stocks", "Indexes", "Currencies", "Commodities", "Cryptos", "ETFs" etc.)
     """}
-         
-    OHCLV_stdz = (OHCLV.volume - OHCLV.volume.mean()) / OHCLV.volume.std()
+              
+    OHCLV_stdz = (OHCLV[column_name] - OHCLV[column_name].mean()) / OHCLV[column_name].std()
     OHCLV_stdz.columns = [OHCLV.columns[i] for i in range(0, len(OHCLV.columns), 6)]
-
+    #They are both px.line(), 
     fig = px.line(OHCLV_stdz, title = title).update_traces(line_width = .4).update_layout(legend_title_text = legend).update_layout(clickmode = 'event+select')
     fig.add_trace(go.Scatter(x = OHCLV_stdz.index, y = OHCLV_stdz.mean(axis = 1), mode = 'lines', name = 'Mean'))
     fig.update_traces(selector = dict(name = 'Mean'), mode = "lines", line = dict(width=.7), line_color = "black")
@@ -91,6 +91,9 @@ def plotly_chart(OHCLV, assets, path, title, legend):
 
     fig.update_traces(hovertemplate = None)
     fig.update_layout(hovermode = "x unified", hoverlabel=dict(bgcolor="white", font_size=10, font_family="Rockwell"))
+    
+    fig.update_xaxes(rangeslider_visible = True, range = [OHCLV.head().index[0].to_pydatetime(), OHCLV.tail().index[-1].to_pydatetime()], title_text = 'Date', rangeslider_thickness = 0.08)
+    fig.update_yaxes(title_text = title)
 
     fig.update_layout(
         width = 1500,
@@ -104,13 +107,9 @@ def plotly_chart(OHCLV, assets, path, title, legend):
         paper_bgcolor = "LightSteelBlue",
     )
 
-    fig.update_xaxes(rangeslider_visible = True, range = [OHCLV.head().index[0].to_pydatetime(), datetime.date.today()], title_text = 'Date', rangeslider_thickness = 0.08)
-    fig.update_yaxes(title_text = title)
-
     fig.write_html(path)
 
-    fig.write_html("HTML/Standarized_Volumes.html")
-    fig.show()
+    return fig.show()
 
 ######################################################################################################################################################################################################################################
 

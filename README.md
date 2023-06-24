@@ -23,7 +23,7 @@
 ###### Version Control: [![Git-Badge](https://img.shields.io/badge/Git-F05032.svg?style=square&logo=Git&logoColor=white)](https://git-scm.com) [![Git-Commads](https://img.shields.io/badge/Git%20Commands-gray?style=square&logo=git&logoColor=white)](https://github.com/EstebanMqz/Git-Commands)
 </Details>
 </div>
-<Details> <Summary> <i> Files Visualization: </i> </Summary>
+<Details> <Summary> <i> <font color= 'orange'> Files Visualization: </font> </i> </Summary>
 
 [![Repository](https://img.shields.io/badge/Repository-0089D6?style=square&logo=microsoft-azure&logoColor=white)](https://mango-dune-07a8b7110.1.azurestaticapps.net/?repo=EstebanMqz%2FOptimized_Indexes_Forecasts) [![Jupyter](https://img.shields.io/badge/Render-nbviewer-000000?style=square&logo=jupyter&logoColor=orange)](https://nbviewer.org/github/EstebanMqz/Optimized_Indexes_Forecasts/blob/main/Optimized_Indexes_Forecasts.ipynb)
 
@@ -44,7 +44,7 @@ Sections and processes are illustrated:
 Data has changed since Covid in most industries and the markets project the public's sentiment, financially speaking.<br>
 In this regard, from indexes OHLCVs, Volumes are standarized and compared dynamically in a web-app to show the big picture of indexes supported to the user, as well as to note important insights.<br> 
 
-[App-View](https://github.com/EstebanMqz/Optimized_Indexes_Forecasts/blob/main/images/Description.jpg)<br>
+[App-Markdown](https://github.com/EstebanMqz/Optimized_Indexes_Forecasts/blob/main/images/Description.jpg)<br>
 Moreover, from $Adj_{Closes} \rightarrow P_t$ returns $r_t$ are obtained and </i> manipulated as: $ln({P_{t+1}})-ln({P_{t}})$ because of their <b>additive nature</b> among other characteristics, which transforms the multiplicative nature of <b>Compounded Returns</b> <i>(see 3.2)</i>:
 $$\prod_{t=1}^{n}(1+r_t) \implies \bigg[{\mathrm{e}^{\sum_{t=1}^{n} ln (1+r_t) }} \bigg]$$ 
 
@@ -112,9 +112,7 @@ As an example of its usage, an image of its features is captured by selecting th
 
 <img src="images/Stdz_Vt_GSPC&NQ.jpg">
 
-<i>Nasdaq relative volume has sustained at much higher levels than the benchmark since Covid for example.</i>
-
-
+<i>Nasdaq relative volume have sustained at much higher levels than the benchmark since Covid for example.</i>
 
 </Details>
 
@@ -148,11 +146,12 @@ As an example of its usage, an image of its features is captured by selecting th
 
 + ##### Other References: <br>
 
+
 ###### *Indexes Supported*:<br>
 
 + [`S&P`](https://en.wikipedia.org/wiki/List_of_S%26P_500_companies) [`Dow Jones`](https://en.wikipedia.org/wiki/Dow_Jones_Industrial_Average) [`NASDAQ 100`](https://en.wikipedia.org/wiki/NASDAQ-100) [`Russell 1000`](https://en.wikipedia.org/wiki/Russell_1000_Index) [`FTSE 100`](https://en.wikipedia.org/wiki/FTSE_100_Index) [`IPC`](https://en.wikipedia.org/wiki/Indice_de_Precios_y_Cotizaciones) [`DAX`](https://en.wikipedia.org/wiki/DAX) [`IBEX 35`](https://en.wikipedia.org/wiki/IBEX_35) [`CAC 40`](https://en.wikipedia.org/wiki/CAC_40) [`EURO STOXX 50`](https://en.wikipedia.org/wiki/EURO_STOXX_50) [`FTSE MIB`](https://en.wikipedia.org/wiki/FTSE_MIB) [`Hang Seng Index`](https://en.wikipedia.org/wiki/Hang_Seng_Index)
 
-###### *Market Risk Data (risk-free, alpha):*
+###### <i>Market Risk Data (risk-free, α):</i>
 
 + [`Daily Treasury Par Yield Curve Rates`](https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value_month=202304) [`Bank of International Settlements (BIS)`](https://www.bis.org/statistics/index.htm)<br>
 
