@@ -64,6 +64,7 @@ def plotly_chart(OHCLV, column_name, path, title, legend):
     {"""
     Function to make a dynamic plotly chart from concatenated OHCLVs dataframes (including adjcloses) that shows the standarized mean of the assets volumes and their respective values.
     It is returned in an html for its interactive features to be displayed in a browser, aside from the notebook in repository.
+     
     Parameters:
     ----------
     OHCLV: pd.dataframe
@@ -116,6 +117,7 @@ def plotly_chart(OHCLV, column_name, path, title, legend):
 def cmap_bar(df_col, df_index, x_ticks, y_ticks, title, x_label, y_label):
     {"""
     Function to plot a bar chart with a colormap.
+     
     Parameters
     ----------
     df_col : pd.DataFrame col.
@@ -136,6 +138,7 @@ def cmap_bar(df_col, df_index, x_ticks, y_ticks, title, x_label, y_label):
     -------
     Plot of the column.
     """}
+
     fig, ax = plt.subplots(figsize=(25, 10))
     plt.bar(df_index, df_col, color=plt.cm.RdYlGn(df_col))
     plt.title(title,  fontsize=15)
@@ -165,6 +168,7 @@ def Yearly_Returns(Simple, Log, color):
     -------
     Plot with yearly returns.
     """}
+
     fig, ax = plt.subplots(figsize=(20, 10))
     sns.distplot(Simple.T.Yr_Return, bins=50, color="red", label="Yearly Simple $R_t$")
     sns.distplot(Log.T.Yr_Return, bins=50, color="blue", label="Yearly Log $r_t$")
@@ -214,6 +218,7 @@ def BoxHist(data, output, bins, color, label, title, start, end):
     -------
     Boxplot and Histogram of Returns Method with its dt.describe_stats summary with equiprobable weights.
     """}
+
     plt.style.use("classic")
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(22, 8))
     data.plot.box(ax=ax1, color=color, vert=False)
@@ -262,6 +267,7 @@ def summary(dataframe, r, rf, best, start, end):
     summary : dataframe
             Annualized Returns, Std. deviations and best Ratios for Sharpe & Sortino with a Sortino Selection for Xi with dataframe and dates.
     """}
+
     dataframe_date = dataframe.loc[start:end]
     if  r == "Simple" :
         returns = dataframe_date.pct_change().iloc[1:, :].dropna(axis = 1)
@@ -351,6 +357,7 @@ def Stats(dataframe, Selection, P,  title, start, end, percentiles, dist, color)
         Stats returns summary statistics (mean, std, min, max, percentiles, skewness and kurtosis) in a 
         markdown object callable as a dataframe by assigning a variable to the function in pos. [2].  
     """}
+
     Selection = (dataframe[Selection.index].pct_change()).iloc[1:, :].dropna(axis = 1)
     Selection.index = pd.to_datetime(Selection.index)
     Selection_Mo_r = Selection.resample(P).sum()
@@ -496,6 +503,7 @@ def Accum_ts(accum):
     Plot
         Plot of time-series in dataframe.
     """}
+
     fig, ax = plt.subplots(figsize = (15, 7))
     ax.plot(accum.index, accum.iloc[:, 0], color = "red", label = accum.columns[0])
     ax.plot(accum.index, accum.iloc[:, 1], color = "green", label = accum.columns[1])
@@ -522,6 +530,7 @@ def create_corr_plot(df, plot_pacf=False):
     -------
         lines+marker ACF, PACF, lines + markers plots.
     """}
+    
     corr_array = pacf(df.dropna(), alpha=0.05) if plot_pacf else acf(df.dropna(), alpha=0.05)
     lower_y = corr_array[1][:,0] - corr_array[0]
     upper_y = corr_array[1][:,1] - corr_array[0]

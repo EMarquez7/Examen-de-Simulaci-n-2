@@ -4,26 +4,60 @@
 
 [![Creative Commons BY 3.0](https://img.shields.io/badge/License-CC%20BY%203.0-yellow.svg?style=square&logo=creative-commons&logoColor=white)](https://creativecommons.org/licenses/by/3.0/)
 
-<Details> <Summary> <i> <font color= '#ff9100'> Click to expand: </font> </i>
+<Details open> <Summary> <b> <font color= '#ff9100'> Contact: </font> </b> </Summary>
 
-![S&P500-Optimizations-Forecast](https://img.shields.io/badge/Author's_Contact-Financial_Eng._Esteban_Márquez-black?style=square&logo=github&logoColor=black) </Summary>
+<div style="text-align: center;">  
+<span style="font-size: 28px; font-family: MS; color: black; font-weight: bold; text-shadow: 1px 1px blue;"> <u>Jr. Data Scientist & QA Automation</u> </span><br><span style="font-size: 16px; color: black; font-family: ;"><i>(DA & BA | ML Eng. | DevOps) </i><b> <br>
+</b></span>
+  
+</div> 
 
-[![Website](https://img.shields.io/badge/Website-ffffff?style=square&logo=opera&logoColor=red)](https://estebanmqz.com) [![LinkedIn](https://img.shields.io/badge/LinkedIn-041a80?style=square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/esteban-m65381722210212839/) [![Portfolio](https://img.shields.io/badge/Github-Portfolio-010b38?style=square&logo=github&logoColor=black)](https://estebanmqz.github.io/Portfolio/) [![E-mail](https://img.shields.io/badge/Business-Mail-052ce6?style=square&logo=mail&logoColor=white)](mailto:esteban@esteban.com)</br>
+<br>
+<div style="text-align: center; font-family: 'Times New Roman'; color: #26a822;">
+    <b class="normal-text">Download Resume</b><br>
+    <a href="https://github.com/EstebanMqz/EstebanMqz/raw/main/download/EstebanMqz.pdf"><img src="https://img.shields.io/badge/pdf-Resume-darkred?style=flat&logo=adobe&logoColor=red" alt="Resume"></a>
+    <a href="https://github.com/EstebanMqz/EstebanMqz/raw/main/download/EstebanMqz.docx"><img src="https://img.shields.io/badge/docx-Resume-darkblue?style=flat&logo=Microsoft%20Word&logoColor=lightblue" alt="Resume"></a><br><br>
+    <span class="small-text" style="color: black;"><b>Business Inquiries 24/7</b></span><br>
+    <a href="https://tinyurl.com/BusinessNo">
+    <img width="45px" height="45px" src="https://cdn.worldvectorlogo.com/logos/whatsapp-business-bg.svg" alt="Business">
+    </a>
 
-![GitHub Logo](https://github.com/EstebanMqz.png?size=50) [![Github](https://img.shields.io/badge/Github-000000?style=square&logo=github&logoColor=white)](https://github.com/EstebanMqz)
+
+</div>
+
+<div align="left" style="font-family: MS; color: black; font-weight: bold;">
+
+<font size = 5><b> Contact:</b></font><br>
+
+<div style="padding: 10px; background-color: rgba(128, 128, 128, 0.1);">
+
+<div style="display: flex; justify-content: space-between;">
+
+[<img width="45px" height="45px" src="https://img.icons8.com/?size=512&amp;id=MR3dZdlA53te&amp;format=png" alt="LinkedIn">](https://www.linkedin.com/in/estebanmqz)
+<a href="https://mail.google.com/mail/?view=cm&fs=1&to=emarquez1895@gmail.com" target="Greetings Esteban I reviewed your work, skills and experience and I wish to schedule a Business Meeting with you." style="text-decoration: none;"><img width="45px" height="45px" style="max-width: 100%; max-height: 100%" src="https://www.svgrepo.com/show/530453/mail-reception.svg" alt="Mail">
+[<img width="40px" height="40px" style="max-width: 100%; max-height: 100%;" src="https://cdn3d.iconscout.com/3d/free/thumb/free-github-6343501-5220956.png?f=webp" alt="Github">](https://github.com/EstebanMqz?tab=repositories)
+[<img width="40px" height="40px" style="max-width: 100%; max-height: 100%;" src="https://img.icons8.com/color/452/gitlab.png" alt="GitLab">](https://gitlab.com/EstebanMqz)
+
+</div>
+
+<div style="text-align: right">
+
+[![Repositories](https://img.shields.io/badge/Repositories-black?style=flat&logo=github&logoColor=white&color=black)](https://github.com/EstebanMqz?tab=repositories) &nbsp;
+[![Gists](https://img.shields.io/badge/Gists-092094?style=flat&logo=github&logoColor=white)](https://gist.github.com/EstebanMqz) &nbsp;
+[![gh-pages](https://img.shields.io/badge/HTML-100000?style=flat&logo=html5&logoColor=orange)](https://htmlpreview.github.io/?https://github.com/EstebanMqz/EstebanMqz/blob/main/index.html) &nbsp;
 </Details>
 
-<Details> <Summary> <i> <font color= '#ff9100'> Repository Tools: </font> </i> </Summary>
+<Details open> <Summary> <i> <font color= '#ff9100'> Repository Tools: </font> </i> </Summary>
 
 ###### Actions: [![Repo-Visualization-Badge](https://img.shields.io/badge/Action-Visualization-020521?style=square&logo=github&logoColor=white)](https://githubnext.com/projects/repo-visualization)
 ###### Main Text-Editor: [![VSCode-Badge](https://img.shields.io/badge/VSCode-007ACC?style=square&logo=visual-studio-code&logoColor=white)](https://code.visualstudio.com/)&nbsp;[![Jupyter-Badge](https://img.shields.io/badge/Jupyter-F37626?style=square&logo=Jupyter&logoColor=white)](https://jupyter.org/try)
 ###### Language: [![Python-Badge](https://img.shields.io/badge/Python-3776AB.svg?style=square&logo=Python&logoColor=green)](https://www.python.org)[![Markdown-Badge](https://img.shields.io/badge/Markdown-000000.svg?style=square&logo=Markdown&logoColor=white)](https://www.markdownguide.org)[![yaml-Badge](https://img.shields.io/badge/YAML-000000?style=square&logo=yaml&logoColor=red)](https://yaml.org)  
 ###### Libraries: [![Numpy-Badge](https://img.shields.io/badge/Numpy-013243?style=square&logo=numpy&logoColor=white)](https://numpy.org)  [![Pandas-Badge](https://img.shields.io/badge/Pandas-150458?style=square&logo=pandas&logoColor=white)](https://pandas.pydata.org)  [![Scipy-Badge](https://img.shields.io/badge/Scipy-darkblue?style=square&logo=scipy&logoColor=white)](https://www.scipy.org)  [![Fitter-Badge](https://img.shields.io/badge/Fitter-000000?style=square&logo=python&&logoColor=yellow)](https://fitter.readthedocs.io/en/latest/)  [![Matplotlib-Badge](https://img.shields.io/badge/Matplotlib-40403f?style=square&logo=python&logoColor=blue)](https://matplotlib.org)  [![Seaborn-Badge](https://img.shields.io/badge/Seaborn-40403f?style=square&logo=python&logoColor=blue)](https://seaborn.pydata.org)
 ###### Interface: [![React-Badge](https://img.shields.io/badge/React-61DAFB?style=square&logo=react&logoColor=black)](https://create-react-app.dev)
-###### Version Control: [![Git-Badge](https://img.shields.io/badge/Git-F05032.svg?style=square&logo=Git&logoColor=white)](https://git-scm.com) [![Git-Commads](https://img.shields.io/badge/Git%20Commands-gray?style=square&logo=git&logoColor=white)](https://github.com/EstebanMqz/Git-Commands)
+###### Version Control: [![Git-Badge](https://img.shields.io/badge/Git-F05032.svg?style=square&logo=Git&logoColor=white)](https://git-scm.com) [![Git-Commands](https://img.shields.io/badge/Git%20Commands-gray?style=square&logo=git&logoColor=white)](https://github.com/EstebanMqz/Git-Commands)
 </Details>
 </div>
-<Details> <Summary> <i> <font color= 'orange'> Files Visualization: </font> </i> </Summary>
+<Details open> <Summary> <i> <font color= 'orange'> Files Visualization: </font> </i> </Summary>
 
 [![Repository](https://img.shields.io/badge/Repository-0089D6?style=square&logo=microsoft-azure&logoColor=white)](https://mango-dune-07a8b7110.1.azurestaticapps.net/?repo=EstebanMqz%2FOptimized_Indexes_Forecasts) [![Jupyter](https://img.shields.io/badge/Render-nbviewer-000000?style=square&logo=jupyter&logoColor=orange)](https://nbviewer.org/github/EstebanMqz/Optimized_Indexes_Forecasts/blob/main/Optimized_Indexes_Forecasts.ipynb)
 
@@ -31,7 +65,7 @@
 
 </Details> 
 
-<Details> <Summary> <h3> <font color= '#3d74eb'> 1.1 Table of Contents:  </font> </h3> </Summary>
+<Details open> <Summary> <h3> <font color= '#3d74eb'> 1.1 Table of Contents:  </font> </h3> </Summary>
 
 Sections and processes are illustrated:
 
@@ -39,7 +73,7 @@ Sections and processes are illustrated:
 
 </Details>
 
-<Details> <Summary> <h3> <font color= '#3d74eb'> 1.2 Description:  </font> </h3> </Summary> 
+<Details open> <Summary> <h3> <font color= '#3d74eb'> 1.2 Description:  </font> </h3> </Summary> 
 
 Data has changed since Covid in most industries and the markets project the public's sentiment, financially speaking.<br>
 In this regard, from indexes OHLCVs, Volumes are standarized and compared dynamically in a web-app to show the big picture of indexes supported to the user, as well as to note important insights.<br> 
@@ -77,7 +111,7 @@ And concluding with their Simulations and Forecasts.
 
 </Details>
 
-<Details> <Summary> <h3> <font color= '#3d74eb'> 2. Requirements:  </font> </h3> </Summary> 
+<Details open> <Summary> <h3> <font color= '#3d74eb'> 2. Requirements:  </font> </h3> </Summary> 
 
 Import files with `.py` extension in cwd callable as a list.
 
@@ -103,7 +137,7 @@ Install the packages in environment and import libraries <i>(refer to 2.2)</i>.
 
 </Details>
 
-<Details> <Summary> <h3> <font color= '#3d74eb'> 3. Data Extraction and Exploration:  </font> </h3> </Summary>
+<Details open> <Summary> <h3> <font color= '#3d74eb'> 3. Data Extraction and Exploration:  </font> </h3> </Summary>
 
 Data is extracted for indexes an saved in an html <u><i>embed dataframe</i></u>: [`OHCLV-web`](https://htmlpreview.github.io/?https://github.com/EstebanMqz/Optimized_Indexes_Forecasts/blob/main/HTML/adjindex.html) *(see refs.)*.<br>
 Volumes are standarized and compared dynamically in an html <u><i>embed plot</i></u>: [`Plotly-web-app`](https://htmlpreview.github.io/?https://github.com/EstebanMqz/Optimized_Indexes_Forecasts/blob/main/HTML/Standarized_Volumes.html).<br>
@@ -116,7 +150,7 @@ As an example of its usage, an image of its features is captured by selecting th
 
 </Details>
 
-<Details> <Summary> <h3> <font color= '#3d74eb'> 8. References </font> </h3> </Summary> 
+<Details open> <Summary> <h3> <font color= '#3d74eb'> 8. References </font> </h3> </Summary> 
 
 <font color= 'white'><h6>
 
@@ -157,8 +191,11 @@ As an example of its usage, an image of its features is captured by selecting th
 
 ###### *Other:*
 
-+ [`LaTeX`](https://en.wikipedia.org/wiki/List_of_mathematical_symbols_by_subject) [`Plotly HTML`](https://htmlpreview.github.io)
-+ [`Value at Risk (VaR)`](https://en.wikipedia.org/wiki/Value_at_risk) [`Expected Shortfall (ES)`](https://en.wikipedia.org/wiki/Expected_shortfall)
-+ [`Convolution of Distributions`](https://en.wikipedia.org/wiki/Convolution_of_probability_distributions) [`i.i.d`](https://en.wikipedia.org/wiki/Independent_and_identically_distributed_random_variables)<br>
++ [`LaTeX`](https://en.wikipedia.org/wiki/List_of_mathematical_symbols_by_subject) 
++ [`Plotly HTML`](https://htmlpreview.github.io)
++ [`Value at Risk (VaR)`](https://en.wikipedia.org/wiki/Value_at_risk) 
++ [`Expected Shortfall (ES)`](https://en.wikipedia.org/wiki/Expected_shortfall)
++ [`Convolution of Distributions`](https://en.wikipedia.org/wiki/Convolution_of_probability_distributions) 
++ [`i.i.d`](https://en.wikipedia.org/wiki/Independent_and_identically_distributed_random_variables)<br>
 
 </Details>

@@ -1,0 +1,19 @@
+Steps predicting time series data
+1. Load the data
+1.1. Import the libraries
+1.2. Load the data
+1.3. Visualize the data
+2. Preprocess the data (if necessary)
+2.1. Split the data into training and testing sets
+2.2. Scale the data
+3. Create a model
+3.1. Define the model
+3.2. Compile the model
+4. Train the model
+4.1. Train the model
+5. Make predictions
+5.1. Make predictions
+6. Visualize the predictions
+6.1. Visualize the predictions
+7. Evaluate the model
+7.1. Evaluate the model
